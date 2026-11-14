@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { getDbFilePath } from './dbPathHelper';
+import { getDbFilePath, getDefaultJson } from './dbPathHelper';
 
 const PERIODS_DB_PATH = getDbFilePath('db_kas_periods.json');
 
@@ -37,12 +37,15 @@ function loadPeriodsData(): KasPeriodsData {
   try {
     if (fs.existsSync(PERIODS_DB_PATH)) {
       const data = fs.readFileSync(PERIODS_DB_PATH, 'utf-8');
-      return JSON.parse(data);
+      const parsed = JSON.parse(data);
+      if (parsed && Array.isArray(parsed.periods) && parsed.periods.length > 0) {
+        return parsed;
+      }
     }
   } catch (e) {
     console.error('Error loading db_kas_periods.json:', e);
   }
-  return { periods: [] };
+  return (getDefaultJson('db_kas_periods.json') as KasPeriodsData) || { periods: [] };
 }
 
 function savePeriodsData(data: KasPeriodsData): void {

@@ -22,6 +22,14 @@ export default async function AdminClosingPage({ searchParams }: Props) {
   const allPeriods = getAllKasPeriods();
   const currentPeriod = getKasPeriod(selectedPeriodId);
 
+  if (!currentPeriod) {
+    return (
+      <div className="p-8 text-center bg-white rounded-2xl border border-slate-200">
+        <p className="text-slate-600 font-medium">Data periode closing kas belum tersedia.</p>
+      </div>
+    );
+  }
+
   const isClosed = currentPeriod.status === 'closed';
   const tagihanList: any[] = currentPeriod.tagihan || [];
 
