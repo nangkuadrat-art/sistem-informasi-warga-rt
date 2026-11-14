@@ -1,0 +1,58 @@
+[
+  {
+    "id": "tx-1",
+    "tanggal_transaksi": "2026-10-01",
+    "keterangan": "Sisa Saldo Kas Bulan Sebelumnya (September 2026)",
+    "jenis": "masuk",
+    "kategori": "saldo_awal",
+    "nominal": 8902500
+  },
+  {
+    "id": "tx-2",
+    "tanggal_transaksi": "2026-10-31",
+    "keterangan": "Total Masukan Bersih Iuran Warga Bulan Ini",
+    "jenis": "masuk",
+    "kategori": "iuran_warga",
+    "nominal": 1875000
+  },
+  {
+    "id": "tx-3",
+    "tanggal_transaksi": "2026-10-31",
+    "keterangan": "Dana Apresiasi Pengurus RT",
+    "jenis": "keluar",
+    "kategori": "operasional",
+    "nominal": 400000
+  },
+  {
+    "id": "tx-4",
+    "tanggal_transaksi": "2026-10-31",
+    "keterangan": "Biaya Operasional Listrik Pos Ronda",
+    "jenis": "keluar",
+    "kategori": "keamanan",
+    "nominal": 203000
+  },
+  {
+    "id": "tx-5",
+    "tanggal_transaksi": "2026-10-31",
+    "keterangan": "Tagihan Air Bersih PDAM Pos Ronda",
+    "jenis": "keluar",
+    "kategori": "keamanan",
+    "nominal": 86000
+  },
+  {
+    "id": "tx-6",
+    "tanggal_transaksi": "2026-10-31",
+    "keterangan": "Uang Snack Rapat RT (Bp. Hardi)",
+    "jenis": "keluar",
+    "kategori": "konsumsi",
+    "nominal": 120000
+  },
+  {
+    "id": "tx-7",
+    "tanggal_transaksi": "2026-10-31",
+    "keterangan": "Pembelian Obat Nyamuk Baigon untuk Pos Ronda",
+    "jenis": "keluar",
+    "kategori": "keamanan",
+    "nominal": 35000
+  }
+]
