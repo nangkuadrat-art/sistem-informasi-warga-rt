@@ -21,20 +21,651 @@
           "nominal": 5534500
         },
         {
-          "id": "tx-sep-2",
-          "tanggal_transaksi": "2026-09-30",
-          "keterangan": "Total Masukan Bersih Iuran Warga Bulan Ini",
+          "id": "tx-sep-iuran-10",
+          "tanggal_transaksi": "2026-09-18",
+          "keterangan": "Iuran Warga (Iuran Pokok): Antonius Bambang Sugiharto (Blok UT/19)",
           "jenis": "masuk",
           "kategori": "iuran_warga",
-          "nominal": 4747000
+          "sub_kategori": "iuran_pokok",
+          "nominal": 30000,
+          "rincian": {
+            "iuran_pokok": 30000,
+            "tunggakan": 0
+          }
         },
         {
-          "id": "tx-sep-3",
+          "id": "tx-sep-iuran-46",
+          "tanggal_transaksi": "2026-09-20",
+          "keterangan": "Iuran Warga (Iuran Pokok & Pelunasan Tunggakan): Deni (Blok K/4)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_dan_tunggakan",
+          "nominal": 96000,
+          "rincian": {
+            "iuran_pokok": 32000,
+            "tunggakan": 64000
+          }
+        },
+        {
+          "id": "tx-sep-iuran-21",
+          "tanggal_transaksi": "2026-09-21",
+          "keterangan": "Iuran Warga (Iuran Pokok & Pelunasan Tunggakan): Rachmat (Blok G/2)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_dan_tunggakan",
+          "nominal": 60000,
+          "rincian": {
+            "iuran_pokok": 20000,
+            "tunggakan": 40000
+          }
+        },
+        {
+          "id": "tx-sep-iuran-5",
+          "tanggal_transaksi": "2026-09-22",
+          "keterangan": "Iuran Warga (Iuran Pokok & Pelunasan Tunggakan): Sudarmadi (Blok UT/9)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_dan_tunggakan",
+          "nominal": 80000,
+          "rincian": {
+            "iuran_pokok": 30000,
+            "tunggakan": 50000
+          }
+        },
+        {
+          "id": "tx-sep-iuran-49",
+          "tanggal_transaksi": "2026-09-22",
+          "keterangan": "Iuran Warga (Iuran Pokok): Anwar Sanusi (Blok K/7)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-sep-denda-49",
+          "tanggal_transaksi": "2026-09-22",
+          "keterangan": "Masukan Lainnya (Denda Ronda & Denda Kerja Bakti): Anwar Sanusi (Blok K/7)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 50000,
+          "rincian": {
+            "denda_ronda": 25000,
+            "denda_kb": 25000
+          }
+        },
+        {
+          "id": "tx-sep-iuran-34",
+          "tanggal_transaksi": "2026-09-23",
+          "keterangan": "Iuran Warga (Iuran Pokok): Yuli Ardinurman (Blok I/3)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-sep-iuran-38",
+          "tanggal_transaksi": "2026-09-23",
+          "keterangan": "Iuran Warga (Iuran Pokok): Nanang Dedi Arianto (Blok I/7)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-sep-denda-34",
+          "tanggal_transaksi": "2026-09-23",
+          "keterangan": "Masukan Lainnya (Denda Kerja Bakti): Yuli Ardinurman (Blok I/3)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 25000,
+          "rincian": {
+            "denda_ronda": 0,
+            "denda_kb": 25000
+          }
+        },
+        {
+          "id": "tx-sep-denda-38",
+          "tanggal_transaksi": "2026-09-23",
+          "keterangan": "Masukan Lainnya (Denda Ronda & Denda Kerja Bakti): Nanang Dedi Arianto (Blok I/7)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 30000,
+          "rincian": {
+            "denda_ronda": 5000,
+            "denda_kb": 25000
+          }
+        },
+        {
+          "id": "tx-sep-iuran-23",
+          "tanggal_transaksi": "2026-09-24",
+          "keterangan": "Iuran Warga (Iuran Pokok): Muhamad Arif Kuniyawan (Blok G/4)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-sep-iuran-29",
+          "tanggal_transaksi": "2026-09-24",
+          "keterangan": "Iuran Warga (Iuran Pokok): Kusoy (Blok G/10)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-sep-denda-23",
+          "tanggal_transaksi": "2026-09-24",
+          "keterangan": "Masukan Lainnya (Denda Ronda): Muhamad Arif Kuniyawan (Blok G/4)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 10000,
+          "rincian": {
+            "denda_ronda": 10000,
+            "denda_kb": 0
+          }
+        },
+        {
+          "id": "tx-sep-denda-29",
+          "tanggal_transaksi": "2026-09-24",
+          "keterangan": "Masukan Lainnya (Denda Kerja Bakti): Kusoy (Blok G/10)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 25000,
+          "rincian": {
+            "denda_ronda": 0,
+            "denda_kb": 25000
+          }
+        },
+        {
+          "id": "tx-sep-iuran-17",
+          "tanggal_transaksi": "2026-09-25",
+          "keterangan": "Iuran Warga (Iuran Pokok): ANGGA (Blok E/4)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-sep-iuran-37",
+          "tanggal_transaksi": "2026-09-25",
+          "keterangan": "Iuran Warga (Iuran Pokok): Dimas Danu Sohiban (Blok I/6)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-sep-denda-17",
+          "tanggal_transaksi": "2026-09-25",
+          "keterangan": "Masukan Lainnya (Denda Kerja Bakti): ANGGA (Blok E/4)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 25000,
+          "rincian": {
+            "denda_ronda": 0,
+            "denda_kb": 25000
+          }
+        },
+        {
+          "id": "tx-sep-iuran-24",
+          "tanggal_transaksi": "2026-09-26",
+          "keterangan": "Iuran Warga (Iuran Pokok): Luthfi Ramadhan (Blok G/5)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-sep-iuran-26",
+          "tanggal_transaksi": "2026-09-26",
+          "keterangan": "Iuran Warga (Iuran Pokok): Binar Surya Fajar Putra Dewayahna (Blok G/7)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-sep-iuran-20",
+          "tanggal_transaksi": "2026-09-27",
+          "keterangan": "Iuran Warga (Iuran Pokok): BE Santoso Nugroho (Blok G/1)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-sep-iuran-48",
+          "tanggal_transaksi": "2026-09-27",
+          "keterangan": "Iuran Warga (Iuran Pokok & Pelunasan Tunggakan): Dwi. M (Blok K/6)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_dan_tunggakan",
+          "nominal": 162000,
+          "rincian": {
+            "iuran_pokok": 32000,
+            "tunggakan": 130000
+          }
+        },
+        {
+          "id": "tx-sep-iuran-40",
+          "tanggal_transaksi": "2026-09-28",
+          "keterangan": "Iuran Warga (Iuran Pokok & Pelunasan Tunggakan): Nuryanto (Blok I/9)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_dan_tunggakan",
+          "nominal": 389000,
+          "rincian": {
+            "iuran_pokok": 32000,
+            "tunggakan": 357000
+          }
+        },
+        {
+          "id": "tx-sep-iuran-1",
+          "tanggal_transaksi": "2026-09-29",
+          "keterangan": "Iuran Warga (Angsuran / Pelunasan Tunggakan): TITO (Blok UT/1)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "tunggakan",
+          "nominal": 175000,
+          "rincian": {
+            "iuran_pokok": 0,
+            "tunggakan": 175000
+          }
+        },
+        {
+          "id": "tx-sep-iuran-54",
           "tanggal_transaksi": "2026-09-30",
-          "keterangan": "Donatur Kas RT (Sumbangan Warga/Kegiatan)",
+          "keterangan": "Iuran Warga (Angsuran / Pelunasan Tunggakan): Deddy Judo Prayogo (Blok L/2)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "tunggakan",
+          "nominal": 155000,
+          "rincian": {
+            "iuran_pokok": 0,
+            "tunggakan": 155000
+          }
+        },
+        {
+          "id": "tx-sep-iuran-44",
+          "tanggal_transaksi": "2026-10-01",
+          "keterangan": "Iuran Warga (Iuran Pokok & Pelunasan Tunggakan): Fob Budhiyono, S.H. (Blok K/2)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_dan_tunggakan",
+          "nominal": 150000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 100000
+          }
+        },
+        {
+          "id": "tx-sep-denda-44",
+          "tanggal_transaksi": "2026-10-01",
+          "keterangan": "Masukan Lainnya (Denda Kerja Bakti): Fob Budhiyono, S.H. (Blok K/2)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 25000,
+          "rincian": {
+            "denda_ronda": 0,
+            "denda_kb": 25000
+          }
+        },
+        {
+          "id": "tx-sep-don-28",
+          "tanggal_transaksi": "2026-10-02",
+          "keterangan": "Donasi Kas RT: Toto Citramurti (Blok G/9)",
           "jenis": "masuk",
           "kategori": "donasi",
-          "nominal": 3435000
+          "sub_kategori": "donasi",
+          "nominal": 3410000,
+          "rincian": {
+            "donasi": 3410000
+          }
+        },
+        {
+          "id": "tx-sep-iuran-28",
+          "tanggal_transaksi": "2026-10-02",
+          "keterangan": "Iuran Warga (Iuran Pokok & Pelunasan Tunggakan): Toto Citramurti (Blok G/9)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_dan_tunggakan",
+          "nominal": 190000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 140000
+          }
+        },
+        {
+          "id": "tx-sep-denda-28",
+          "tanggal_transaksi": "2026-10-02",
+          "keterangan": "Masukan Lainnya (Denda Ronda & Denda Kerja Bakti): Toto Citramurti (Blok G/9)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 40000,
+          "rincian": {
+            "denda_ronda": 15000,
+            "denda_kb": 25000
+          }
+        },
+        {
+          "id": "tx-sep-iuran-31",
+          "tanggal_transaksi": "2026-10-03",
+          "keterangan": "Iuran Warga (Iuran Pokok & Pelunasan Tunggakan): Muhamad Fajri Kurniawan (Blok G/12)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_dan_tunggakan",
+          "nominal": 250000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 200000
+          }
+        },
+        {
+          "id": "tx-sep-denda-31",
+          "tanggal_transaksi": "2026-10-03",
+          "keterangan": "Masukan Lainnya (Denda Ronda & Denda Kerja Bakti): Muhamad Fajri Kurniawan (Blok G/12)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 50000,
+          "rincian": {
+            "denda_ronda": 25000,
+            "denda_kb": 25000
+          }
+        },
+        {
+          "id": "tx-sep-iuran-11",
+          "tanggal_transaksi": "2026-10-04",
+          "keterangan": "Iuran Warga (Iuran Pokok & Pelunasan Tunggakan): Dwi Kurnianto (Blok UT/21)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_dan_tunggakan",
+          "nominal": 735000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 685000
+          }
+        },
+        {
+          "id": "tx-sep-denda-11",
+          "tanggal_transaksi": "2026-10-04",
+          "keterangan": "Masukan Lainnya (Denda Ronda & Denda Kerja Bakti): Dwi Kurnianto (Blok UT/21)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 75000,
+          "rincian": {
+            "denda_ronda": 50000,
+            "denda_kb": 25000
+          }
+        },
+        {
+          "id": "tx-sep-iuran-8",
+          "tanggal_transaksi": "2026-10-05",
+          "keterangan": "Iuran Warga (Iuran Pokok & Pelunasan Tunggakan): IFAH (Blok UT/15)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_dan_tunggakan",
+          "nominal": 640000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 590000
+          }
+        },
+        {
+          "id": "tx-sep-denda-8",
+          "tanggal_transaksi": "2026-10-05",
+          "keterangan": "Masukan Lainnya (Denda Ronda & Denda Kerja Bakti): IFAH (Blok UT/15)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 50000,
+          "rincian": {
+            "denda_ronda": 25000,
+            "denda_kb": 25000
+          }
+        },
+        {
+          "id": "tx-sep-iuran-18",
+          "tanggal_transaksi": "2026-10-06",
+          "keterangan": "Iuran Warga (Iuran Pokok): Hadi Satriyo (Blok E/5)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 37000,
+          "rincian": {
+            "iuran_pokok": 37000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-sep-titipan-18",
+          "tanggal_transaksi": "2026-10-06",
+          "keterangan": "Masukan Lainnya (Titipan Deposit Lebih Bayar): Hadi Satriyo (Blok E/5)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "titipan_deposit",
+          "nominal": 13000,
+          "rincian": {
+            "titipan": 13000
+          }
+        },
+        {
+          "id": "tx-sep-don-36",
+          "tanggal_transaksi": "2026-10-10",
+          "keterangan": "Donasi Kas RT: Bayu Aji Girawan (Blok I/5)",
+          "jenis": "masuk",
+          "kategori": "donasi",
+          "sub_kategori": "donasi",
+          "nominal": 25000,
+          "rincian": {
+            "donasi": 25000
+          }
+        },
+        {
+          "id": "tx-sep-iuran-4",
+          "tanggal_transaksi": "2026-10-10",
+          "keterangan": "Iuran Warga (Iuran Pokok): INDRAWAN (Blok UT/7)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-sep-iuran-32",
+          "tanggal_transaksi": "2026-10-10",
+          "keterangan": "Iuran Warga (Iuran Pokok): ARDY (Blok I/1)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-sep-iuran-36",
+          "tanggal_transaksi": "2026-10-10",
+          "keterangan": "Iuran Warga (Iuran Pokok & Pelunasan Tunggakan): Bayu Aji Girawan (Blok I/5)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_dan_tunggakan",
+          "nominal": 100000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 50000
+          }
+        },
+        {
+          "id": "tx-sep-iuran-39",
+          "tanggal_transaksi": "2026-10-10",
+          "keterangan": "Iuran Warga (Iuran Pokok): Sofyan Ariwibowo Sidik (Blok I/8)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-sep-iuran-41",
+          "tanggal_transaksi": "2026-10-10",
+          "keterangan": "Iuran Warga (Iuran Pokok & Pelunasan Tunggakan): Muammar Agung Riyand Cha'baia (Blok I/10)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_dan_tunggakan",
+          "nominal": 115000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 65000
+          }
+        },
+        {
+          "id": "tx-sep-iuran-52",
+          "tanggal_transaksi": "2026-10-10",
+          "keterangan": "Iuran Warga (Iuran Pokok): Eva Dwijayadi (Blok K/10)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-sep-denda-4",
+          "tanggal_transaksi": "2026-10-10",
+          "keterangan": "Masukan Lainnya (Denda Ronda & Denda Kerja Bakti): INDRAWAN (Blok UT/7)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 75000,
+          "rincian": {
+            "denda_ronda": 50000,
+            "denda_kb": 25000
+          }
+        },
+        {
+          "id": "tx-sep-denda-32",
+          "tanggal_transaksi": "2026-10-10",
+          "keterangan": "Masukan Lainnya (Denda Ronda): ARDY (Blok I/1)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 5000,
+          "rincian": {
+            "denda_ronda": 5000,
+            "denda_kb": 0
+          }
+        },
+        {
+          "id": "tx-sep-denda-36",
+          "tanggal_transaksi": "2026-10-10",
+          "keterangan": "Masukan Lainnya (Denda Ronda & Denda Kerja Bakti): Bayu Aji Girawan (Blok I/5)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 75000,
+          "rincian": {
+            "denda_ronda": 50000,
+            "denda_kb": 25000
+          }
+        },
+        {
+          "id": "tx-sep-denda-39",
+          "tanggal_transaksi": "2026-10-10",
+          "keterangan": "Masukan Lainnya (Denda Ronda & Denda Kerja Bakti): Sofyan Ariwibowo Sidik (Blok I/8)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 50000,
+          "rincian": {
+            "denda_ronda": 25000,
+            "denda_kb": 25000
+          }
+        },
+        {
+          "id": "tx-sep-denda-41",
+          "tanggal_transaksi": "2026-10-10",
+          "keterangan": "Masukan Lainnya (Denda Ronda & Denda Kerja Bakti): Muammar Agung Riyand Cha'baia (Blok I/10)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 50000,
+          "rincian": {
+            "denda_ronda": 25000,
+            "denda_kb": 25000
+          }
+        },
+        {
+          "id": "tx-sep-denda-52",
+          "tanggal_transaksi": "2026-10-10",
+          "keterangan": "Masukan Lainnya (Denda Ronda): Eva Dwijayadi (Blok K/10)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 10000,
+          "rincian": {
+            "denda_ronda": 10000,
+            "denda_kb": 0
+          }
         },
         {
           "id": "tx-sep-4",
@@ -1702,12 +2333,446 @@
           "nominal": 8902500
         },
         {
-          "id": "tx-okt-2",
-          "tanggal_transaksi": "2026-10-31",
-          "keterangan": "Total Masukan Bersih Iuran Warga Bulan Ini",
+          "id": "tx-okt-iuran-3",
+          "tanggal_transaksi": "2026-10-25",
+          "keterangan": "Iuran Warga (Angsuran / Pelunasan Tunggakan): Hardi Supangat (Blok UT/5)",
           "jenis": "masuk",
           "kategori": "iuran_warga",
-          "nominal": 1875000
+          "sub_kategori": "tunggakan",
+          "nominal": 100000,
+          "rincian": {
+            "iuran_pokok": 0,
+            "tunggakan": 100000
+          }
+        },
+        {
+          "id": "tx-okt-iuran-17",
+          "tanggal_transaksi": "2026-11-04",
+          "keterangan": "Iuran Warga (Iuran Pokok): ANGGA (Blok E/4)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-okt-denda-17",
+          "tanggal_transaksi": "2026-11-04",
+          "keterangan": "Masukan Lainnya (Denda Kerja Bakti): ANGGA (Blok E/4)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 25000,
+          "rincian": {
+            "denda_ronda": 0,
+            "denda_kb": 25000
+          }
+        },
+        {
+          "id": "tx-okt-iuran-5",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Iuran Warga (Iuran Pokok): Sudarmadi (Blok UT/9)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 30000,
+          "rincian": {
+            "iuran_pokok": 30000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-okt-iuran-11",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Iuran Warga (Iuran Pokok): Dwi Kurnianto (Blok UT/21)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-okt-iuran-16",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Iuran Warga (Iuran Pokok & Pelunasan Tunggakan): AMAL (Blok E/3)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_dan_tunggakan",
+          "nominal": 100000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 50000
+          }
+        },
+        {
+          "id": "tx-okt-iuran-20",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Iuran Warga (Iuran Pokok): BE Santoso Nugroho (Blok G/1)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-okt-iuran-21",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Iuran Warga (Iuran Pokok & Pelunasan Tunggakan): Rachmat (Blok G/2)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_dan_tunggakan",
+          "nominal": 40000,
+          "rincian": {
+            "iuran_pokok": 30000,
+            "tunggakan": 10000
+          }
+        },
+        {
+          "id": "tx-okt-iuran-23",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Iuran Warga (Iuran Pokok): Muhamad Arif Kuniyawan (Blok G/4)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-okt-iuran-24",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Iuran Warga (Iuran Pokok): Luthfi Ramadhan (Blok G/5)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-okt-iuran-25",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Iuran Warga (Angsuran / Pelunasan Tunggakan): Deny Dwi Wasana (Blok G/6)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "tunggakan",
+          "nominal": 100000,
+          "rincian": {
+            "iuran_pokok": 0,
+            "tunggakan": 100000
+          }
+        },
+        {
+          "id": "tx-okt-iuran-26",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Iuran Warga (Iuran Pokok): Binar Surya Fajar Putra Dewayahna (Blok G/7)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-okt-iuran-29",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Iuran Warga (Iuran Pokok): Kusoy (Blok G/10)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-okt-iuran-31",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Iuran Warga (Iuran Pokok): Muhamad Fajri Kurniawan (Blok G/12)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-okt-iuran-34",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Iuran Warga (Iuran Pokok): Yuli Ardinurman (Blok I/3)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-okt-iuran-37",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Iuran Warga (Iuran Pokok): Dimas Danu Sohiban (Blok I/6)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-okt-iuran-38",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Iuran Warga (Iuran Pokok): Nanang Dedi Arianto (Blok I/7)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-okt-iuran-39",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Iuran Warga (Iuran Pokok): Sofyan Ariwibowo Sidik (Blok I/8)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-okt-iuran-42",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Iuran Warga (Iuran Pokok & Pelunasan Tunggakan): Ganesha Brahma Umbara (Blok I/11)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_dan_tunggakan",
+          "nominal": 275000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 225000
+          }
+        },
+        {
+          "id": "tx-okt-iuran-44",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Iuran Warga (Iuran Pokok): Fob Budhiyono, S.H. (Blok K/2)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-okt-iuran-51",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Iuran Warga (Iuran Pokok & Pelunasan Tunggakan): Yogi Ariyanto (Blok K/9)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_dan_tunggakan",
+          "nominal": 100000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 50000
+          }
+        },
+        {
+          "id": "tx-okt-iuran-52",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Iuran Warga (Iuran Pokok): Eva Dwijayadi (Blok K/10)",
+          "jenis": "masuk",
+          "kategori": "iuran_warga",
+          "sub_kategori": "iuran_pokok",
+          "nominal": 50000,
+          "rincian": {
+            "iuran_pokok": 50000,
+            "tunggakan": 0
+          }
+        },
+        {
+          "id": "tx-okt-denda-11",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Masukan Lainnya (Denda Ronda & Denda Kerja Bakti): Dwi Kurnianto (Blok UT/21)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 75000,
+          "rincian": {
+            "denda_ronda": 50000,
+            "denda_kb": 25000
+          }
+        },
+        {
+          "id": "tx-okt-denda-16",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Masukan Lainnya (Denda Ronda & Denda Kerja Bakti): AMAL (Blok E/3)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 75000,
+          "rincian": {
+            "denda_ronda": 50000,
+            "denda_kb": 25000
+          }
+        },
+        {
+          "id": "tx-okt-denda-23",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Masukan Lainnya (Denda Ronda): Muhamad Arif Kuniyawan (Blok G/4)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 5000,
+          "rincian": {
+            "denda_ronda": 5000,
+            "denda_kb": 0
+          }
+        },
+        {
+          "id": "tx-okt-denda-26",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Masukan Lainnya (Denda Ronda): Binar Surya Fajar Putra Dewayahna (Blok G/7)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 5000,
+          "rincian": {
+            "denda_ronda": 5000,
+            "denda_kb": 0
+          }
+        },
+        {
+          "id": "tx-okt-denda-31",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Masukan Lainnya (Denda Ronda & Denda Kerja Bakti): Muhamad Fajri Kurniawan (Blok G/12)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 50000,
+          "rincian": {
+            "denda_ronda": 25000,
+            "denda_kb": 25000
+          }
+        },
+        {
+          "id": "tx-okt-denda-34",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Masukan Lainnya (Denda Ronda & Denda Kerja Bakti): Yuli Ardinurman (Blok I/3)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 20000,
+          "rincian": {
+            "denda_ronda": 10000,
+            "denda_kb": 10000
+          }
+        },
+        {
+          "id": "tx-okt-denda-37",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Masukan Lainnya (Denda Ronda): Dimas Danu Sohiban (Blok I/6)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 5000,
+          "rincian": {
+            "denda_ronda": 5000,
+            "denda_kb": 0
+          }
+        },
+        {
+          "id": "tx-okt-denda-38",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Masukan Lainnya (Denda Ronda): Nanang Dedi Arianto (Blok I/7)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 5000,
+          "rincian": {
+            "denda_ronda": 5000,
+            "denda_kb": 0
+          }
+        },
+        {
+          "id": "tx-okt-denda-39",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Masukan Lainnya (Denda Ronda & Denda Kerja Bakti): Sofyan Ariwibowo Sidik (Blok I/8)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 50000,
+          "rincian": {
+            "denda_ronda": 25000,
+            "denda_kb": 25000
+          }
+        },
+        {
+          "id": "tx-okt-denda-42",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Masukan Lainnya (Denda Ronda & Denda Kerja Bakti): Ganesha Brahma Umbara (Blok I/11)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 75000,
+          "rincian": {
+            "denda_ronda": 50000,
+            "denda_kb": 25000
+          }
+        },
+        {
+          "id": "tx-okt-denda-51",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Masukan Lainnya (Denda Ronda): Yogi Ariyanto (Blok K/9)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 5000,
+          "rincian": {
+            "denda_ronda": 5000,
+            "denda_kb": 0
+          }
+        },
+        {
+          "id": "tx-okt-denda-52",
+          "tanggal_transaksi": "2026-11-10",
+          "keterangan": "Masukan Lainnya (Denda Ronda & Denda Kerja Bakti): Eva Dwijayadi (Blok K/10)",
+          "jenis": "masuk",
+          "kategori": "masukan_lainnya",
+          "sub_kategori": "denda_ronda_kb",
+          "nominal": 35000,
+          "rincian": {
+            "denda_ronda": 10000,
+            "denda_kb": 25000
+          }
         },
         {
           "id": "tx-okt-3",

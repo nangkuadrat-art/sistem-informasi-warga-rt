@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { KasTransaksiItem } from '@/lib/data/storeKas';
+import { PEMASUKAN_CATEGORIES, PENGELUARAN_CATEGORIES } from '@/lib/data/kasCategories';
 import { updateTransaksiKas } from '@/app/(dashboard)/admin/kas/actions';
 import { Pencil, X, Loader2 } from 'lucide-react';
 
@@ -15,6 +16,13 @@ interface Props {
 export default function ModalEditTransaksi({ periodeId, transaksi, isOpen, onClose }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [jenis, setJenis] = useState<'masuk' | 'keluar'>(transaksi.jenis);
+  const [kategori, setKategori] = useState<string>(transaksi.kategori);
+
+  useEffect(() => {
+    setJenis(transaksi.jenis);
+    setKategori(transaksi.kategori);
+  }, [transaksi]);
 
   if (!isOpen) return null;
 
@@ -68,7 +76,12 @@ export default function ModalEditTransaksi({ periodeId, transaksi, isOpen, onClo
               </label>
               <select
                 name="jenis"
-                defaultValue={transaksi.jenis}
+                value={jenis}
+                onChange={(e) => {
+                  const val = e.target.value as 'masuk' | 'keluar';
+                  setJenis(val);
+                  setKategori(val === 'masuk' ? 'iuran_warga' : 'operasional');
+                }}
                 required
                 className="w-full px-3 py-2 border rounded-xl text-xs bg-white focus:ring-2 focus:ring-blue-500 outline-none"
               >
@@ -79,26 +92,21 @@ export default function ModalEditTransaksi({ periodeId, transaksi, isOpen, onClo
 
             <div>
               <label className="block text-xs font-semibold text-slate-600 mb-1">
-                Kategori
+                {jenis === 'masuk' ? 'Sumber / Kategori Pemasukan' : 'Kategori Pengeluaran'}
               </label>
               <select
                 name="kategori"
-                defaultValue={transaksi.kategori}
+                value={kategori}
+                onChange={(e) => setKategori(e.target.value)}
                 required
                 className="w-full px-3 py-2 border rounded-xl text-xs bg-white focus:ring-2 focus:ring-blue-500 outline-none"
               >
-                <option value="iuran_warga">Iuran Warga</option>
-                <option value="donasi">Donasi / Donatur Kas</option>
-                <option value="apresiasi_pengurus">Apresiasi Pengurus RT</option>
-                <option value="operasional">Operasional Rutin</option>
-                <option value="keamanan">Keamanan & Pos Ronda</option>
-                <option value="kebersihan">Kebersihan & Sampah</option>
-                <option value="konsumsi">Konsumsi & Rapat</option>
-                <option value="sosial">Sosial & Dansos RW</option>
-                <option value="pembangunan">Pembangunan Balai RW</option>
-                <option value="perbaikan">Perbaikan PJU / Fasilitas</option>
-                <option value="saldo_awal">Saldo Awal</option>
-                <option value="lainnya">Lain-lain</option>
+                {(jenis === 'masuk' ? PEMASUKAN_CATEGORIES : PENGELUARAN_CATEGORIES).map((c) => (
+                  <option key={c.value} value={c.value}>
+                    {c.label}
+                  </option>
+                ))}
+                {kategori === 'saldo_awal' && <option value="saldo_awal">Saldo Awal</option>}
               </select>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { getDbFilePath, getDefaultJson } from './dbPathHelper';
+import { KasTransaksiRincian } from './kasCategories';
 
 const PERIODS_DB_PATH = getDbFilePath('db_kas_periods.json');
 
@@ -10,7 +11,9 @@ export interface KasTransaksiItem {
   keterangan: string;
   jenis: 'masuk' | 'keluar';
   kategori: string;
+  sub_kategori?: string;
   nominal: number;
+  rincian?: KasTransaksiRincian;
 }
 
 export interface KasPeriodItem {
@@ -265,7 +268,8 @@ export function recordBayarTagihanStore(
   const item = period.tagihan.find((t) => t.id === tagihanId);
   if (!item) return { success: false };
 
-  const bayarBaru = Number(item.total_terbayar || 0) + Number(nominalBayar);
+  const prevPaid = Number(item.total_terbayar || 0);
+  const bayarBaru = prevPaid + Number(nominalBayar);
   item.total_terbayar = bayarBaru;
   item.kurang_lebih = bayarBaru - Number(item.total_tagihan || 0);
 
@@ -283,18 +287,68 @@ export function recordBayarTagihanStore(
     item.status_label = 'BELUM LUNAS';
   }
 
-  // Otomatis catat transaksi kas masuk
+  // Otomatis catat transaksi kas masuk terbreakdown (Iuran Warga vs Masukan Lainnya/Denda)
   if (autoAddKas && nominalBayar > 0) {
-    const newTx: KasTransaksiItem = {
-      id: `tx-bayar-${Date.now()}`,
-      tanggal_transaksi: new Date().toISOString().split('T')[0],
-      keterangan: `Penerimaan Iuran Warga (${metode}): ${item.nama_warga} (${item.alamat})`,
-      jenis: 'masuk',
-      kategori: 'iuran_warga',
-      nominal: nominalBayar,
-    };
     if (!period.transaksi) period.transaksi = [];
-    period.transaksi.unshift(newTx);
+    const today = new Date().toISOString().split('T')[0];
+    const tunggakanDue = Number(item.tunggakan_bulan_lalu || 0);
+    const pokokDue = Math.max(0, Number(item.iuran_pokok || 0) - Number(item.titipan_bulan_lalu || 0));
+    const rondaDue = Number(item.denda_ronda || 0);
+    const kbDue = Number(item.denda_kerja_bakti || 0);
+
+    // Hitung porsi baru dari (bayarBaru - prevPaid) setelah dikurangi porsi yang sudah dibayar sebelumnya
+    const allocCumulative = (total: number) => {
+      let r = total;
+      const t = Math.min(r, tunggakanDue); r -= t;
+      const p = Math.min(r, pokokDue); r -= p;
+      const dr = Math.min(r, rondaDue); r -= dr;
+      const dk = Math.min(r, kbDue); r -= dk;
+      return { t, p, dr, dk, ex: r };
+    };
+    const before = allocCumulative(prevPaid);
+    const after = allocCumulative(bayarBaru);
+
+    const addT = after.t - before.t;
+    const addP = after.p - before.p;
+    const addDr = after.dr - before.dr;
+    const addDk = after.dk - before.dk;
+    const addEx = after.ex - before.ex;
+
+    const iuranNominal = addT + addP;
+    const lainnyaNominal = addDr + addDk + addEx;
+    const baseTs = Date.now();
+
+    if (lainnyaNominal > 0) {
+      const parts: string[] = [];
+      if (addDr > 0) parts.push(`Denda Ronda Rp ${addDr.toLocaleString('id-ID')}`);
+      if (addDk > 0) parts.push(`Denda KB Rp ${addDk.toLocaleString('id-ID')}`);
+      if (addEx > 0) parts.push(`Titipan Lebih Bayar Rp ${addEx.toLocaleString('id-ID')}`);
+      period.transaksi.unshift({
+        id: `tx-bayar-lain-${baseTs}`,
+        tanggal_transaksi: today,
+        keterangan: `Denda/Lainnya (${metode}): ${item.nama_warga} (${item.alamat}) — ${parts.join(', ')}`,
+        jenis: 'masuk',
+        kategori: 'masukan_lainnya',
+        sub_kategori: addDr + addDk > 0 ? 'denda_ronda_kb' : 'titipan_deposit',
+        nominal: lainnyaNominal,
+        rincian: { denda_ronda: addDr, denda_kb: addDk, titipan: addEx },
+      });
+    }
+
+    if (iuranNominal > 0 || lainnyaNominal === 0) {
+      const finalIuran = iuranNominal > 0 ? iuranNominal : nominalBayar;
+      period.transaksi.unshift({
+        id: `tx-bayar-iuran-${baseTs}`,
+        tanggal_transaksi: today,
+        keterangan: `Iuran Warga (${metode}): ${item.nama_warga} (${item.alamat})`,
+        jenis: 'masuk',
+        kategori: 'iuran_warga',
+        sub_kategori: addT > 0 && addP > 0 ? 'iuran_dan_tunggakan' : addT > 0 ? 'tunggakan' : 'iuran_pokok',
+        nominal: finalIuran,
+        rincian: { iuran_pokok: addP || finalIuran, tunggakan: addT },
+      });
+    }
+
     recalculatePeriodBalances(period, data.periods);
   }
 

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { createTransaksiKas } from '@/app/(dashboard)/admin/kas/actions';
+import { PEMASUKAN_CATEGORIES, PENGELUARAN_CATEGORIES } from '@/lib/data/kasCategories';
 import { PlusCircle, X, Loader2 } from 'lucide-react';
 
 interface Props {
@@ -12,6 +13,13 @@ export default function ModalTambahTransaksi({ periodeId }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [jenis, setJenis] = useState<'masuk' | 'keluar'>('keluar');
+  const [kategori, setKategori] = useState<string>('operasional');
+
+  const handleJenisChange = (val: 'masuk' | 'keluar') => {
+    setJenis(val);
+    setKategori(val === 'masuk' ? 'iuran_warga' : 'operasional');
+  };
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -75,6 +83,8 @@ export default function ModalTambahTransaksi({ periodeId }: Props) {
                   </label>
                   <select
                     name="jenis"
+                    value={jenis}
+                    onChange={(e) => handleJenisChange(e.target.value as 'masuk' | 'keluar')}
                     required
                     className="w-full px-3 py-2 border rounded-xl text-xs bg-white focus:ring-2 focus:ring-emerald-500 outline-none"
                   >
@@ -84,25 +94,20 @@ export default function ModalTambahTransaksi({ periodeId }: Props) {
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-slate-600 mb-1">
-                    Kategori
+                    {jenis === 'masuk' ? 'Sumber / Kategori Pemasukan' : 'Kategori Pengeluaran'}
                   </label>
                   <select
                     name="kategori"
                     required
-                    defaultValue="operasional"
+                    value={kategori}
+                    onChange={(e) => setKategori(e.target.value)}
                     className="w-full px-3 py-2 border rounded-xl text-xs bg-white focus:ring-2 focus:ring-emerald-500 outline-none"
                   >
-                    <option value="operasional">Operasional Rutin</option>
-                    <option value="keamanan">Keamanan & Pos Ronda</option>
-                    <option value="kebersihan">Kebersihan & Sampah</option>
-                    <option value="konsumsi">Konsumsi & Rapat</option>
-                    <option value="sosial">Sosial & Dansos RW</option>
-                    <option value="pembangunan">Pembangunan Balai RW</option>
-                    <option value="perbaikan">Perbaikan PJU / Fasilitas</option>
-                    <option value="apresiasi_pengurus">Apresiasi Pengurus RT</option>
-                    <option value="iuran_warga">Iuran Warga</option>
-                    <option value="donasi">Donatur Kas / Sumbangan</option>
-                    <option value="lainnya">Lain-lain</option>
+                    {(jenis === 'masuk' ? PEMASUKAN_CATEGORIES : PENGELUARAN_CATEGORIES).map((c) => (
+                      <option key={c.value} value={c.value}>
+                        {c.label}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>

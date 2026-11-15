@@ -2,6 +2,7 @@ import * as XLSX from 'xlsx';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { formatRupiah, NAMA_BULAN } from './currency';
+import { summarizePemasukanBreakdown } from '@/lib/data/kasCategories';
 
 export interface PeriodeInfo {
   bulan: number;
@@ -26,14 +27,18 @@ export function exportKasToExcel(
   periode: PeriodeInfo,
   namaRt: string = 'RT 03 / RW 14'
 ) {
+  const breakdown = summarizePemasukanBreakdown(transaksiList);
   const summaryData = [
     ['LAPORAN BUKU KAS KEUANGAN WARGA', ''],
     ['LINGKUNGAN', namaRt],
     ['PERIODE', `${NAMA_BULAN[periode.bulan]} ${periode.tahun}`],
     ['', ''],
-    ['RINGKASAN SALDO', 'NOMINAL (RP)'],
+    ['RINGKASAN SALDO & PEMASUKAN', 'NOMINAL (RP)'],
     ['Saldo Awal (Bawaan Bulan Lalu)', periode.saldoAwal],
-    ['Total Pemasukan (Iuran & Donasi)', periode.totalMasuk],
+    ['  - Pemasukan Iuran Warga', breakdown.iuranWarga.total],
+    ['  - Pemasukan Donasi', breakdown.donasi.total],
+    ['  - Masukan Lainnya (Denda/Titipan/Lain)', breakdown.masukanLainnya.total],
+    ['Total Pemasukan Bersih', periode.totalMasuk],
     ['Total Pengeluaran (Operasional)', periode.totalKeluar],
     ['Saldo Akhir Kas Berjalan', periode.saldoAkhir],
     ['', ''],
@@ -44,7 +49,7 @@ export function exportKasToExcel(
     idx + 1,
     item.tanggal_transaksi,
     item.keterangan,
-    item.kategori.replace('_', ' ').toUpperCase(),
+    item.kategori.replace(/_/g, ' ').toUpperCase(),
     item.jenis === 'masuk' ? item.nominal : 0,
     item.jenis === 'keluar' ? item.nominal : 0,
   ]);
@@ -112,7 +117,7 @@ export function exportKasToPDF(
     idx + 1,
     item.tanggal_transaksi,
     item.keterangan,
-    item.kategori.replace('_', ' ').toUpperCase(),
+    item.kategori.replace(/_/g, ' ').toUpperCase(),
     item.jenis === 'masuk' ? formatRupiah(item.nominal) : '-',
     item.jenis === 'keluar' ? formatRupiah(item.nominal) : '-',
   ]);

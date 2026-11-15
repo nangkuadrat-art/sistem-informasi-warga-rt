@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server';
 import { formatRupiah, NAMA_BULAN } from '@/lib/utils/currency';
 import { getAllKasPeriods, getKasPeriod } from '@/lib/data/storeKas';
+import { summarizePemasukanBreakdown } from '@/lib/data/kasCategories';
 import ModalTambahTransaksi from '@/components/kas/ModalTambahTransaksi';
 import ExportKasButtons from '@/components/kas/ExportKasButtons';
 import TabelTransaksiClient from '@/components/kas/TabelTransaksiClient';
@@ -40,6 +41,11 @@ export default async function AdminKasPage({ searchParams }: Props) {
 
   const saldoAwal = Number(currentPeriod.saldo_awal);
   const saldoBerjalan = saldoAwal + totalMasuk - totalKeluar;
+  const breakdown = summarizePemasukanBreakdown(listTransaksi);
+  const pct = (part: number) =>
+    breakdown.totalPemasukan > 0
+      ? Math.round((part / breakdown.totalPemasukan) * 100)
+      : 0;
 
   const periodeInfo = {
     bulan: currentPeriod.bulan,
@@ -233,9 +239,7 @@ export default async function AdminKasPage({ searchParams }: Props) {
             +{formatRupiah(totalMasuk)}
           </p>
           <span className="text-[11px] text-slate-400">
-            {currentPeriod.bulan === 9
-              ? 'Iuran Rp 4.747k + Donatur Rp 3.435k'
-              : 'Iuran Warga Oktober'}
+            Iuran {formatRupiah(breakdown.iuranWarga.total)} • Donasi {formatRupiah(breakdown.donasi.total)} • Lainnya {formatRupiah(breakdown.masukanLainnya.total)}
           </span>
         </div>
 
@@ -279,6 +283,105 @@ export default async function AdminKasPage({ searchParams }: Props) {
         <div>
           <span className="font-bold">Keterangan Periode {currentPeriod.nama}: </span>
           <span>{currentPeriod.catatan_closing}</span>
+        </div>
+      </div>
+
+      {/* BREAKDOWN MUTASI PEMASUKAN: IURAN WARGA, DONASI, MASUKAN LAINNYA */}
+      <div className="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-4 sm:p-5 space-y-3">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <h3 className="text-sm font-bold text-slate-900">
+              Identifikasi & Breakdown Mutasi Pemasukan ({currentPeriod.nama})
+            </h3>
+            <p className="text-xs text-slate-500">
+              Klasifikasi seluruh pemasukan kas bulan berjalan selain Saldo Awal (Total:{' '}
+              <strong className="text-emerald-700 font-mono">
+                {formatRupiah(breakdown.totalPemasukan)}
+              </strong>
+              ).
+            </p>
+          </div>
+          <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 self-start sm:self-center">
+            {breakdown.iuranWarga.count + breakdown.donasi.count + breakdown.masukanLainnya.count} Mutasi Pemasukan Teridentifikasi
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          {/* 1. Iuran Warga */}
+          <div className="rounded-2xl border border-emerald-200/80 bg-emerald-50/40 p-3.5 space-y-2">
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700">
+                1. Iuran Warga ({breakdown.iuranWarga.count} tx)
+              </span>
+              <span className="text-[11px] font-mono font-bold text-emerald-700 bg-white px-2 py-0.5 rounded-full border border-emerald-200">
+                {pct(breakdown.iuranWarga.total)}%
+              </span>
+            </div>
+            <p className="text-lg font-black text-emerald-700 font-mono">
+              +{formatRupiah(breakdown.iuranWarga.total)}
+            </p>
+            <div className="text-[11px] text-slate-600 space-y-0.5 pt-1 border-t border-emerald-200/60">
+              <div className="flex justify-between">
+                <span>• Iuran Pokok Bulanan:</span>
+                <span className="font-mono font-semibold">{formatRupiah(breakdown.iuranWarga.iuranPokok)}</span>
+              </div>
+              <div className="flex justify-between">
+                <span>• Pelunasan Tunggakan:</span>
+                <span className="font-mono font-semibold">{formatRupiah(breakdown.iuranWarga.tunggakan)}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* 2. Donasi */}
+          <div className="rounded-2xl border border-violet-200/80 bg-violet-50/40 p-3.5 space-y-2">
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-violet-700">
+                2. Donasi / Donatur ({breakdown.donasi.count} tx)
+              </span>
+              <span className="text-[11px] font-mono font-bold text-violet-700 bg-white px-2 py-0.5 rounded-full border border-violet-200">
+                {pct(breakdown.donasi.total)}%
+              </span>
+            </div>
+            <p className="text-lg font-black text-violet-700 font-mono">
+              +{formatRupiah(breakdown.donasi.total)}
+            </p>
+            <div className="text-[11px] text-slate-600 pt-1 border-t border-violet-200/60">
+              {breakdown.donasi.total > 0
+                ? 'Sumbangan Donatur Kas RT / Kegiatan Warga'
+                : 'Belum ada donasi tercatat di periode ini (dapat ditambah via Catat Transaksi).'}
+            </div>
+          </div>
+
+          {/* 3. Masukan Lainnya */}
+          <div className="rounded-2xl border border-amber-200/80 bg-amber-50/40 p-3.5 space-y-2">
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-amber-800">
+                3. Masukan Lainnya ({breakdown.masukanLainnya.count} tx)
+              </span>
+              <span className="text-[11px] font-mono font-bold text-amber-800 bg-white px-2 py-0.5 rounded-full border border-amber-200">
+                {pct(breakdown.masukanLainnya.total)}%
+              </span>
+            </div>
+            <p className="text-lg font-black text-amber-700 font-mono">
+              +{formatRupiah(breakdown.masukanLainnya.total)}
+            </p>
+            <div className="text-[11px] text-slate-600 space-y-0.5 pt-1 border-t border-amber-200/60">
+              <div className="flex justify-between">
+                <span>• Denda Ronda:</span>
+                <span className="font-mono font-semibold">{formatRupiah(breakdown.masukanLainnya.dendaRonda)}</span>
+              </div>
+              <div className="flex justify-between">
+                <span>• Denda Kerja Bakti:</span>
+                <span className="font-mono font-semibold">{formatRupiah(breakdown.masukanLainnya.dendaKb)}</span>
+              </div>
+              <div className="flex justify-between">
+                <span>• Titipan / Lain-lain:</span>
+                <span className="font-mono font-semibold">
+                  {formatRupiah(breakdown.masukanLainnya.titipan + breakdown.masukanLainnya.lainnyaNonDenda)}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
