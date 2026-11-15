@@ -24,6 +24,7 @@ import {
   Smartphone,
   LogOut,
   Receipt,
+  BellRing,
 } from 'lucide-react';
 
 interface NavItem {
@@ -120,9 +121,11 @@ const WARGA_MOBILE_TABS = [
 export default function ResponsiveShell({
   children,
   currentUser,
+  pendingDepositCount = 0,
 }: {
   children: React.ReactNode;
   currentUser: SessionPayload | null;
+  pendingDepositCount?: number;
 }) {
   const pathname = usePathname();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -245,12 +248,13 @@ export default function ResponsiveShell({
             {mainNav.map((item) => {
               const Icon = item.icon;
               const active = isRouteActive(item.href);
+              const showBadge = item.href === '/admin/kas' && pendingDepositCount > 0;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
                   title={sidebarCollapsed ? item.label : undefined}
-                  className={`flex items-center gap-3 rounded-xl text-sm font-medium transition ${
+                  className={`relative flex items-center gap-3 rounded-xl text-sm font-medium transition ${
                     sidebarCollapsed ? 'justify-center p-2.5' : 'px-3 py-2.5'
                   } ${
                     active
@@ -261,7 +265,18 @@ export default function ResponsiveShell({
                   <Icon
                     className={`w-5 h-5 shrink-0 ${active ? 'text-blue-300' : item.accentClass}`}
                   />
-                  {!sidebarCollapsed && <span className="truncate">{item.label}</span>}
+                  {!sidebarCollapsed && <span className="truncate flex-1">{item.label}</span>}
+                  {showBadge && (
+                    <span
+                      className={
+                        sidebarCollapsed
+                          ? 'absolute top-1 right-1 inline-flex items-center justify-center min-w-[16px] h-4 px-1 rounded-full bg-rose-500 text-white text-[10px] font-extrabold animate-pulse'
+                          : 'inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full bg-rose-500 text-white text-[10px] font-extrabold animate-pulse'
+                      }
+                    >
+                      {pendingDepositCount}
+                    </span>
+                  )}
                 </Link>
               );
             })}
@@ -364,15 +379,26 @@ export default function ResponsiveShell({
             </div>
           </div>
 
-          {isPengurus ? (
-            <Link
-              href={pathname.startsWith('/warga') ? mainNav[0].href : '/warga/dashboard'}
-              className="text-[11px] bg-blue-600 hover:bg-blue-700 active:scale-95 px-3 py-1.5 rounded-xl font-bold flex items-center gap-1.5 shrink-0 transition"
-            >
-              <Smartphone className="w-3.5 h-3.5" />
-              <span>{pathname.startsWith('/warga') ? 'Admin' : 'Portal'}</span>
-            </Link>
-          ) : (
+          <div className="flex items-center gap-1.5 shrink-0">
+            {pendingDepositCount > 0 && (
+              <Link
+                href="/admin/kas#persetujuan-deposit"
+                title={`${pendingDepositCount} pengajuan tarik tunai deposit menunggu persetujuan`}
+                className="relative inline-flex items-center gap-1 px-2 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-[10px] font-extrabold shadow-sm animate-pulse"
+              >
+                <BellRing className="w-3.5 h-3.5" />
+                <span>{pendingDepositCount} Deposit</span>
+              </Link>
+            )}
+            {isPengurus ? (
+              <Link
+                href={pathname.startsWith('/warga') ? mainNav[0].href : '/warga/dashboard'}
+                className="text-[11px] bg-blue-600 hover:bg-blue-700 active:scale-95 px-3 py-1.5 rounded-xl font-bold flex items-center gap-1.5 shrink-0 transition"
+              >
+                <Smartphone className="w-3.5 h-3.5" />
+                <span>{pathname.startsWith('/warga') ? 'Admin' : 'Portal'}</span>
+              </Link>
+            ) : (
             <button
               type="button"
               onClick={handleLogout}
@@ -382,6 +408,7 @@ export default function ResponsiveShell({
               <span>Keluar</span>
             </button>
           )}
+          </div>
         </div>
       </header>
 
@@ -398,6 +425,15 @@ export default function ResponsiveShell({
           </div>
 
           <div className="flex items-center gap-2">
+            {pendingDepositCount > 0 && (
+              <Link
+                href="/admin/kas#persetujuan-deposit"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-extrabold bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 transition shadow-sm"
+              >
+                <BellRing className="w-3.5 h-3.5 text-amber-700 animate-bounce" />
+                <span>{pendingDepositCount} Tarik Deposit</span>
+              </Link>
+            )}
             {isPengurus && (
               <Link
                 href={pathname.startsWith('/warga') ? mainNav[0].href : '/warga/dashboard'}
@@ -435,17 +471,23 @@ export default function ResponsiveShell({
             {adminMobilePrimary.map((item) => {
               const Icon = item.icon;
               const active = isRouteActive(item.href);
+              const showBadge = item.href === '/admin/kas' && pendingDepositCount > 0;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex flex-col items-center justify-center gap-1 rounded-xl mx-0.5 my-1 transition ${
+                  className={`relative flex flex-col items-center justify-center gap-1 rounded-xl mx-0.5 my-1 transition ${
                     active
                       ? 'text-blue-600 bg-blue-50/80 font-bold'
                       : 'text-slate-500 hover:text-slate-800 font-medium'
                   }`}
                 >
                   <Icon className={`w-5 h-5 ${active ? 'text-blue-600' : 'text-slate-400'}`} />
+                  {showBadge && (
+                    <span className="absolute top-1 right-2 inline-flex items-center justify-center min-w-[16px] h-4 px-1 rounded-full bg-rose-600 text-white text-[9px] font-extrabold">
+                      {pendingDepositCount}
+                    </span>
+                  )}
                   <span className="text-[10px] leading-none truncate max-w-full px-1">
                     {item.shortLabel}
                   </span>
@@ -542,6 +584,7 @@ export default function ResponsiveShell({
                   {mainNav.map((item) => {
                     const Icon = item.icon;
                     const active = isRouteActive(item.href);
+                    const showBadge = item.href === '/admin/kas' && pendingDepositCount > 0;
                     return (
                       <Link
                         key={item.href}
@@ -553,7 +596,12 @@ export default function ResponsiveShell({
                         }`}
                       >
                         <Icon className={`w-5 h-5 ${active ? 'text-white' : item.accentClass}`} />
-                        <span>{item.label}</span>
+                        <span className="flex-1">{item.label}</span>
+                        {showBadge && (
+                          <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full bg-rose-500 text-white text-[10px] font-extrabold animate-pulse">
+                            {pendingDepositCount}
+                          </span>
+                        )}
                       </Link>
                     );
                   })}

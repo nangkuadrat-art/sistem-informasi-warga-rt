@@ -2,9 +2,12 @@ import { createClient } from '@/lib/supabase/server';
 import { formatRupiah, NAMA_BULAN } from '@/lib/utils/currency';
 import { getAllKasPeriods, getKasPeriod } from '@/lib/data/storeKas';
 import { summarizePemasukanBreakdown } from '@/lib/data/kasCategories';
+import { getAllDepositRequests } from '@/lib/data/storeDeposit';
+import { getCurrentSession } from '@/lib/auth/serverSession';
 import ModalTambahTransaksi from '@/components/kas/ModalTambahTransaksi';
 import ExportKasButtons from '@/components/kas/ExportKasButtons';
 import TabelTransaksiClient from '@/components/kas/TabelTransaksiClient';
+import DepositApprovalPanel from '@/components/kas/DepositApprovalPanel';
 import {
   ArrowDownLeft,
   ArrowUpRight,
@@ -23,6 +26,13 @@ interface Props {
 
 export default async function AdminKasPage({ searchParams }: Props) {
   const { periode: selectedPeriodId } = await searchParams;
+  const session = await getCurrentSession();
+  const canApproveDeposit =
+    !!session?.permissions?.kas_manage ||
+    !!session?.permissions?.closing_manage ||
+    session?.role === 'bendahara' ||
+    session?.role === 'superadmin';
+  const allDepositRequests = getAllDepositRequests();
   const allPeriods = getAllKasPeriods();
   const currentPeriod = getKasPeriod(selectedPeriodId);
 
@@ -384,6 +394,9 @@ export default async function AdminKasPage({ searchParams }: Props) {
           </div>
         </div>
       </div>
+
+      {/* PANEL PENGGUNAAN & PERSETUJUAN DEPOSIT WARGA */}
+      <DepositApprovalPanel requests={allDepositRequests} canApprove={canApproveDeposit} />
 
       {/* TABEL MUTASI TRANSAKSI CLIENT (FULL CRUD) */}
       <TabelTransaksiClient

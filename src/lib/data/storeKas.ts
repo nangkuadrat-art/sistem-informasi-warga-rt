@@ -495,3 +495,140 @@ export function addTransaksiKasStore(input: {
 }): KasTransaksiItem {
   return addTransaksiKasPeriod('periode-okt-2026', input);
 }
+
+// -------------------------------------------------------------
+// INTEGRASI PENGGUNAAN DEPOSIT / TITIPAN WARGA
+// -------------------------------------------------------------
+
+function appendNote(existing: string | undefined, extra: string): string {
+  const clean = (existing || '').trim();
+  if (!clean || clean === '-') return extra;
+  return `${clean} • ${extra}`;
+}
+
+export function applyDepositToIuranStore(
+  periodId: string,
+  noUnit: number,
+  nominal: number,
+  catatan: string
+): { success: boolean; mode?: 'tagihan_aktif' | 'bulan_depan'; error?: string } {
+  const data = loadPeriodsData();
+  const period =
+    data.periods.find((p) => p.id === periodId) || data.periods.find((p) => p.status === 'open');
+  if (!period || !period.tagihan) return { success: false, error: 'Periode tidak ditemukan' };
+
+  const item = period.tagihan.find((t) => Number(t.no_unit) === Number(noUnit));
+  if (!item) return { success: false, error: 'Tagihan unit tidak ditemukan' };
+
+  const currentTitipanDepan = Number(item.titipan_depan || 0);
+  const sisaTagihan = Math.max(0, Number(item.total_tagihan || 0) - Number(item.total_terbayar || 0));
+
+  if (nominal <= 0 || nominal > currentTitipanDepan) {
+    return { success: false, error: 'Nominal melebihi saldo deposit aktif unit' };
+  }
+
+  let mode: 'tagihan_aktif' | 'bulan_depan' = 'bulan_depan';
+  if (sisaTagihan > 0) {
+    mode = 'tagihan_aktif';
+    const appliedToCurrent = Math.min(nominal, sisaTagihan);
+    item.titipan_depan = Math.max(0, currentTitipanDepan - appliedToCurrent);
+    item.total_terbayar = Number(item.total_terbayar || 0) + appliedToCurrent;
+    item.kurang_lebih = Number(item.total_terbayar || 0) - Number(item.total_tagihan || 0);
+    item.tanggal_pembayaran = new Date().toISOString().split('T')[0];
+
+    if (item.total_terbayar >= Number(item.total_tagihan || 0)) {
+      item.status_bayar = 'lunas';
+      item.status_label = 'LUNAS';
+    } else if (item.total_terbayar > 0) {
+      item.status_bayar = 'sebagian';
+      item.status_label = 'BELUM LUNAS';
+    }
+
+    item.keterangan = appendNote(
+      item.keterangan,
+      `Potong Deposit Bayar Tagihan Rp ${appliedToCurrent.toLocaleString('id-ID')}`
+    );
+  } else {
+    // Tagihan periode berjalan sudah LUNAS -> kunci alokasi pra-bayar untuk bulan mendatang
+    item.alokasi_iuran_dimuka = Number(item.alokasi_iuran_dimuka || 0) + nominal;
+    item.keterangan = appendNote(
+      item.keterangan,
+      `Alokasi Deposit Iuran Bulan Depan Rp ${nominal.toLocaleString('id-ID')}${catatan ? ` (${catatan})` : ''}`
+    );
+  }
+
+  savePeriodsData(data);
+  return { success: true, mode };
+}
+
+export function applyDepositToDonasiStore(
+  periodId: string,
+  noUnit: number,
+  nominal: number,
+  catatan: string
+): { success: boolean; error?: string } {
+  const data = loadPeriodsData();
+  const period =
+    data.periods.find((p) => p.id === periodId) || data.periods.find((p) => p.status === 'open');
+  if (!period || !period.tagihan) return { success: false, error: 'Periode tidak ditemukan' };
+
+  const item = period.tagihan.find((t) => Number(t.no_unit) === Number(noUnit));
+  if (!item) return { success: false, error: 'Tagihan unit tidak ditemukan' };
+
+  const currentTitipanDepan = Number(item.titipan_depan || 0);
+  if (nominal <= 0 || nominal > currentTitipanDepan) {
+    return { success: false, error: 'Nominal melebihi saldo deposit aktif unit' };
+  }
+
+  item.titipan_depan = Math.max(0, currentTitipanDepan - nominal);
+  item.donatur = Number(item.donatur || 0) + nominal;
+  item.keterangan = appendNote(
+    item.keterangan,
+    `Donasi Kas dari Deposit Rp ${nominal.toLocaleString('id-ID')}${catatan ? ` (${catatan})` : ''}`
+  );
+
+  savePeriodsData(data);
+  return { success: true };
+}
+
+export function applyDepositTarikTunaiApprovedStore(
+  periodId: string,
+  noUnit: number,
+  nominal: number,
+  metode: string,
+  infoRekening?: string
+): { success: boolean; error?: string } {
+  const data = loadPeriodsData();
+  const period =
+    data.periods.find((p) => p.id === periodId) || data.periods.find((p) => p.status === 'open');
+  if (!period || !period.tagihan) return { success: false, error: 'Periode tidak ditemukan' };
+
+  const item = period.tagihan.find((t) => Number(t.no_unit) === Number(noUnit));
+  if (!item) return { success: false, error: 'Tagihan unit tidak ditemukan' };
+
+  const currentTitipanDepan = Number(item.titipan_depan || 0);
+  if (nominal <= 0 || nominal > currentTitipanDepan) {
+    return { success: false, error: 'Nominal penarikan melebihi saldo deposit unit saat ini' };
+  }
+
+  item.titipan_depan = Math.max(0, currentTitipanDepan - nominal);
+  item.keterangan = appendNote(
+    item.keterangan,
+    `Tarik Tunai Deposit Disetujui Rp ${nominal.toLocaleString('id-ID')} (${metode})`
+  );
+
+  const today = new Date().toISOString().split('T')[0];
+  if (!period.transaksi) period.transaksi = [];
+  period.transaksi.push({
+    id: `tx-tarik-dep-${Date.now()}`,
+    tanggal_transaksi: today,
+    keterangan: `Pengembalian / Tarik Tunai Deposit Warga (${metode}): ${item.nama_warga} (${item.alamat})${infoRekening ? ` — ${infoRekening}` : ''}`,
+    jenis: 'keluar',
+    kategori: 'pengembalian_deposit',
+    nominal,
+  });
+
+  recalculatePeriodBalances(period, data.periods);
+  savePeriodsData(data);
+  return { success: true };
+}

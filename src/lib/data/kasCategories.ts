@@ -55,6 +55,7 @@ export const PENGELUARAN_CATEGORIES = [
   { value: 'pembangunan', label: 'Pembangunan Balai RW' },
   { value: 'perbaikan', label: 'Perbaikan PJU / Fasilitas' },
   { value: 'apresiasi_pengurus', label: 'Apresiasi Pengurus RT' },
+  { value: 'pengembalian_deposit', label: 'Pengembalian / Tarik Tunai Deposit Warga' },
   { value: 'lainnya', label: 'Pengeluaran Lainnya' },
 ] as const;
 

@@ -2,7 +2,9 @@ import { formatRupiah, NAMA_BULAN } from '@/lib/utils/currency';
 import { getCurrentSession } from '@/lib/auth/serverSession';
 import { getKasPeriod } from '@/lib/data/storeKas';
 import { getLembarHistoriByUnit } from '@/lib/data/storeHistoriWarga';
+import { getUnitDepositSummary } from '@/lib/data/storeDeposit';
 import PortalWargaHistoriClient from '@/components/warga/PortalWargaHistoriClient';
+import WargaDepositActionClient from '@/components/warga/WargaDepositActionClient';
 import Link from 'next/link';
 import { ShieldCheck, Hammer, Receipt, Building2, UserCheck } from 'lucide-react';
 
@@ -24,6 +26,7 @@ export default async function WargaDashboardPage({ searchParams }: Props) {
     requestedUnitNo,
     session?.nama
   );
+  const depositSummary = getUnitDepositSummary(unitMeta.no_unit, activePeriod?.id);
 
   const saldoKasSaatIni = Number(activePeriod?.saldo_akhir || 9933500);
   const periodeBulan = activePeriod?.bulan || 10;
@@ -180,12 +183,14 @@ export default async function WargaDashboardPage({ searchParams }: Props) {
               <span className="font-medium">Sudah Dibayarkan:</span>
               <span className="font-bold font-mono">{formatRupiah(totalTerbayar)}</span>
             </div>
-            {titipanDepan > 0 && (
+            {depositSummary && (depositSummary.titipanDepanBruto > 0 || depositSummary.riwayatUnit.length > 0) ? (
+              <WargaDepositActionClient summary={depositSummary} />
+            ) : titipanDepan > 0 ? (
               <div className="flex justify-between text-teal-700 bg-teal-50 px-3 py-2 rounded-xl border border-teal-100">
                 <span className="font-semibold">Saldo Titipan Depan (Bergulir):</span>
                 <span className="font-bold font-mono">+{formatRupiah(titipanDepan)}</span>
               </div>
-            )}
+            ) : null}
             <p className="text-[11px] sm:text-xs text-slate-500 bg-slate-50 p-3 rounded-xl border border-slate-100 leading-relaxed">
               Pembayaran iuran dapat diserahkan langsung secara tunai kepada Bendahara RT (Bp. Nanang Dedi) atau via transfer bank.
             </p>

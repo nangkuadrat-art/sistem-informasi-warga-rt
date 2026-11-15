@@ -2,6 +2,8 @@
 
 import { createClient } from '@/lib/supabase/server';
 import { revalidatePath } from 'next/cache';
+import { getCurrentSession } from '@/lib/auth/serverSession';
+import { processDepositWithdrawalStore } from '@/lib/data/storeDeposit';
 import {
   addTransaksiKasPeriod,
   updateTransaksiKasPeriod,
@@ -151,5 +153,48 @@ export async function bayarIuranWarga(
     return { success: true };
   } catch (error: any) {
     return { success: false, error: error.message || 'Gagal memproses pembayaran' };
+  }
+}
+
+export async function processDepositWithdrawalAction(
+  requestId: string,
+  decision: 'approve' | 'reject',
+  alasanPenolakan?: string
+) {
+  try {
+    const session = await getCurrentSession();
+    const canApprove =
+      !!session?.permissions?.kas_manage ||
+      !!session?.permissions?.closing_manage ||
+      session?.role === 'bendahara' ||
+      session?.role === 'superadmin';
+
+    if (!session || !canApprove) {
+      return {
+        success: false,
+        error: 'Hanya Bendahara / Admin Keuangan yang berwenang memproses pengajuan tarik tunai deposit.',
+      };
+    }
+
+    const res = processDepositWithdrawalStore(
+      requestId,
+      decision,
+      `${session.nama} (${session.role_label})`,
+      alasanPenolakan
+    );
+
+    if (!res.success) {
+      return { success: false, error: res.error || 'Gagal memproses pengajuan.' };
+    }
+
+    revalidatePath('/admin/kas');
+    revalidatePath('/admin/closing');
+    revalidatePath('/warga/dashboard');
+    return { success: true, record: res.record };
+  } catch (error: any) {
+    return {
+      success: false,
+      error: error?.message || 'Terjadi kesalahan saat memproses persetujuan.',
+    };
   }
 }
