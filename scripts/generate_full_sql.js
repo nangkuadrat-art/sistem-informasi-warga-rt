@@ -303,29 +303,26 @@ oktTxList.forEach(t => {
 VALUES ('${t.id}', 'a0000000-0000-0000-0000-000000001026', '${t.kat}', '${t.jenis}', ${t.nom}.00, '${escapeSql(t.ket)}', '${t.tgl}');\n`;
 });
 
-sql += `\n-- SEED DATA 7: TAGIHAN BULANAN SEPTEMBER 2026 (15 KOLOM SPREADSHEET LENGKAP)\n`;
+sql += `\n-- SEED DATA 7: TAGIHAN BULANAN SEPTEMBER 2026 (22 KOLOM SPREADSHEET LENGKAP)\n`;
 for (let i = 25; i <= 80; i++) {
   const r = sepSheet[i];
   if (!r || !r[0]) continue;
   const no = Number(r[0]);
-  const iuran = Number(r[3]) || 0;
-  const dendaRonda = Number(r[4]) || 0;
-  const dendaKB = Number(r[5]) || 0;
-  const totalDenda = Number(r[6]) || 0;
-  const titipanLalu = Number(r[7]) || 0;
-  const tagihan = Number(r[8]) || 0;
-  const bayar = Number(r[9]) || 0;
-  const kurangLebih = Number(r[10]) || 0;
-  const donatur = Number(r[11]) || 0;
-  const titipanDepan = Number(r[12]) || 0;
-  const statusStr = r[13] ? String(r[13]).trim() : '';
-  const ket = r[14] ? String(r[14]).trim() : '';
+  const iuran = Number(r[8]) || 0;
+  const dendaRonda = Number(r[9]) || 0;
+  const dendaKB = Number(r[10]) || 0;
+  const totalDenda = Number(r[11]) || 0;
+  const tunggakanLalu = Number(r[12]) || 0;
+  const titipanLalu = Number(r[13]) || 0;
+  const tagihan = Number(r[14]) || 0;
+  const bayar = Number(r[15]) || 0;
+  const kurangLebih = Number(r[17]) || 0;
+  const donatur = Number(r[18]) || 0;
+  const titipanDepan = Number(r[19]) || 0;
+  const statusStr = r[20] ? String(r[20]).trim() : '';
+  const ket = r[21] ? String(r[21]).trim() : '';
 
-  let tunggakanLalu = 0;
-  if (titipanLalu > 0) tunggakanLalu = 0;
-  else if (tagihan > (iuran + totalDenda)) tunggakanLalu = tagihan - (iuran + totalDenda);
-
-  const statusBayar = tagihan === 0 ? 'belum_bayar' : (bayar >= tagihan ? 'lunas' : (bayar > 0 ? 'sebagian' : 'belum_bayar'));
+  const statusBayar = tagihan === 0 && iuran === 0 ? 'belum_bayar' : (bayar >= tagihan ? 'lunas' : (bayar > 0 ? 'sebagian' : 'belum_bayar'));
   const unitUuid = `00000000-0000-0000-0000-${String(no).padStart(12, '0')}`;
   const tagihanUuid = `c0000000-0000-0000-0926-${String(no).padStart(12, '0')}`;
 
@@ -333,29 +330,26 @@ for (let i = 25; i <= 80; i++) {
 VALUES ('${tagihanUuid}', 'a0000000-0000-0000-0000-000000000926', '${unitUuid}', ${tunggakanLalu}.00, ${titipanLalu}.00, ${iuran}.00, ${dendaRonda}.00, ${dendaKB}.00, ${totalDenda}.00, ${tagihan}.00, ${bayar}.00, ${kurangLebih}.00, ${donatur}.00, ${titipanDepan}.00, '${statusBayar}', '${escapeSql(statusStr)}', '${escapeSql(ket)}');\n`;
 }
 
-sql += `\n-- SEED DATA 8: TAGIHAN BULANAN OKTOBER 2026 (15 KOLOM SPREADSHEET LENGKAP BERGULIR)\n`;
+sql += `\n-- SEED DATA 8: TAGIHAN BULANAN OKTOBER 2026 (22 KOLOM SPREADSHEET LENGKAP BERGULIR)\n`;
 for (let i = 25; i <= 80; i++) {
   const r = oktSheet[i];
   if (!r || !r[0]) continue;
   const no = Number(r[0]);
-  const iuran = Number(r[3]) || 0;
-  const dendaRonda = Number(r[4]) || 0;
-  const dendaKB = Number(r[5]) || 0;
-  const totalDenda = Number(r[6]) || 0;
-  const titipanLalu = Number(r[7]) || 0;
-  const tagihan = Number(r[8]) || 0;
-  const bayar = Number(r[9]) || 0;
-  const kurangLebih = Number(r[10]) || 0;
-  const donatur = Number(r[11]) || 0;
-  const titipanDepan = Number(r[12]) || 0;
-  const statusStr = r[13] ? String(r[13]).trim() : '';
-  const ket = r[14] ? String(r[14]).trim() : '';
+  const iuran = Number(r[8]) || 0;
+  const dendaRonda = Number(r[9]) || 0;
+  const dendaKB = Number(r[10]) || 0;
+  const totalDenda = Number(r[11]) || 0;
+  const tunggakanLalu = Number(r[12]) || 0;
+  const titipanLalu = Number(r[13]) || 0;
+  const tagihan = Number(r[14]) || 0;
+  const bayar = Number(r[15]) || 0;
+  const kurangLebih = Number(r[17]) || 0;
+  const donatur = Number(r[18]) || 0;
+  const titipanDepan = Number(r[19]) || 0;
+  const statusStr = r[20] ? String(r[20]).trim() : '';
+  const ket = r[21] ? String(r[21]).trim() : '';
 
-  let tunggakanLalu = 0;
-  if (titipanLalu > 0) tunggakanLalu = 0;
-  else if (tagihan > (iuran + totalDenda)) tunggakanLalu = tagihan - (iuran + totalDenda);
-
-  const statusBayar = tagihan === 0 ? 'belum_bayar' : (bayar >= tagihan ? 'lunas' : (bayar > 0 ? 'sebagian' : 'belum_bayar'));
+  const statusBayar = tagihan === 0 && iuran === 0 ? 'belum_bayar' : (bayar >= tagihan ? 'lunas' : (bayar > 0 ? 'sebagian' : 'belum_bayar'));
   const unitUuid = `00000000-0000-0000-0000-${String(no).padStart(12, '0')}`;
   const tagihanUuid = `c0000000-0000-0000-1026-${String(no).padStart(12, '0')}`;
 
