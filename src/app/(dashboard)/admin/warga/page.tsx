@@ -136,8 +136,8 @@ export default async function WargaAdminPage({ searchParams }: Props) {
           />
         </form>
 
-        <div className="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end overflow-x-auto pb-1 md:pb-0">
-          <div className="flex items-center gap-1.5 overflow-x-auto">
+        <div className="flex items-center gap-2.5 w-full md:w-auto justify-between md:justify-end">
+          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
             <span className="text-xs font-semibold text-slate-500 whitespace-nowrap hidden sm:inline">
               Filter:
             </span>
@@ -200,7 +200,7 @@ export default async function WargaAdminPage({ searchParams }: Props) {
               title="Tampilan Kartu"
             >
               <LayoutGrid className="w-3.5 h-3.5" />
-              <span className="hidden lg:inline text-[11px]">Kartu</span>
+              <span className="text-[11px]">Kartu</span>
             </a>
             <a
               href={`/admin/warga?${new URLSearchParams({
@@ -216,7 +216,7 @@ export default async function WargaAdminPage({ searchParams }: Props) {
               title="Tampilan Tabel"
             >
               <TableIcon className="w-3.5 h-3.5" />
-              <span className="hidden lg:inline text-[11px]">Tabel</span>
+              <span className="text-[11px]">Tabel</span>
             </a>
           </div>
         </div>

@@ -53,8 +53,8 @@ export default function ModalBayarTagihan({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
-      <div className="bg-white rounded-3xl w-full max-w-md p-6 shadow-2xl border border-slate-100">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
+      <div className="bg-white rounded-3xl w-full max-w-md max-h-[92vh] overflow-y-auto p-5 sm:p-6 shadow-2xl border border-slate-100">
         <div className="flex justify-between items-center pb-4 border-b border-slate-100">
           <div className="flex items-center gap-2">
             <div className="p-2 bg-emerald-50 text-emerald-600 rounded-xl">

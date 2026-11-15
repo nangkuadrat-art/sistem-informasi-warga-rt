@@ -96,7 +96,7 @@ export default async function AdminKerjaBaktiPage() {
           <div className="flex justify-end">
             <button
               type="submit"
-              className="bg-orange-600 hover:bg-orange-700 text-white font-semibold px-5 py-2 rounded-xl text-xs transition"
+              className="w-full sm:w-auto bg-orange-600 hover:bg-orange-700 text-white font-semibold px-5 py-2.5 rounded-xl text-xs transition"
             >
               Terbitkan Jadwal Kerja Bakti
             </button>

@@ -194,48 +194,48 @@ export default async function AdminClosingPage({ searchParams }: Props) {
       </div>
 
       {/* METRIC SUMMARY CARDS */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-        <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm">
+      <div className="grid grid-cols-2 lg:grid-cols-5 gap-3">
+        <div className="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200/80 shadow-sm">
           <p className="text-[11px] font-semibold text-slate-400 uppercase">Target Total Tagihan</p>
-          <p className="text-xl font-bold text-slate-800 mt-1">{formatRupiah(grandTotalTagihan)}</p>
+          <p className="text-lg sm:text-xl font-bold text-slate-800 mt-1">{formatRupiah(grandTotalTagihan)}</p>
           <span className="text-[10px] text-slate-400">
             Iuran + Denda + Tunggakan - Titipan
           </span>
         </div>
 
-        <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm">
+        <div className="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200/80 shadow-sm">
           <p className="text-[11px] font-semibold text-emerald-600 uppercase">Realisasi Penerimaan</p>
-          <p className="text-xl font-bold text-emerald-600 mt-1">{formatRupiah(grandTotalTerbayar)}</p>
+          <p className="text-lg sm:text-xl font-bold text-emerald-600 mt-1">{formatRupiah(grandTotalTerbayar)}</p>
           <span className="text-[10px] text-emerald-600/70">
             {currentPeriod.bulan === 9 ? 'Iuran warga terbayar' : 'Kas masuk Oktober'}
           </span>
         </div>
 
-        <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm">
-          <div className="flex items-center justify-between">
+        <div className="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200/80 shadow-sm">
+          <div className="flex items-center justify-between gap-1 flex-wrap">
             <p className="text-[11px] font-semibold text-blue-600 uppercase">Tunggakan Lalu</p>
             <span className="text-[10px] font-bold text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded border border-indigo-200">
               Titipan: {formatRupiah(grandTotalTitipanLalu)}
             </span>
           </div>
-          <p className="text-xl font-bold text-blue-700 mt-1">{formatRupiah(grandTotalTunggakanLalu)}</p>
+          <p className="text-lg sm:text-xl font-bold text-blue-700 mt-1">{formatRupiah(grandTotalTunggakanLalu)}</p>
           <span className="text-[10px] text-blue-600/70">
             Saldo akumulasi belum lunas
           </span>
         </div>
 
-        <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm">
+        <div className="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200/80 shadow-sm">
           <div className="flex items-center justify-between">
             <p className="text-[11px] font-semibold text-amber-600 uppercase">Denda Ronda & KB</p>
             <ShieldAlert className="w-4 h-4 text-amber-500" />
           </div>
-          <p className="text-xl font-bold text-amber-700 mt-1">{formatRupiah(grandTotalDenda)}</p>
-          <span className="text-[10px] text-amber-700/80 flex items-center gap-1 mt-0.5">
+          <p className="text-lg sm:text-xl font-bold text-amber-700 mt-1">{formatRupiah(grandTotalDenda)}</p>
+          <span className="text-[10px] text-amber-700/80 flex items-center gap-1 mt-0.5 flex-wrap">
             Ronda: <strong>{formatRupiah(grandTotalDendaRonda)}</strong> • KB: <strong>{formatRupiah(grandTotalDendaKB)}</strong>
           </span>
         </div>
 
-        <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm">
+        <div className="col-span-2 lg:col-span-1 bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200/80 shadow-sm">
           <div className="flex items-center justify-between">
             <p className="text-[11px] font-semibold text-purple-600 uppercase">
               {currentPeriod.bulan === 9 ? 'Donatur & Titipan' : 'Titipan Bergulir'}

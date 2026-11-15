@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { formatRupiah } from '@/lib/utils/currency';
 import ModalBayarTagihan from './ModalBayarTagihan';
 import ModalEditTagihan from './ModalEditTagihan';
+import ResponsiveViewToggle, { ResponsiveViewMode } from '@/components/ui/ResponsiveViewToggle';
 import { bayarTagihanAction, resetTagihanUnitAction } from '@/app/(dashboard)/admin/closing/actions';
 import {
   Search,
@@ -34,6 +35,12 @@ export default function TabelClosingClient({
   const [selectedTagihanBayar, setSelectedTagihanBayar] = useState<any | null>(null);
   const [selectedTagihanEdit, setSelectedTagihanEdit] = useState<any | null>(null);
   const [actionLoadingId, setActionLoadingId] = useState<string | null>(null);
+  const [viewMode, setViewMode] = useState<ResponsiveViewMode>('auto');
+
+  const cardsClass =
+    viewMode === 'auto' ? 'block md:hidden' : viewMode === 'cards' ? 'block' : 'hidden';
+  const tableClass =
+    viewMode === 'auto' ? 'hidden md:block' : viewMode === 'table' ? 'block' : 'hidden';
 
   // Filter logic
   const filtered = (tagihanList || []).filter((t) => {
@@ -99,9 +106,9 @@ export default function TabelClosingClient({
   return (
     <div className="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
       {/* FILTER & SEARCH BAR */}
-      <div className="p-4 border-b border-slate-100 flex flex-col md:flex-row items-center justify-between gap-3">
+      <div className="p-3.5 sm:p-4 border-b border-slate-100 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
         {/* PILLS */}
-        <div className="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0">
+        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar w-full md:w-auto">
           <button
             onClick={() => setFilterStatus('all')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap ${
@@ -180,21 +187,255 @@ export default function TabelClosingClient({
           </button>
         </div>
 
-        {/* SEARCH */}
-        <div className="relative w-full md:w-64">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-          <input
-            type="text"
-            placeholder="Cari warga / blok..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
+        {/* SEARCH & VIEW MODE */}
+        <div className="flex items-center gap-2 w-full md:w-auto">
+          <div className="relative flex-1 md:w-60">
+            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              placeholder="Cari warga / blok..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-9 pr-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <ResponsiveViewToggle mode={viewMode} onChange={setViewMode} />
         </div>
       </div>
 
-      {/* 15 COLUMNS TABLE */}
-      <div className="overflow-x-auto">
+      {/* MOBILE / CARD VIEW (SIMPEL & RAMAH SENTUHAN) */}
+      <div className={`${cardsClass} p-3 sm:p-4 space-y-3 bg-slate-50/40`}>
+        {filtered && filtered.length > 0 ? (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {filtered.map((t, idx) => {
+                const isKosong = t.status_bayar === 'kosong' || t.status_label === 'KOSONG';
+                const isLunas = t.status_bayar === 'lunas' || t.status_label === 'LUNAS';
+                const tunggakanLalu = Number(t.tunggakan_bulan_lalu || 0);
+                const titipanLalu = Number(t.titipan_bulan_lalu || 0);
+                const kurangLebih = Number(t.kurang_lebih || 0);
+                const dendaRonda = Number(t.denda_ronda || 0);
+                const dendaKB = Number(t.denda_kerja_bakti || 0);
+                const donatur = Number(t.donatur || 0);
+                const titipanDepan = Number(t.titipan_depan || 0);
+                const sisa = Math.max(0, Number(t.total_tagihan || 0) - Number(t.total_terbayar || 0));
+
+                return (
+                  <div
+                    key={t.id || `card-${idx}`}
+                    className={`bg-white rounded-2xl border p-3.5 shadow-xs space-y-3 ${
+                      isKosong ? 'border-slate-200/70 opacity-65' : 'border-slate-200/90'
+                    }`}
+                  >
+                    {/* Header Card */}
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-slate-900 text-white">
+                            #{t.no_unit || idx + 1} • {t.alamat ? t.alamat : `Blok ${t.blok_rumah}/${t.nomor_rumah}`}
+                          </span>
+                        </div>
+                        <h4 className="font-bold text-slate-900 text-sm mt-1 truncate">
+                          {t.nama_warga === '-' ? 'Unit Kosong' : t.nama_warga}
+                        </h4>
+                      </div>
+
+                      <span
+                        className={`text-[10px] font-bold px-2.5 py-1 rounded-full uppercase shrink-0 ${
+                          t.status_label === 'LUNAS' || isLunas
+                            ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                            : isKosong
+                            ? 'bg-slate-100 text-slate-500 border border-slate-200'
+                            : t.status_label === 'BELUM LUNAS' || kurangLebih < 0
+                            ? 'bg-red-50 text-red-600 border border-red-200'
+                            : 'bg-blue-50 text-blue-700 border border-blue-200'
+                        }`}
+                      >
+                        {t.status_label || (isLunas ? 'LUNAS' : isKosong ? 'KOSONG' : 'BELUM LUNAS')}
+                      </span>
+                    </div>
+
+                    {/* Angka Utama */}
+                    <div className="grid grid-cols-3 gap-2 bg-slate-50 rounded-xl p-2.5 border border-slate-100">
+                      <div>
+                        <p className="text-[10px] text-slate-400 font-semibold uppercase">Tagihan</p>
+                        <p className="text-xs font-mono font-bold text-slate-900 mt-0.5">
+                          {formatRupiah(t.total_tagihan || 0)}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-[10px] text-emerald-600 font-semibold uppercase">Bayar</p>
+                        <p className="text-xs font-mono font-bold text-emerald-700 mt-0.5">
+                          {formatRupiah(t.total_terbayar || 0)}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-[10px] text-slate-500 font-semibold uppercase">Selisih</p>
+                        <p
+                          className={`text-xs font-mono font-bold mt-0.5 ${
+                            kurangLebih < 0
+                              ? 'text-red-600'
+                              : kurangLebih > 0
+                              ? 'text-blue-600'
+                              : 'text-slate-500'
+                          }`}
+                        >
+                          {kurangLebih > 0 ? `+${formatRupiah(kurangLebih)}` : formatRupiah(kurangLebih)}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Komponen Tagihan & Titipan (Hanya yang bernilai > 0) */}
+                    {(Number(t.iuran_pokok || 0) > 0 ||
+                      tunggakanLalu > 0 ||
+                      titipanLalu > 0 ||
+                      dendaRonda > 0 ||
+                      dendaKB > 0 ||
+                      titipanDepan > 0 ||
+                      donatur > 0) && (
+                      <div className="flex flex-wrap gap-1.5 text-[11px]">
+                        {Number(t.iuran_pokok || 0) > 0 && (
+                          <span className="px-2 py-0.5 rounded-lg bg-slate-100 text-slate-700 font-medium">
+                            Iuran: {formatRupiah(t.iuran_pokok)}
+                          </span>
+                        )}
+                        {tunggakanLalu > 0 && (
+                          <span className="px-2 py-0.5 rounded-lg bg-blue-50 text-blue-700 border border-blue-200 font-semibold">
+                            Tunggakan Lalu: {formatRupiah(tunggakanLalu)}
+                          </span>
+                        )}
+                        {titipanLalu > 0 && (
+                          <span className="px-2 py-0.5 rounded-lg bg-indigo-50 text-indigo-700 border border-indigo-200 font-semibold">
+                            Titipan Lalu: +{formatRupiah(titipanLalu)}
+                          </span>
+                        )}
+                        {dendaRonda > 0 && (
+                          <span className="px-2 py-0.5 rounded-lg bg-rose-50 text-rose-700 border border-rose-200 font-semibold">
+                            Denda Ronda: {formatRupiah(dendaRonda)}
+                          </span>
+                        )}
+                        {dendaKB > 0 && (
+                          <span className="px-2 py-0.5 rounded-lg bg-amber-50 text-amber-700 border border-amber-200 font-semibold">
+                            Denda KB: {formatRupiah(dendaKB)}
+                          </span>
+                        )}
+                        {titipanDepan > 0 && (
+                          <span className="px-2 py-0.5 rounded-lg bg-teal-50 text-teal-700 border border-teal-200 font-bold">
+                            Titipan Depan: +{formatRupiah(titipanDepan)}
+                          </span>
+                        )}
+                        {donatur > 0 && (
+                          <span className="px-2 py-0.5 rounded-lg bg-purple-50 text-purple-700 border border-purple-200 font-semibold">
+                            Donatur: +{formatRupiah(donatur)}
+                          </span>
+                        )}
+                      </div>
+                    )}
+
+                    {t.keterangan && t.keterangan !== '-' && (
+                      <p className="text-[11px] text-slate-500 bg-slate-50/70 px-2.5 py-1.5 rounded-lg">
+                        Ket: {t.keterangan}
+                      </p>
+                    )}
+
+                    {/* Tombol Aksi Ramah Sentuhan */}
+                    <div className="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        {!isKosong && (
+                          <button
+                            onClick={() => setSelectedTagihanBayar(t)}
+                            className="bg-emerald-50 hover:bg-emerald-100 active:scale-95 text-emerald-700 px-3 py-1.5 rounded-xl text-xs font-bold transition border border-emerald-200 flex items-center gap-1.5"
+                          >
+                            <Banknote className="w-3.5 h-3.5" />
+                            <span>Bayar</span>
+                          </button>
+                        )}
+                        {!isLunas && !isKosong && sisa > 0 && (
+                          <button
+                            onClick={() => handleQuickLunas(t)}
+                            disabled={actionLoadingId === t.id}
+                            className="bg-blue-600 hover:bg-blue-700 active:scale-95 text-white px-3 py-1.5 rounded-xl text-xs font-bold transition shadow-xs flex items-center gap-1.5"
+                          >
+                            <CheckCircle2 className="w-3.5 h-3.5" />
+                            <span>Lunas</span>
+                          </button>
+                        )}
+                      </div>
+
+                      <div className="flex items-center gap-1">
+                        <button
+                          onClick={() => setSelectedTagihanEdit(t)}
+                          className="p-2 text-slate-600 hover:text-blue-700 hover:bg-slate-100 rounded-xl transition border border-slate-200/80"
+                          title="Edit Komponen Tagihan"
+                        >
+                          <Settings className="w-4 h-4" />
+                        </button>
+                        {t.total_terbayar > 0 && (
+                          <button
+                            onClick={() => handleReset(t)}
+                            disabled={actionLoadingId === t.id}
+                            className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition border border-slate-200/80"
+                            title="Reset Pembayaran"
+                          >
+                            <RotateCcw className="w-4 h-4" />
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* RINGKASAN TOTAL MODE KARTU */}
+            <div className="bg-slate-900 text-white rounded-2xl p-4 space-y-2.5">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-300">
+                  Total Rekapitulasi ({filtered.length} Unit)
+                </span>
+                <span className="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full font-bold border border-emerald-500/30">
+                  {periodeBulan === 9 ? 'Closing Sep' : 'Closing Okt'}
+                </span>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs">
+                <div>
+                  <p className="text-[10px] text-slate-400">Total Tagihan</p>
+                  <p className="font-mono font-bold text-white">{formatRupiah(grandTotalTagihan)}</p>
+                </div>
+                <div>
+                  <p className="text-[10px] text-emerald-300">Pembayaran Masuk</p>
+                  <p className="font-mono font-bold text-emerald-400">{formatRupiah(grandTotalTerbayar)}</p>
+                </div>
+                <div>
+                  <p className="text-[10px] text-rose-300">Kurang / Lebih</p>
+                  <p className="font-mono font-bold text-rose-400">{formatRupiah(grandTotalKurangLebih)}</p>
+                </div>
+                <div>
+                  <p className="text-[10px] text-amber-300">Denda (Ronda + KB)</p>
+                  <p className="font-mono font-bold text-amber-300">
+                    {formatRupiah(grandTotalDendaRonda + grandTotalDendaKB)}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-[10px] text-indigo-300">Titipan Lalu</p>
+                  <p className="font-mono font-bold text-indigo-300">{formatRupiah(grandTotalTitipanLalu)}</p>
+                </div>
+                <div>
+                  <p className="text-[10px] text-teal-300">Titipan Depan</p>
+                  <p className="font-mono font-bold text-teal-300">{formatRupiah(grandTotalTitipanDepan)}</p>
+                </div>
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className="py-10 text-center text-slate-400 text-xs bg-white rounded-2xl border border-slate-200">
+            Tidak ada data yang sesuai filter atau pencarian.
+          </div>
+        )}
+      </div>
+
+      {/* 15 COLUMNS TABLE (DESKTOP / MODE TABEL) */}
+      <div className={`${tableClass} overflow-x-auto`}>
         <table className="w-full text-left border-collapse text-xs sm:text-sm whitespace-nowrap">
           <thead>
             <tr className="bg-slate-50/80 text-slate-600 text-xs font-semibold border-b">

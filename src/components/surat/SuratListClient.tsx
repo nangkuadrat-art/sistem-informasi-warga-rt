@@ -5,6 +5,7 @@ import { SuratData, JenisSurat } from '@/lib/data/storeSurat';
 import { UnitRumahRT } from '@/lib/data/masterDataGoogleSheets';
 import ModalBuatSurat from './ModalBuatSurat';
 import ModalViewSurat from './ModalViewSurat';
+import ResponsiveViewToggle, { ResponsiveViewMode } from '@/components/ui/ResponsiveViewToggle';
 import {
   Mail,
   Search,
@@ -31,6 +32,12 @@ export default function SuratListClient({ suratList, units }: Props) {
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
   const [activeSurat, setActiveSurat] = useState<SuratData | null>(null);
   const [isViewOpen, setIsViewOpen] = useState(false);
+  const [viewMode, setViewMode] = useState<ResponsiveViewMode>('auto');
+
+  const cardsClass =
+    viewMode === 'auto' ? 'block md:hidden' : viewMode === 'cards' ? 'block' : 'hidden';
+  const tableClass =
+    viewMode === 'auto' ? 'hidden md:block' : viewMode === 'table' ? 'block' : 'hidden';
 
   // Filtered Surat
   const filteredList = suratList.filter((s) => {
@@ -141,7 +148,7 @@ export default function SuratListClient({ suratList, units }: Props) {
       {/* SEARCH & FILTER BAR */}
       <div className="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col md:flex-row items-center justify-between gap-3">
         {/* FILTER BUTTONS */}
-        <div className="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0">
+        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar w-full md:w-auto">
           <button
             onClick={() => setSelectedFilter('all')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap ${
@@ -198,16 +205,19 @@ export default function SuratListClient({ suratList, units }: Props) {
           </button>
         </div>
 
-        {/* SEARCH INPUT */}
-        <div className="relative w-full md:w-72">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-          <input
-            type="text"
-            placeholder="Cari nomor, perihal, atau nama..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500"
-          />
+        {/* SEARCH INPUT & VIEW MODE */}
+        <div className="flex items-center gap-2 w-full md:w-auto">
+          <div className="relative flex-1 md:w-64">
+            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              placeholder="Cari nomor, perihal, atau nama..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-9 pr-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500"
+            />
+          </div>
+          <ResponsiveViewToggle mode={viewMode} onChange={setViewMode} />
         </div>
       </div>
 
@@ -223,7 +233,96 @@ export default function SuratListClient({ suratList, units }: Props) {
           </span>
         </div>
 
-        <div className="overflow-x-auto">
+        {/* MOBILE / CARD VIEW */}
+        <div className={`${cardsClass} p-3 sm:p-4 bg-slate-50/40`}>
+          {filteredList.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {filteredList.map((s) => (
+                <div
+                  key={`surat-card-${s.id}`}
+                  className="bg-white rounded-2xl border border-slate-200/90 p-3.5 shadow-xs space-y-2.5 flex flex-col justify-between"
+                >
+                  <div className="space-y-2">
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <p className="font-mono font-bold text-slate-900 text-xs">{s.nomor_surat}</p>
+                        <p className="text-[11px] text-slate-400">{s.tanggal_surat}</p>
+                      </div>
+                      <span
+                        className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase inline-flex items-center gap-1 shrink-0 ${
+                          s.jenis === 'undangan_rapat'
+                            ? 'bg-blue-50 text-blue-700 border border-blue-200'
+                            : s.jenis === 'undangan_kerja_bakti'
+                            ? 'bg-orange-50 text-orange-700 border border-orange-200'
+                            : s.jenis === 'surat_pengantar'
+                            ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                            : 'bg-red-50 text-red-700 border border-red-200'
+                        }`}
+                      >
+                        {s.jenis.replace(/_/g, ' ')}
+                      </span>
+                    </div>
+
+                    <div>
+                      <p className="font-bold text-slate-800 text-sm leading-snug">{s.perihal}</p>
+                      <p className="text-xs text-slate-500 mt-0.5 line-clamp-2">
+                        {s.agenda || s.keperluan_surat || s.peringatan_pelanggaran || '-'}
+                      </p>
+                    </div>
+
+                    <div className="bg-slate-50 rounded-xl px-2.5 py-1.5 border border-slate-100 text-[11px]">
+                      <span className="text-slate-400">Tujuan: </span>
+                      <strong className="text-slate-800">
+                        {s.jenis === 'surat_pengantar' && s.pemohon_nama
+                          ? s.pemohon_nama
+                          : s.tujuan_nama}
+                      </strong>
+                      {(s.tujuan_alamat || s.pemohon_alamat) && (
+                        <span className="text-slate-500">
+                          {' '}
+                          • {s.tujuan_alamat || s.pemohon_alamat}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="pt-2 border-t border-slate-100 flex items-center gap-2">
+                    <button
+                      onClick={() => handleOpenView(s)}
+                      className="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold px-3 py-2 rounded-xl text-xs transition flex items-center justify-center gap-1.5 border border-blue-200"
+                    >
+                      <Eye className="w-3.5 h-3.5" />
+                      <span>Lihat / Cetak</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setActiveSurat(s);
+                        setIsViewOpen(true);
+                      }}
+                      className="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 p-2 rounded-xl transition border border-emerald-200"
+                      title="Bagikan WA"
+                    >
+                      <Share2 className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(s.id, s.nomor_surat)}
+                      className="text-slate-400 hover:text-red-600 hover:bg-red-50 p-2 rounded-xl transition border border-slate-200/80"
+                      title="Hapus"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="py-10 text-center text-slate-400 text-xs bg-white rounded-2xl border border-slate-200">
+              Tidak ada surat yang sesuai dengan kriteria pencarian.
+            </div>
+          )}
+        </div>
+
+        <div className={`${tableClass} overflow-x-auto`}>
           <table className="w-full text-left border-collapse text-xs sm:text-sm">
             <thead>
               <tr className="bg-slate-50/80 text-slate-600 text-xs font-semibold border-b">

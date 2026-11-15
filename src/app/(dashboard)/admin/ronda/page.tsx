@@ -81,11 +81,14 @@ export default async function AdminRondaPage() {
             <label className="block text-xs font-semibold text-slate-600 mb-1">
               Pilih Warga Bertugas:
             </label>
-            <div className="max-h-36 overflow-y-auto border border-slate-200 rounded-xl p-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+            <div className="max-h-44 overflow-y-auto border border-slate-200 rounded-xl p-2.5 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-2">
               {listWarga && listWarga.length > 0 ? (
                 listWarga.map((w) => (
-                  <label key={w.id} className="flex items-center gap-2 text-xs text-slate-700 cursor-pointer">
-                    <input type="checkbox" name="warga_ids" value={w.id} className="rounded text-blue-600" />
+                  <label
+                    key={w.id}
+                    className="flex items-center gap-2 text-xs text-slate-700 cursor-pointer p-2 rounded-lg bg-slate-50/80 hover:bg-blue-50/60 border border-slate-100 transition"
+                  >
+                    <input type="checkbox" name="warga_ids" value={w.id} className="rounded text-blue-600 w-4 h-4 shrink-0" />
                     <span className="truncate">{w.nama_lengkap}</span>
                   </label>
                 ))
@@ -98,7 +101,7 @@ export default async function AdminRondaPage() {
           <div className="flex justify-end">
             <button
               type="submit"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-xl text-xs transition"
+              className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-xl text-xs transition"
             >
               Terbitkan Jadwal Ronda
             </button>
