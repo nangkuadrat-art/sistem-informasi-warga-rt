@@ -26,7 +26,7 @@ export interface UnitRumahRT {
   nomor_rumah: string;
   nama_kepala_keluarga: string;
   username: string | null;
-  role: 'warga' | 'ketua_rt' | 'bendahara' | 'keamanan' | 'superadmin' | 'non_aktif';
+  role: 'warga' | 'ketua_rt' | 'bendahara' | 'sekretaris' | 'keamanan' | 'superadmin' | 'non_aktif';
   role_label: string;
   status_rumah: 'pemilik' | 'kosong' | 'kontrak' | 'kost';
   status_keluarga: 'aktif' | 'nonaktif' | 'pindah';

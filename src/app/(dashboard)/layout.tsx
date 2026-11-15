@@ -7,6 +7,7 @@ import {
   Hammer,
   Building2,
   Mail,
+  UserCog,
 } from 'lucide-react';
 
 export default function DashboardLayout({
@@ -74,6 +75,13 @@ export default function DashboardLayout({
               <Mail className="w-5 h-5 text-teal-400" />
               Surat Menyurat
             </Link>
+            <Link
+              href="/admin/users"
+              className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium hover:bg-slate-800 hover:text-white transition"
+            >
+              <UserCog className="w-5 h-5 text-violet-400" />
+              Kelola User
+            </Link>
             <div className="pt-4 mt-4 border-t border-slate-800">
               <span className="px-3 text-[10px] font-bold uppercase tracking-wider text-slate-500">
                 Menu Khusus Warga
@@ -96,16 +104,27 @@ export default function DashboardLayout({
         </div>
       </aside>
 
-      {/* MOBILE TOPBAR */}
-      <header className="md:hidden bg-slate-900 text-white px-4 py-3 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-2">
-          <Building2 className="w-6 h-6 text-blue-400" />
-          <span className="font-bold text-sm">Sistem Informasi Warga RT</span>
-        </div>
-        <Link href="/admin/warga" className="text-xs bg-blue-600 px-3 py-1.5 rounded-lg font-medium">
-          Menu
-        </Link>
-      </header>
+      {/* MOBILE TOPBAR & NAV */}
+      <div className="md:hidden bg-slate-900 text-white shadow-md">
+        <header className="px-4 py-3 flex items-center justify-between border-b border-slate-800">
+          <div className="flex items-center gap-2">
+            <Building2 className="w-6 h-6 text-blue-400" />
+            <span className="font-bold text-sm">Sistem Informasi Warga RT</span>
+          </div>
+          <Link href="/warga/dashboard" className="text-xs bg-blue-600 px-3 py-1.5 rounded-lg font-medium">
+            Portal Warga
+          </Link>
+        </header>
+        <nav className="flex items-center gap-1.5 px-3 py-2 overflow-x-auto text-xs font-medium">
+          <Link href="/admin/warga" className="px-2.5 py-1.5 rounded-lg bg-slate-800 whitespace-nowrap">Warga</Link>
+          <Link href="/admin/kas" className="px-2.5 py-1.5 rounded-lg bg-slate-800 whitespace-nowrap">Kas</Link>
+          <Link href="/admin/closing" className="px-2.5 py-1.5 rounded-lg bg-slate-800 whitespace-nowrap">Closing</Link>
+          <Link href="/admin/ronda" className="px-2.5 py-1.5 rounded-lg bg-slate-800 whitespace-nowrap">Ronda</Link>
+          <Link href="/admin/kerja-bakti" className="px-2.5 py-1.5 rounded-lg bg-slate-800 whitespace-nowrap">Kerja Bakti</Link>
+          <Link href="/admin/surat" className="px-2.5 py-1.5 rounded-lg bg-slate-800 whitespace-nowrap">Surat</Link>
+          <Link href="/admin/users" className="px-2.5 py-1.5 rounded-lg bg-violet-600/80 whitespace-nowrap">Kelola User</Link>
+        </nav>
+      </div>
 
       {/* MAIN CONTENT AREA */}
       <main className="flex-1 p-4 md:p-8 overflow-y-auto max-w-7xl mx-auto w-full">
