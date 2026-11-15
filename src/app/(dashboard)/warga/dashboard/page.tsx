@@ -40,7 +40,8 @@ export default async function WargaDashboardPage({ searchParams }: Props) {
   const iuranPokok = Number(latestTagihan?.iuran_pokok ?? 50000);
   const tunggakanLalu = Number(latestTagihan?.tunggakan_bulan_lalu ?? 0);
   const titipanLalu = Number(latestTagihan?.titipan_bulan_lalu ?? 0);
-  const totalDenda = Number(latestTagihan?.total_denda ?? 0);
+  const dendaRonda = Number(latestTagihan?.denda_ronda ?? 0);
+  const dendaKerjaBakti = Number(latestTagihan?.denda_kerja_bakti ?? 0);
   const totalTagihan = Number(latestTagihan?.total_tagihan ?? 50000);
   const totalTerbayar = Number(latestTagihan?.total_terbayar ?? 0);
   const titipanDepan = Number(latestTagihan?.titipan_depan ?? 0);
@@ -150,9 +151,23 @@ export default async function WargaDashboardPage({ searchParams }: Props) {
               </div>
             )}
             <div className="flex justify-between text-slate-500">
-              <span>Denda Absen (Ronda/KB):</span>
-              <span className="font-semibold text-slate-700 font-mono">
-                {formatRupiah(totalDenda)}
+              <span>Denda Ronda:</span>
+              <span
+                className={`font-semibold font-mono ${
+                  dendaRonda > 0 ? 'text-rose-600' : 'text-slate-700'
+                }`}
+              >
+                {formatRupiah(dendaRonda)}
+              </span>
+            </div>
+            <div className="flex justify-between text-slate-500">
+              <span>Denda Kerja Bakti:</span>
+              <span
+                className={`font-semibold font-mono ${
+                  dendaKerjaBakti > 0 ? 'text-amber-600' : 'text-slate-700'
+                }`}
+              >
+                {formatRupiah(dendaKerjaBakti)}
               </span>
             </div>
             <div className="pt-3 border-t flex justify-between items-center text-sm sm:text-base">
