@@ -1,50 +1,44 @@
-import { createClient } from '@/lib/supabase/server';
 import { formatRupiah, NAMA_BULAN } from '@/lib/utils/currency';
-import { MASTER_KAS_SUMMARY, MASTER_UNITS_56 } from '@/lib/data/masterDataGoogleSheets';
+import { getCurrentSession } from '@/lib/auth/serverSession';
+import { getKasPeriod } from '@/lib/data/storeKas';
 import Link from 'next/link';
-import { ShieldCheck, Hammer, Receipt, Building2, UserCheck, Calendar } from 'lucide-react';
+import { ShieldCheck, Hammer, Receipt, Building2, UserCheck } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export default async function WargaDashboardPage() {
-  let saldoKasSaatIni = MASTER_KAS_SUMMARY.saldoAkhir; // Rp 9.933.500
-  let periodeAktif: any = { bulan: MASTER_KAS_SUMMARY.bulan, tahun: MASTER_KAS_SUMMARY.tahun };
-  
-  // Sample tagihan warga contoh (misal Bp. Hardi Supangat / Bp. Tito)
-  let tagihanKeluarga: any = {
-    nama_kepala: 'Warga RT.03',
-    alamat: 'Perum BPTW Tritih Lor',
-    iuran_pokok: 50000,
-    tunggakan_bulan_lalu: 0,
-    total_denda: 0,
-    total_tagihan: 50000,
-    total_terbayar: 0,
-    status_bayar: 'belum_bayar',
-  };
+  const session = await getCurrentSession();
+  const activePeriod = getKasPeriod('periode-okt-2026');
 
-  try {
-    const supabase = await createClient();
-    const { data: p } = await supabase
-      .from('periode_buku')
-      .select('*')
-      .eq('status', 'open')
-      .order('tahun', { ascending: false })
-      .order('bulan', { ascending: false })
-      .limit(1)
-      .single();
+  const saldoKasSaatIni = Number(activePeriod?.saldo_akhir || 9933500);
+  const periodeBulan = activePeriod?.bulan || 10;
+  const periodeTahun = activePeriod?.tahun || 2026;
 
-    if (p) {
-      periodeAktif = p;
-      const { data: tx } = await supabase
-        .from('transaksi_kas')
-        .select('jenis, nominal')
-        .eq('periode_id', p.id);
+  // Cari tagihan riil unit yang sedang login (berdasarkan no_unit atau nama)
+  const matchedTagihan =
+    activePeriod?.tagihan?.find(
+      (t: any) =>
+        (session?.no_unit && Number(t.no_unit) === Number(session.no_unit)) ||
+        (session?.nama && t.nama_warga?.toLowerCase() === session.nama.toLowerCase())
+    ) || null;
 
-      const masuk = tx?.filter((t) => t.jenis === 'masuk').reduce((acc, c) => acc + Number(c.nominal), 0) || 0;
-      const keluar = tx?.filter((t) => t.jenis === 'keluar').reduce((acc, c) => acc + Number(c.nominal), 0) || 0;
-      saldoKasSaatIni = Number(p.saldo_awal) + masuk - keluar;
-    }
-  } catch (e) {
-    // Graceful fallback
-  }
+  const namaDisplay = session?.nama || matchedTagihan?.nama_warga || 'Warga RT.03';
+  const alamatDisplay =
+    (session?.alamat && session.alamat !== '-' ? session.alamat : matchedTagihan?.alamat) ||
+    'Perum BPTW Tritih Lor';
+  const roleDisplay = session?.role_label || 'Warga Aktif';
+
+  const iuranPokok = Number(matchedTagihan?.iuran_pokok ?? 50000);
+  const tunggakanLalu = Number(matchedTagihan?.tunggakan_bulan_lalu ?? 0);
+  const titipanLalu = Number(matchedTagihan?.titipan_bulan_lalu ?? 0);
+  const totalDenda = Number(matchedTagihan?.total_denda ?? 0);
+  const totalTagihan = Number(matchedTagihan?.total_tagihan ?? 50000);
+  const totalTerbayar = Number(matchedTagihan?.total_terbayar ?? 0);
+  const titipanDepan = Number(matchedTagihan?.titipan_depan ?? 0);
+  const statusLabel =
+    matchedTagihan?.status_label ||
+    (totalTerbayar >= totalTagihan && totalTagihan > 0 ? 'LUNAS' : 'BELUM LUNAS');
+  const isLunas = statusLabel === 'LUNAS' || matchedTagihan?.status_bayar === 'lunas';
 
   return (
     <div className="max-w-lg lg:max-w-4xl mx-auto space-y-5 pb-6">
@@ -58,12 +52,12 @@ export default async function WargaDashboardPage() {
                   <Building2 className="w-5 h-5" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-[11px] text-slate-400">Portal Layanan Warga</p>
-                  <h2 className="text-sm font-bold text-white truncate">RT.03 RW.14 Tritih Lor</h2>
+                  <p className="text-[11px] text-slate-400 truncate">{alamatDisplay}</p>
+                  <h2 className="text-sm font-bold text-white truncate">{namaDisplay}</h2>
                 </div>
               </div>
               <span className="text-[11px] font-medium px-2.5 py-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-xl flex items-center gap-1 shrink-0">
-                <UserCheck className="w-3.5 h-3.5" /> Warga Aktif
+                <UserCheck className="w-3.5 h-3.5" /> {roleDisplay}
               </span>
             </div>
 
@@ -74,7 +68,7 @@ export default async function WargaDashboardPage() {
                 <p className="text-xl font-black text-emerald-400">{formatRupiah(saldoKasSaatIni)}</p>
               </div>
               <span className="text-[10px] text-slate-300 bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-700 shrink-0">
-                {NAMA_BULAN[periodeAktif.bulan]} {periodeAktif.tahun}
+                {NAMA_BULAN[periodeBulan]} {periodeTahun}
               </span>
             </div>
           </div>
@@ -110,10 +104,18 @@ export default async function WargaDashboardPage() {
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-2">
               <Receipt className="w-4 h-4 text-blue-600" />
-              <h3 className="text-sm sm:text-base font-bold text-slate-800">Iuran Warga Bulan Ini</h3>
+              <h3 className="text-sm sm:text-base font-bold text-slate-800">
+                Iuran {NAMA_BULAN[periodeBulan]} {periodeTahun}
+              </h3>
             </div>
-            <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase bg-amber-50 text-amber-700 border border-amber-200">
-              {tagihanKeluarga.status_bayar.replace('_', ' ')}
+            <span
+              className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase border ${
+                isLunas
+                  ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                  : 'bg-amber-50 text-amber-700 border-amber-200'
+              }`}
+            >
+              {statusLabel}
             </span>
           </div>
 
@@ -121,27 +123,43 @@ export default async function WargaDashboardPage() {
             <div className="flex justify-between text-slate-500">
               <span>Iuran Pokok RT:</span>
               <span className="font-semibold text-slate-700 font-mono">
-                {formatRupiah(tagihanKeluarga.iuran_pokok)}
+                {formatRupiah(iuranPokok)}
               </span>
             </div>
             <div className="flex justify-between text-slate-500">
               <span>Tunggakan Bulan Lalu:</span>
               <span className="font-semibold text-slate-700 font-mono">
-                {formatRupiah(tagihanKeluarga.tunggakan_bulan_lalu)}
+                {formatRupiah(tunggakanLalu)}
               </span>
             </div>
+            {titipanLalu > 0 && (
+              <div className="flex justify-between text-indigo-600">
+                <span>Potongan Titipan Lalu:</span>
+                <span className="font-semibold font-mono">-{formatRupiah(titipanLalu)}</span>
+              </div>
+            )}
             <div className="flex justify-between text-slate-500">
               <span>Denda Absen (Ronda/KB):</span>
               <span className="font-semibold text-slate-700 font-mono">
-                {formatRupiah(tagihanKeluarga.total_denda)}
+                {formatRupiah(totalDenda)}
               </span>
             </div>
             <div className="pt-3 border-t flex justify-between items-center text-sm sm:text-base">
               <span className="font-bold text-slate-800">Total Tagihan:</span>
               <span className="font-black text-blue-600 text-base sm:text-lg font-mono">
-                {formatRupiah(tagihanKeluarga.total_tagihan)}
+                {formatRupiah(totalTagihan)}
               </span>
             </div>
+            <div className="flex justify-between text-emerald-700">
+              <span className="font-medium">Sudah Dibayarkan:</span>
+              <span className="font-bold font-mono">{formatRupiah(totalTerbayar)}</span>
+            </div>
+            {titipanDepan > 0 && (
+              <div className="flex justify-between text-teal-700 bg-teal-50 px-3 py-2 rounded-xl border border-teal-100">
+                <span className="font-semibold">Saldo Titipan Depan (Bergulir):</span>
+                <span className="font-bold font-mono">+{formatRupiah(titipanDepan)}</span>
+              </div>
+            )}
             <p className="text-[11px] sm:text-xs text-slate-500 bg-slate-50 p-3 rounded-xl border border-slate-100 leading-relaxed">
               Pembayaran iuran dapat diserahkan langsung secara tunai kepada Bendahara RT (Bp. Nanang Dedi) atau via transfer bank.
             </p>

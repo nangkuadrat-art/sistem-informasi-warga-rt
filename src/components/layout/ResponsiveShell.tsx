@@ -3,6 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { SessionPayload } from '@/lib/auth/session';
+import { PermissionKey } from '@/lib/data/userPermissions';
+import { logoutAction } from '@/app/login/actions';
 import {
   Users,
   Wallet,
@@ -19,6 +22,8 @@ import {
   LayoutGrid,
   ChevronRight,
   Smartphone,
+  LogOut,
+  Receipt,
 } from 'lucide-react';
 
 interface NavItem {
@@ -28,6 +33,7 @@ interface NavItem {
   icon: React.ComponentType<{ className?: string }>;
   accentClass: string;
   group: 'utama' | 'sistem' | 'warga';
+  requiredAnyPermissions: PermissionKey[];
 }
 
 const NAV_ITEMS: NavItem[] = [
@@ -38,6 +44,7 @@ const NAV_ITEMS: NavItem[] = [
     icon: Users,
     accentClass: 'text-blue-400',
     group: 'utama',
+    requiredAnyPermissions: ['warga_view', 'warga_manage'],
   },
   {
     href: '/admin/kas',
@@ -46,6 +53,7 @@ const NAV_ITEMS: NavItem[] = [
     icon: Wallet,
     accentClass: 'text-emerald-400',
     group: 'utama',
+    requiredAnyPermissions: ['kas_view', 'kas_manage'],
   },
   {
     href: '/admin/closing',
@@ -54,6 +62,7 @@ const NAV_ITEMS: NavItem[] = [
     icon: CalendarCheck,
     accentClass: 'text-amber-400',
     group: 'utama',
+    requiredAnyPermissions: ['closing_manage'],
   },
   {
     href: '/admin/ronda',
@@ -62,6 +71,7 @@ const NAV_ITEMS: NavItem[] = [
     icon: ShieldCheck,
     accentClass: 'text-indigo-400',
     group: 'utama',
+    requiredAnyPermissions: ['ronda_manage'],
   },
   {
     href: '/admin/kerja-bakti',
@@ -70,6 +80,7 @@ const NAV_ITEMS: NavItem[] = [
     icon: Hammer,
     accentClass: 'text-orange-400',
     group: 'utama',
+    requiredAnyPermissions: ['kerja_bakti_manage'],
   },
   {
     href: '/admin/surat',
@@ -78,6 +89,7 @@ const NAV_ITEMS: NavItem[] = [
     icon: Mail,
     accentClass: 'text-teal-400',
     group: 'sistem',
+    requiredAnyPermissions: ['surat_manage'],
   },
   {
     href: '/admin/users',
@@ -86,6 +98,7 @@ const NAV_ITEMS: NavItem[] = [
     icon: UserCog,
     accentClass: 'text-violet-400',
     group: 'sistem',
+    requiredAnyPermissions: ['users_manage'],
   },
   {
     href: '/warga/dashboard',
@@ -94,27 +107,36 @@ const NAV_ITEMS: NavItem[] = [
     icon: Smartphone,
     accentClass: 'text-sky-400',
     group: 'warga',
+    requiredAnyPermissions: ['portal_warga'],
   },
 ];
 
-const MOBILE_PRIMARY_ROUTES = ['/admin/warga', '/admin/kas', '/admin/closing', '/admin/surat'];
+const WARGA_MOBILE_TABS = [
+  { href: '/warga/dashboard', label: 'Beranda', icon: Receipt },
+  { href: '/warga/presensi-ronda', label: 'Ronda', icon: ShieldCheck },
+  { href: '/warga/presensi-kb', label: 'Kerja Bakti', icon: Hammer },
+];
 
-export default function ResponsiveShell({ children }: { children: React.ReactNode }) {
+export default function ResponsiveShell({
+  children,
+  currentUser,
+}: {
+  children: React.ReactNode;
+  currentUser: SessionPayload | null;
+}) {
   const pathname = usePathname();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Restore sidebar collapsed preference on desktop
   useEffect(() => {
     try {
       const saved = localStorage.getItem('rt_sidebar_collapsed');
       if (saved === 'true') setSidebarCollapsed(true);
     } catch {
-      // Ignore storage errors
+      // Ignore
     }
   }, []);
 
-  // Close mobile drawer when route changes
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [pathname]);
@@ -131,16 +153,46 @@ export default function ResponsiveShell({ children }: { children: React.ReactNod
     });
   };
 
+  const hasPermissionForItem = (item: NavItem) => {
+    if (!currentUser?.permissions) return true;
+    return item.requiredAnyPermissions.some((k) => currentUser.permissions[k]);
+  };
+
+  const visibleItems = NAV_ITEMS.filter(hasPermissionForItem);
+  const mainNav = visibleItems.filter((i) => i.group !== 'warga');
+  const wargaNav = visibleItems.filter((i) => i.group === 'warga');
+  const isPengurus = mainNav.length > 0;
+
   const isRouteActive = (href: string) => {
-    if (href === '/warga/dashboard') return pathname.startsWith('/warga');
+    if (href === '/warga/dashboard') return pathname === '/warga/dashboard';
     return pathname === href || pathname.startsWith(`${href}/`);
   };
 
-  const currentNav = NAV_ITEMS.find((item) => isRouteActive(item.href));
-  const isOverflowRouteActive = !MOBILE_PRIMARY_ROUTES.some((r) => pathname.startsWith(r));
+  const currentNav =
+    visibleItems.find((item) => isRouteActive(item.href)) ||
+    (pathname.startsWith('/warga/presensi-ronda')
+      ? { label: 'Presensi Ronda' }
+      : pathname.startsWith('/warga/presensi-kb')
+      ? { label: 'Scan QR Kerja Bakti' }
+      : undefined);
 
-  const mainNav = NAV_ITEMS.filter((i) => i.group !== 'warga');
-  const wargaNav = NAV_ITEMS.filter((i) => i.group === 'warga');
+  // Mobile Bottom Nav Primary Items (adapt based on Pengurus vs Warga)
+  const adminMobilePrimary = mainNav.slice(0, 4);
+  const isOverflowRouteActive =
+    isPengurus && !adminMobilePrimary.some((item) => isRouteActive(item.href));
+
+  const displayName = currentUser?.nama || 'Pengurus RT';
+  const displayRole = currentUser?.role_label || 'Administrator';
+  const initials = displayName
+    .split(' ')
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((n) => n[0]?.toUpperCase())
+    .join('');
+
+  const handleLogout = async () => {
+    await logoutAction();
+  };
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col md:flex-row">
@@ -157,7 +209,10 @@ export default function ResponsiveShell({ children }: { children: React.ReactNod
               sidebarCollapsed ? 'justify-center flex-col gap-3' : 'justify-between px-2 pt-1'
             }`}
           >
-            <Link href="/admin/warga" className="flex items-center gap-3 min-w-0">
+            <Link
+              href={isPengurus ? mainNav[0].href : '/warga/dashboard'}
+              className="flex items-center gap-3 min-w-0"
+            >
               <div className="h-10 w-10 bg-blue-600 rounded-xl flex items-center justify-center text-white font-bold shadow-md shadow-blue-500/30 shrink-0">
                 <Building2 className="w-5 h-5" />
               </div>
@@ -211,54 +266,77 @@ export default function ResponsiveShell({ children }: { children: React.ReactNod
               );
             })}
 
-            <div className="pt-4 mt-4 border-t border-slate-800">
-              {!sidebarCollapsed && (
-                <span className="px-3 text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1.5">
-                  Menu Khusus Warga
-                </span>
-              )}
-              {wargaNav.map((item) => {
-                const Icon = item.icon;
-                const active = isRouteActive(item.href);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    title={sidebarCollapsed ? item.label : undefined}
-                    className={`flex items-center gap-3 rounded-xl text-sm font-medium transition ${
-                      sidebarCollapsed ? 'justify-center p-2.5' : 'px-3 py-2.5'
-                    } ${
-                      active
-                        ? 'bg-sky-600/25 text-sky-200 border border-sky-500/30'
-                        : 'text-sky-300 hover:bg-slate-800 border border-transparent'
-                    }`}
-                  >
-                    <Icon className="w-5 h-5 shrink-0 text-sky-400" />
-                    {!sidebarCollapsed && <span className="truncate">{item.label}</span>}
-                  </Link>
-                );
-              })}
-            </div>
+            {wargaNav.length > 0 && (
+              <div className={mainNav.length > 0 ? 'pt-4 mt-4 border-t border-slate-800' : ''}>
+                {!sidebarCollapsed && (
+                  <span className="px-3 text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1.5">
+                    {isPengurus ? 'Menu Khusus Warga' : 'Portal Mandiri Warga'}
+                  </span>
+                )}
+                {wargaNav.map((item) => {
+                  const Icon = item.icon;
+                  const active = pathname.startsWith('/warga');
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      title={sidebarCollapsed ? item.label : undefined}
+                      className={`flex items-center gap-3 rounded-xl text-sm font-medium transition ${
+                        sidebarCollapsed ? 'justify-center p-2.5' : 'px-3 py-2.5'
+                      } ${
+                        active
+                          ? 'bg-sky-600/25 text-sky-200 border border-sky-500/30'
+                          : 'text-sky-300 hover:bg-slate-800 border border-transparent'
+                      }`}
+                    >
+                      <Icon className="w-5 h-5 shrink-0 text-sky-400" />
+                      {!sidebarCollapsed && <span className="truncate">{item.label}</span>}
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
           </nav>
         </div>
 
-        {/* User Card */}
-        <div
-          className={`border-t border-slate-800 pt-3 mt-3 ${
-            sidebarCollapsed ? 'flex justify-center' : 'px-2'
-          }`}
-        >
+        {/* User Card + Logout */}
+        <div className="border-t border-slate-800 pt-3 mt-3 space-y-2">
           {sidebarCollapsed ? (
-            <div
-              title="Yuli Ardinurman — Ketua RT.03 / RW.14"
-              className="w-9 h-9 rounded-full bg-blue-600/30 border border-blue-500/40 flex items-center justify-center text-xs font-bold text-blue-200"
-            >
-              YA
+            <div className="flex flex-col items-center gap-2">
+              <div
+                title={`${displayName} — ${displayRole}`}
+                className="w-9 h-9 rounded-full bg-blue-600/30 border border-blue-500/40 flex items-center justify-center text-xs font-bold text-blue-200"
+              >
+                {initials || 'RT'}
+              </div>
+              <button
+                type="button"
+                onClick={handleLogout}
+                title="Keluar dari Akun"
+                className="p-2 rounded-xl text-rose-400 hover:text-white hover:bg-rose-600/20 transition"
+              >
+                <LogOut className="w-4 h-4" />
+              </button>
             </div>
           ) : (
-            <div>
-              <p className="text-sm font-semibold text-white truncate">Yuli Ardinurman</p>
-              <p className="text-xs text-blue-400 truncate">Ketua RT.03 / RW.14</p>
+            <div className="flex items-center justify-between gap-2 px-2">
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-white truncate">{displayName}</p>
+                <p className="text-xs text-blue-400 truncate">
+                  {displayRole}
+                  {currentUser?.alamat && currentUser.alamat !== '-'
+                    ? ` • ${currentUser.alamat}`
+                    : ''}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={handleLogout}
+                title="Keluar dari Akun"
+                className="p-2 rounded-xl text-slate-400 hover:text-rose-300 hover:bg-slate-800 transition shrink-0"
+              >
+                <LogOut className="w-4 h-4" />
+              </button>
             </div>
           )}
         </div>
@@ -277,8 +355,8 @@ export default function ResponsiveShell({ children }: { children: React.ReactNod
               <Menu className="w-5 h-5" />
             </button>
             <div className="min-w-0">
-              <p className="text-[10px] font-semibold text-blue-300 uppercase tracking-wider leading-none">
-                RT.03 RW.14 Tritih Lor
+              <p className="text-[10px] font-semibold text-blue-300 uppercase tracking-wider leading-none truncate">
+                {displayName} • {displayRole}
               </p>
               <h1 className="font-bold text-sm text-white truncate mt-0.5">
                 {currentNav?.label || 'Sistem Warga RT'}
@@ -286,20 +364,31 @@ export default function ResponsiveShell({ children }: { children: React.ReactNod
             </div>
           </div>
 
-          <Link
-            href={pathname.startsWith('/warga') ? '/admin/warga' : '/warga/dashboard'}
-            className="text-[11px] bg-blue-600 hover:bg-blue-700 active:scale-95 px-3 py-1.5 rounded-xl font-bold flex items-center gap-1.5 shrink-0 transition"
-          >
-            <Smartphone className="w-3.5 h-3.5" />
-            <span>{pathname.startsWith('/warga') ? 'Mode Admin' : 'Portal Warga'}</span>
-          </Link>
+          {isPengurus ? (
+            <Link
+              href={pathname.startsWith('/warga') ? mainNav[0].href : '/warga/dashboard'}
+              className="text-[11px] bg-blue-600 hover:bg-blue-700 active:scale-95 px-3 py-1.5 rounded-xl font-bold flex items-center gap-1.5 shrink-0 transition"
+            >
+              <Smartphone className="w-3.5 h-3.5" />
+              <span>{pathname.startsWith('/warga') ? 'Admin' : 'Portal'}</span>
+            </Link>
+          ) : (
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="text-[11px] bg-rose-600/20 text-rose-200 border border-rose-500/30 hover:bg-rose-600/30 px-2.5 py-1.5 rounded-xl font-bold flex items-center gap-1 shrink-0 transition"
+            >
+              <LogOut className="w-3.5 h-3.5" />
+              <span>Keluar</span>
+            </button>
+          )}
         </div>
       </header>
 
       {/* MAIN CONTENT WRAPPER */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* DESKTOP TOP CONTEXT BAR */}
-        <header className="hidden md:flex sticky top-0 z-10 bg-white/85 backdrop-blur-md border-b border-slate-200/80 px-6 lg:px-8 py-3 items-center justify-between">
+        <header className="hidden md:flex sticky top-0 z-10 bg-white/85 backdrop-blur-md border-b border-slate-200/80 px-6 lg:px-8 py-3 items-center justify-between gap-4">
           <div className="flex items-center gap-2 text-xs text-slate-500">
             <span className="font-semibold text-slate-400">Sistem Informasi RT.03</span>
             <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
@@ -308,14 +397,25 @@ export default function ResponsiveShell({ children }: { children: React.ReactNod
             </span>
           </div>
 
-          <div className="flex items-center gap-2.5">
-            <Link
-              href={pathname.startsWith('/warga') ? '/admin/warga' : '/warga/dashboard'}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition"
+          <div className="flex items-center gap-2">
+            {isPengurus && (
+              <Link
+                href={pathname.startsWith('/warga') ? mainNav[0].href : '/warga/dashboard'}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition"
+              >
+                <Smartphone className="w-3.5 h-3.5 text-blue-600" />
+                {pathname.startsWith('/warga') ? 'Kembali ke Panel Admin' : 'Buka Portal Warga'}
+              </Link>
+            )}
+
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200/80 transition"
             >
-              <Smartphone className="w-3.5 h-3.5 text-blue-600" />
-              {pathname.startsWith('/warga') ? 'Kembali ke Panel Admin' : 'Buka Portal Warga'}
-            </Link>
+              <LogOut className="w-3.5 h-3.5" />
+              <span>Keluar</span>
+            </button>
           </div>
         </header>
 
@@ -330,58 +430,88 @@ export default function ResponsiveShell({ children }: { children: React.ReactNod
         aria-label="Navigasi Cepat Mobile"
         className="md:hidden fixed bottom-0 inset-x-0 z-30 bg-white/95 backdrop-blur-md border-t border-slate-200/90 shadow-[0_-4px_20px_rgba(15,23,42,0.06)] pb-safe"
       >
-        <div className="grid grid-cols-5 h-16 px-1">
-          {MOBILE_PRIMARY_ROUTES.map((route) => {
-            const item = NAV_ITEMS.find((n) => n.href === route)!;
-            const Icon = item.icon;
-            const active = isRouteActive(item.href);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`flex flex-col items-center justify-center gap-1 rounded-xl mx-0.5 my-1 transition ${
-                  active
-                    ? 'text-blue-600 bg-blue-50/80 font-bold'
-                    : 'text-slate-500 hover:text-slate-800 font-medium'
-                }`}
-              >
-                <Icon className={`w-5 h-5 ${active ? 'text-blue-600' : 'text-slate-400'}`} />
-                <span className="text-[10px] leading-none truncate max-w-full px-1">
-                  {item.shortLabel}
-                </span>
-              </Link>
-            );
-          })}
+        {isPengurus ? (
+          <div className="grid grid-cols-5 h-16 px-1">
+            {adminMobilePrimary.map((item) => {
+              const Icon = item.icon;
+              const active = isRouteActive(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`flex flex-col items-center justify-center gap-1 rounded-xl mx-0.5 my-1 transition ${
+                    active
+                      ? 'text-blue-600 bg-blue-50/80 font-bold'
+                      : 'text-slate-500 hover:text-slate-800 font-medium'
+                  }`}
+                >
+                  <Icon className={`w-5 h-5 ${active ? 'text-blue-600' : 'text-slate-400'}`} />
+                  <span className="text-[10px] leading-none truncate max-w-full px-1">
+                    {item.shortLabel}
+                  </span>
+                </Link>
+              );
+            })}
 
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(true)}
-            className={`flex flex-col items-center justify-center gap-1 rounded-xl mx-0.5 my-1 transition ${
-              isOverflowRouteActive || mobileMenuOpen
-                ? 'text-blue-600 bg-blue-50/80 font-bold'
-                : 'text-slate-500 hover:text-slate-800 font-medium'
-            }`}
-          >
-            <LayoutGrid
-              className={`w-5 h-5 ${
-                isOverflowRouteActive || mobileMenuOpen ? 'text-blue-600' : 'text-slate-400'
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(true)}
+              className={`flex flex-col items-center justify-center gap-1 rounded-xl mx-0.5 my-1 transition ${
+                isOverflowRouteActive || mobileMenuOpen
+                  ? 'text-blue-600 bg-blue-50/80 font-bold'
+                  : 'text-slate-500 hover:text-slate-800 font-medium'
               }`}
-            />
-            <span className="text-[10px] leading-none">Lainnya</span>
-          </button>
-        </div>
+            >
+              <LayoutGrid
+                className={`w-5 h-5 ${
+                  isOverflowRouteActive || mobileMenuOpen ? 'text-blue-600' : 'text-slate-400'
+                }`}
+              />
+              <span className="text-[10px] leading-none">Lainnya</span>
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-4 h-16 px-1">
+            {WARGA_MOBILE_TABS.map((tab) => {
+              const Icon = tab.icon;
+              const active = pathname === tab.href;
+              return (
+                <Link
+                  key={tab.href}
+                  href={tab.href}
+                  className={`flex flex-col items-center justify-center gap-1 rounded-xl mx-0.5 my-1 transition ${
+                    active
+                      ? 'text-blue-600 bg-blue-50/80 font-bold'
+                      : 'text-slate-500 hover:text-slate-800 font-medium'
+                  }`}
+                >
+                  <Icon className={`w-5 h-5 ${active ? 'text-blue-600' : 'text-slate-400'}`} />
+                  <span className="text-[10px] leading-none truncate max-w-full px-1">
+                    {tab.label}
+                  </span>
+                </Link>
+              );
+            })}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(true)}
+              className="flex flex-col items-center justify-center gap-1 rounded-xl mx-0.5 my-1 text-slate-500 hover:text-slate-800 font-medium transition"
+            >
+              <LayoutGrid className="w-5 h-5 text-slate-400" />
+              <span className="text-[10px] leading-none">Akun</span>
+            </button>
+          </div>
+        )}
       </nav>
 
       {/* MOBILE SLIDE-OVER DRAWER MENU */}
       {mobileMenuOpen && (
         <div className="md:hidden fixed inset-0 z-50 flex">
-          {/* Backdrop */}
           <div
             className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs"
             onClick={() => setMobileMenuOpen(false)}
           />
 
-          {/* Drawer Panel */}
           <div className="relative w-72 max-w-[82vw] bg-slate-900 text-slate-100 h-full flex flex-col justify-between p-4 shadow-2xl overflow-y-auto z-10">
             <div>
               <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-800">
@@ -404,58 +534,77 @@ export default function ResponsiveShell({ children }: { children: React.ReactNod
                 </button>
               </div>
 
-              <div className="space-y-1">
-                <p className="px-3 pb-1 text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                  Menu Pengurus RT
-                </p>
-                {mainNav.map((item) => {
-                  const Icon = item.icon;
-                  const active = isRouteActive(item.href);
-                  return (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className={`flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-medium transition ${
-                        active
-                          ? 'bg-blue-600 text-white shadow-sm'
-                          : 'text-slate-300 hover:bg-slate-800'
-                      }`}
-                    >
-                      <Icon className={`w-5 h-5 ${active ? 'text-white' : item.accentClass}`} />
-                      <span>{item.label}</span>
-                    </Link>
-                  );
-                })}
-              </div>
+              {mainNav.length > 0 && (
+                <div className="space-y-1">
+                  <p className="px-3 pb-1 text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                    Menu Pengurus RT
+                  </p>
+                  {mainNav.map((item) => {
+                    const Icon = item.icon;
+                    const active = isRouteActive(item.href);
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className={`flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-medium transition ${
+                          active
+                            ? 'bg-blue-600 text-white shadow-sm'
+                            : 'text-slate-300 hover:bg-slate-800'
+                        }`}
+                      >
+                        <Icon className={`w-5 h-5 ${active ? 'text-white' : item.accentClass}`} />
+                        <span>{item.label}</span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
 
-              <div className="pt-4 mt-4 border-t border-slate-800 space-y-1">
-                <p className="px-3 pb-1 text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                  Layanan Warga
-                </p>
-                {wargaNav.map((item) => {
-                  const Icon = item.icon;
-                  const active = isRouteActive(item.href);
-                  return (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className={`flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-medium transition ${
-                        active
-                          ? 'bg-sky-600 text-white shadow-sm'
-                          : 'text-sky-300 hover:bg-slate-800'
-                      }`}
-                    >
-                      <Icon className="w-5 h-5 text-sky-400" />
-                      <span>{item.label}</span>
-                    </Link>
-                  );
-                })}
-              </div>
+              {wargaNav.length > 0 && (
+                <div className={mainNav.length > 0 ? 'pt-4 mt-4 border-t border-slate-800 space-y-1' : 'space-y-1'}>
+                  <p className="px-3 pb-1 text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                    Layanan Warga
+                  </p>
+                  {wargaNav.map((item) => {
+                    const Icon = item.icon;
+                    const active = pathname.startsWith('/warga');
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className={`flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-medium transition ${
+                          active
+                            ? 'bg-sky-600 text-white shadow-sm'
+                            : 'text-sky-300 hover:bg-slate-800'
+                        }`}
+                      >
+                        <Icon className="w-5 h-5 text-sky-400" />
+                        <span>{item.label}</span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
             </div>
 
-            <div className="border-t border-slate-800 pt-4 mt-4 px-2">
-              <p className="text-sm font-semibold text-white">Yuli Ardinurman</p>
-              <p className="text-xs text-blue-400">Ketua RT.03 / RW.14</p>
+            <div className="border-t border-slate-800 pt-4 mt-4 space-y-3">
+              <div className="px-2">
+                <p className="text-sm font-semibold text-white truncate">{displayName}</p>
+                <p className="text-xs text-blue-400 truncate">
+                  {displayRole}
+                  {currentUser?.alamat && currentUser.alamat !== '-'
+                    ? ` • ${currentUser.alamat}`
+                    : ''}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-rose-600/20 hover:bg-rose-600/30 text-rose-200 border border-rose-500/30 text-xs font-bold transition"
+              >
+                <LogOut className="w-4 h-4" />
+                <span>Keluar dari Akun</span>
+              </button>
             </div>
           </div>
         </div>

@@ -1,9 +1,11 @@
 import ResponsiveShell from '@/components/layout/ResponsiveShell';
+import { getCurrentSession } from '@/lib/auth/serverSession';
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <ResponsiveShell>{children}</ResponsiveShell>;
+  const session = await getCurrentSession();
+  return <ResponsiveShell currentUser={session}>{children}</ResponsiveShell>;
 }
