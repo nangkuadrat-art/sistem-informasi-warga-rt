@@ -1,7 +1,7 @@
 const fs = require('fs');
 const xlsx = require('xlsx');
 
-const newPath = 'C:/Users/HP/.gemini/antigravity/scratch/data_rt03_rw14_check.xlsx';
+const newPath = 'C:/Users/HP/.gemini/antigravity/scratch/data_rt03_rw14_live.xlsx';
 const wb = xlsx.readFile(newPath);
 
 function parseNewSheet(sheet, periodPrefix) {
@@ -108,6 +108,9 @@ console.log({
   titipan_bulan_lalu: sumField(oktTagihan, 'titipan_bulan_lalu'),
   total_tagihan: sumField(oktTagihan, 'total_tagihan'),
   total_terbayar: sumField(oktTagihan, 'total_terbayar'),
+  kurang_lebih: sumField(oktTagihan, 'kurang_lebih'),
+  donatur: sumField(oktTagihan, 'donatur'),
+  titipan_depan: sumField(oktTagihan, 'titipan_depan'),
 });
 
 // Update db_kas_periods.json
