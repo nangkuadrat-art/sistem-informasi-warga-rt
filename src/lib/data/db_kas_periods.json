@@ -135,7 +135,8 @@
           "titipan_depan": 0,
           "status_bayar": "sebagian",
           "status_label": "KURANG BAYAR",
-          "keterangan": "Sisa tagihan Rp 65.000"
+          "keterangan": "Sisa tagihan Rp 65.000",
+          "tanggal_pembayaran": "2026-09-29"
         },
         {
           "id": "tagihan-periode-sep-2026-2",
@@ -162,7 +163,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-3",
@@ -189,7 +191,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Tunggakan lama"
+          "keterangan": "Tunggakan lama",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-4",
@@ -216,7 +219,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-10-10"
         },
         {
           "id": "tagihan-periode-sep-2026-5",
@@ -243,7 +247,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-09-22"
         },
         {
           "id": "tagihan-periode-sep-2026-6",
@@ -270,7 +275,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-7",
@@ -297,7 +303,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Belum bayar"
+          "keterangan": "Belum bayar",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-8",
@@ -324,7 +331,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Pelunasan rapel tagihan"
+          "keterangan": "Pelunasan rapel tagihan",
+          "tanggal_pembayaran": "2026-10-05"
         },
         {
           "id": "tagihan-periode-sep-2026-9",
@@ -351,7 +359,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Tunggakan iuran & denda"
+          "keterangan": "Tunggakan iuran & denda",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-10",
@@ -378,7 +387,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-09-18"
         },
         {
           "id": "tagihan-periode-sep-2026-11",
@@ -405,7 +415,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Pelunasan total tagihan"
+          "keterangan": "Pelunasan total tagihan",
+          "tanggal_pembayaran": "2026-10-04"
         },
         {
           "id": "tagihan-periode-sep-2026-12",
@@ -432,7 +443,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Tunggakan berjalan"
+          "keterangan": "Tunggakan berjalan",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-13",
@@ -459,7 +471,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Belum bayar"
+          "keterangan": "Belum bayar",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-14",
@@ -486,7 +499,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-15",
@@ -513,7 +527,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-16",
@@ -540,7 +555,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Belum bayar"
+          "keterangan": "Belum bayar",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-17",
@@ -567,7 +583,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas iuran + denda"
+          "keterangan": "Lunas iuran + denda",
+          "tanggal_pembayaran": "2026-09-25"
         },
         {
           "id": "tagihan-periode-sep-2026-18",
@@ -594,7 +611,8 @@
           "titipan_depan": 13000,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Titipan bergulir Rp 13.000"
+          "keterangan": "Titipan bergulir Rp 13.000",
+          "tanggal_pembayaran": "2026-10-06"
         },
         {
           "id": "tagihan-periode-sep-2026-19",
@@ -621,7 +639,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-20",
@@ -648,7 +667,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-09-27"
         },
         {
           "id": "tagihan-periode-sep-2026-21",
@@ -675,7 +695,8 @@
           "titipan_depan": 0,
           "status_bayar": "sebagian",
           "status_label": "KURANG BAYAR",
-          "keterangan": "Sisa tagihan Rp 10.000"
+          "keterangan": "Sisa tagihan Rp 10.000",
+          "tanggal_pembayaran": "2026-09-21"
         },
         {
           "id": "tagihan-periode-sep-2026-22",
@@ -702,7 +723,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-23",
@@ -729,7 +751,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas iuran + ronda"
+          "keterangan": "Lunas iuran + ronda",
+          "tanggal_pembayaran": "2026-09-24"
         },
         {
           "id": "tagihan-periode-sep-2026-24",
@@ -756,7 +779,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-09-26"
         },
         {
           "id": "tagihan-periode-sep-2026-25",
@@ -783,7 +807,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Tunggakan berjalan"
+          "keterangan": "Tunggakan berjalan",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-26",
@@ -810,7 +835,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-09-26"
         },
         {
           "id": "tagihan-periode-sep-2026-27",
@@ -837,7 +863,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-28",
@@ -864,7 +891,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas + Donatur Kas Rp 3.410.000"
+          "keterangan": "Lunas + Donatur Kas Rp 3.410.000",
+          "tanggal_pembayaran": "2026-10-02"
         },
         {
           "id": "tagihan-periode-sep-2026-29",
@@ -891,7 +919,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas iuran + denda KB"
+          "keterangan": "Lunas iuran + denda KB",
+          "tanggal_pembayaran": "2026-09-24"
         },
         {
           "id": "tagihan-periode-sep-2026-30",
@@ -918,7 +947,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-31",
@@ -945,7 +975,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Pelunasan tagihan rapel"
+          "keterangan": "Pelunasan tagihan rapel",
+          "tanggal_pembayaran": "2026-10-03"
         },
         {
           "id": "tagihan-periode-sep-2026-32",
@@ -972,7 +1003,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas iuran + ronda"
+          "keterangan": "Lunas iuran + ronda",
+          "tanggal_pembayaran": "2026-10-10"
         },
         {
           "id": "tagihan-periode-sep-2026-33",
@@ -999,7 +1031,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-34",
@@ -1026,7 +1059,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas iuran + denda KB"
+          "keterangan": "Lunas iuran + denda KB",
+          "tanggal_pembayaran": "2026-09-23"
         },
         {
           "id": "tagihan-periode-sep-2026-35",
@@ -1053,7 +1087,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Tunggakan berjalan"
+          "keterangan": "Tunggakan berjalan",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-36",
@@ -1080,7 +1115,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas + Donatur Kas Rp 25.000"
+          "keterangan": "Lunas + Donatur Kas Rp 25.000",
+          "tanggal_pembayaran": "2026-10-10"
         },
         {
           "id": "tagihan-periode-sep-2026-37",
@@ -1107,7 +1143,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-09-25"
         },
         {
           "id": "tagihan-periode-sep-2026-38",
@@ -1134,7 +1171,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-09-23"
         },
         {
           "id": "tagihan-periode-sep-2026-39",
@@ -1161,7 +1199,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-10-10"
         },
         {
           "id": "tagihan-periode-sep-2026-40",
@@ -1188,7 +1227,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Pelunasan tagihan rapel"
+          "keterangan": "Pelunasan tagihan rapel",
+          "tanggal_pembayaran": "2026-09-28"
         },
         {
           "id": "tagihan-periode-sep-2026-41",
@@ -1215,7 +1255,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-10-10"
         },
         {
           "id": "tagihan-periode-sep-2026-42",
@@ -1242,7 +1283,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Tunggakan berjalan"
+          "keterangan": "Tunggakan berjalan",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-43",
@@ -1269,7 +1311,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-44",
@@ -1296,7 +1339,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-10-01"
         },
         {
           "id": "tagihan-periode-sep-2026-45",
@@ -1323,7 +1367,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Belum bayar"
+          "keterangan": "Belum bayar",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-46",
@@ -1350,7 +1395,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-09-20"
         },
         {
           "id": "tagihan-periode-sep-2026-47",
@@ -1377,7 +1423,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Tunggakan berjalan"
+          "keterangan": "Tunggakan berjalan",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-48",
@@ -1404,7 +1451,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-09-27"
         },
         {
           "id": "tagihan-periode-sep-2026-49",
@@ -1431,7 +1479,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-09-22"
         },
         {
           "id": "tagihan-periode-sep-2026-50",
@@ -1458,7 +1507,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-51",
@@ -1485,7 +1535,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Belum bayar"
+          "keterangan": "Belum bayar",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-52",
@@ -1512,7 +1563,8 @@
           "titipan_depan": 590000,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Titipan bergulir Rp 590.000"
+          "keterangan": "Titipan bergulir Rp 590.000",
+          "tanggal_pembayaran": "2026-10-10"
         },
         {
           "id": "tagihan-periode-sep-2026-53",
@@ -1539,7 +1591,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Tunggakan berjalan"
+          "keterangan": "Tunggakan berjalan",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-54",
@@ -1566,7 +1619,8 @@
           "titipan_depan": 0,
           "status_bayar": "sebagian",
           "status_label": "KURANG BAYAR",
-          "keterangan": "Sisa tagihan Rp 55.000"
+          "keterangan": "Sisa tagihan Rp 55.000",
+          "tanggal_pembayaran": "2026-09-30"
         },
         {
           "id": "tagihan-periode-sep-2026-55",
@@ -1593,7 +1647,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-sep-2026-56",
@@ -1620,7 +1675,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         }
       ],
       "closed_at": "2026-11-13T07:05:28.971Z"
@@ -1720,7 +1776,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Tunggakan bergulir"
+          "keterangan": "Tunggakan bergulir",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-2",
@@ -1747,7 +1804,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-3",
@@ -1774,7 +1832,8 @@
           "titipan_depan": 0,
           "status_bayar": "sebagian",
           "status_label": "KURANG BAYAR",
-          "keterangan": "Angsuran tunggakan"
+          "keterangan": "Angsuran tunggakan",
+          "tanggal_pembayaran": "2026-10-25"
         },
         {
           "id": "tagihan-periode-okt-2026-4",
@@ -1801,7 +1860,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Belum bayar"
+          "keterangan": "Belum bayar",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-5",
@@ -1828,7 +1888,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-11-10"
         },
         {
           "id": "tagihan-periode-okt-2026-6",
@@ -1855,7 +1916,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-7",
@@ -1882,7 +1944,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Tunggakan bergulir"
+          "keterangan": "Tunggakan bergulir",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-8",
@@ -1909,7 +1972,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Belum bayar"
+          "keterangan": "Belum bayar",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-9",
@@ -1936,7 +2000,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Tunggakan bergulir"
+          "keterangan": "Tunggakan bergulir",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-10",
@@ -1963,7 +2028,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Belum bayar"
+          "keterangan": "Belum bayar",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-11",
@@ -1990,7 +2056,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-11-10"
         },
         {
           "id": "tagihan-periode-okt-2026-12",
@@ -2017,7 +2084,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Tunggakan bergulir"
+          "keterangan": "Tunggakan bergulir",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-13",
@@ -2044,7 +2112,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Tunggakan bergulir"
+          "keterangan": "Tunggakan bergulir",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-14",
@@ -2071,7 +2140,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-15",
@@ -2098,7 +2168,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-16",
@@ -2125,7 +2196,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Pelunasan tagihan rapel"
+          "keterangan": "Pelunasan tagihan rapel",
+          "tanggal_pembayaran": "2026-11-10"
         },
         {
           "id": "tagihan-periode-okt-2026-17",
@@ -2152,7 +2224,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-11-04"
         },
         {
           "id": "tagihan-periode-okt-2026-18",
@@ -2179,7 +2252,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Belum bayar (Potong titipan)"
+          "keterangan": "Belum bayar (Potong titipan)",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-19",
@@ -2206,7 +2280,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-20",
@@ -2233,7 +2308,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-11-10"
         },
         {
           "id": "tagihan-periode-okt-2026-21",
@@ -2260,7 +2336,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-11-10"
         },
         {
           "id": "tagihan-periode-okt-2026-22",
@@ -2287,7 +2364,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-23",
@@ -2314,7 +2392,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-11-10"
         },
         {
           "id": "tagihan-periode-okt-2026-24",
@@ -2341,7 +2420,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-11-10"
         },
         {
           "id": "tagihan-periode-okt-2026-25",
@@ -2368,7 +2448,8 @@
           "titipan_depan": 0,
           "status_bayar": "sebagian",
           "status_label": "KURANG BAYAR",
-          "keterangan": "Angsuran tagihan"
+          "keterangan": "Angsuran tagihan",
+          "tanggal_pembayaran": "2026-11-10"
         },
         {
           "id": "tagihan-periode-okt-2026-26",
@@ -2395,7 +2476,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-11-10"
         },
         {
           "id": "tagihan-periode-okt-2026-27",
@@ -2422,7 +2504,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-28",
@@ -2449,7 +2532,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Belum bayar"
+          "keterangan": "Belum bayar",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-29",
@@ -2476,7 +2560,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-11-10"
         },
         {
           "id": "tagihan-periode-okt-2026-30",
@@ -2503,7 +2588,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-31",
@@ -2530,7 +2616,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-11-10"
         },
         {
           "id": "tagihan-periode-okt-2026-32",
@@ -2557,7 +2644,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Belum bayar"
+          "keterangan": "Belum bayar",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-33",
@@ -2584,7 +2672,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-34",
@@ -2611,7 +2700,8 @@
           "titipan_depan": 0,
           "status_bayar": "sebagian",
           "status_label": "KURANG BAYAR",
-          "keterangan": "Sisa tagihan Rp 15.000"
+          "keterangan": "Sisa tagihan Rp 15.000",
+          "tanggal_pembayaran": "2026-11-10"
         },
         {
           "id": "tagihan-periode-okt-2026-35",
@@ -2638,7 +2728,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Tunggakan bergulir"
+          "keterangan": "Tunggakan bergulir",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-36",
@@ -2665,7 +2756,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Belum bayar"
+          "keterangan": "Belum bayar",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-37",
@@ -2692,7 +2784,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-11-10"
         },
         {
           "id": "tagihan-periode-okt-2026-38",
@@ -2719,7 +2812,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-11-10"
         },
         {
           "id": "tagihan-periode-okt-2026-39",
@@ -2746,7 +2840,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-11-10"
         },
         {
           "id": "tagihan-periode-okt-2026-40",
@@ -2773,7 +2868,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Belum bayar"
+          "keterangan": "Belum bayar",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-41",
@@ -2800,7 +2896,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Belum bayar"
+          "keterangan": "Belum bayar",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-42",
@@ -2827,7 +2924,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Pelunasan tagihan rapel"
+          "keterangan": "Pelunasan tagihan rapel",
+          "tanggal_pembayaran": "2026-11-10"
         },
         {
           "id": "tagihan-periode-okt-2026-43",
@@ -2854,7 +2952,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-44",
@@ -2881,7 +2980,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas tepat waktu"
+          "keterangan": "Lunas tepat waktu",
+          "tanggal_pembayaran": "2026-11-10"
         },
         {
           "id": "tagihan-periode-okt-2026-45",
@@ -2908,7 +3008,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Tunggakan bergulir"
+          "keterangan": "Tunggakan bergulir",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-46",
@@ -2935,7 +3036,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Belum bayar"
+          "keterangan": "Belum bayar",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-47",
@@ -2962,7 +3064,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Tunggakan bergulir"
+          "keterangan": "Tunggakan bergulir",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-48",
@@ -2989,7 +3092,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Belum bayar"
+          "keterangan": "Belum bayar",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-49",
@@ -3016,7 +3120,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Belum bayar"
+          "keterangan": "Belum bayar",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-50",
@@ -3043,7 +3148,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-51",
@@ -3070,7 +3176,8 @@
           "titipan_depan": 0,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Pelunasan tagihan rapel"
+          "keterangan": "Pelunasan tagihan rapel",
+          "tanggal_pembayaran": "2026-11-10"
         },
         {
           "id": "tagihan-periode-okt-2026-52",
@@ -3097,7 +3204,8 @@
           "titipan_depan": 505000,
           "status_bayar": "lunas",
           "status_label": "LUNAS",
-          "keterangan": "Lunas (Titipan Bergulir Rp 590.000)"
+          "keterangan": "Lunas (Titipan Bergulir Rp 590.000)",
+          "tanggal_pembayaran": "2026-11-10"
         },
         {
           "id": "tagihan-periode-okt-2026-53",
@@ -3124,7 +3232,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Tunggakan bergulir"
+          "keterangan": "Tunggakan bergulir",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-54",
@@ -3151,7 +3260,8 @@
           "titipan_depan": 0,
           "status_bayar": "belum_bayar",
           "status_label": "BELUM LUNAS",
-          "keterangan": "Belum bayar"
+          "keterangan": "Belum bayar",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-55",
@@ -3178,7 +3288,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         },
         {
           "id": "tagihan-periode-okt-2026-56",
@@ -3205,7 +3316,8 @@
           "titipan_depan": 0,
           "status_bayar": "kosong",
           "status_label": "KOSONG",
-          "keterangan": "Unit Kosong"
+          "keterangan": "Unit Kosong",
+          "tanggal_pembayaran": null
         }
       ]
     }

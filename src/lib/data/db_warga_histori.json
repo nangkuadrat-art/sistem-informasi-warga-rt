@@ -1,0 +1,3642 @@
+[
+  {
+    "no_unit": 1,
+    "alamat": "Blok UT/1",
+    "nama_warga": "TITO",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Luar Kota",
+      "denda_full": 25000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir Sebagian (1/5)",
+          "hadir_count": 1,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M2",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M3",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M4",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 15000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 15.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Ada Ketidakhadiran / Denda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 15000,
+          "catatan": "Rekap closing September mencatat denda ronda Rp 15.000."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 2,
+    "alamat": "Blok UT/3",
+    "nama_warga": "-",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Tidak Wajib",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 3,
+    "alamat": "Blok UT/5",
+    "nama_warga": "Hardi Supangat",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Bebas Kerja Bakti",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas Kerja Bakti",
+          "denda": 0,
+          "catatan": "Kategori unit: Bebas Kerja Bakti pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas Kerja Bakti",
+          "denda": 0,
+          "catatan": "Kategori unit: Bebas Kerja Bakti pada periode September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 4,
+    "alamat": "Blok UT/7",
+    "nama_warga": "INDRAWAN",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir Sebagian (1/5)",
+          "hadir_count": 1,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M2",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M3",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M4",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 15000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 15.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Ada Ketidakhadiran / Denda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 50000,
+          "catatan": "Rekap closing September mencatat denda ronda Rp 50.000."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti Oktober 2026 (Denda Rp 25.000)."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti September 2026 (Denda Rp 25.000)."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 5,
+    "alamat": "Blok UT/9",
+    "nama_warga": "Sudarmadi",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Bebas Kerja Bakti",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas Kerja Bakti",
+          "denda": 0,
+          "catatan": "Kategori unit: Bebas Kerja Bakti pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas Kerja Bakti",
+          "denda": 0,
+          "catatan": "Kategori unit: Bebas Kerja Bakti pada periode September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 6,
+    "alamat": "Blok UT/11",
+    "nama_warga": "-",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Tidak Wajib",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 7,
+    "alamat": "Blok UT/13",
+    "nama_warga": "NDARI",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Tidak Wajib",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 8,
+    "alamat": "Blok UT/15",
+    "nama_warga": "IFAH",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Luar Kota",
+      "denda_full": 25000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir / Denda",
+          "hadir_count": 0,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M2",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M3",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M4",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 25000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 25.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Ada Ketidakhadiran / Denda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 25000,
+          "catatan": "Rekap closing September mencatat denda ronda Rp 25.000."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti Oktober 2026 (Denda Rp 25.000)."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti September 2026 (Denda Rp 25.000)."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 9,
+    "alamat": "Blok UT/17",
+    "nama_warga": "Muhammad Faris Noveandri",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir Sebagian (2/5)",
+          "hadir_count": 2,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M2",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M3",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M4",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 10000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 10.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Ada Ketidakhadiran / Denda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 10000,
+          "catatan": "Rekap closing September mencatat denda ronda Rp 10.000."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti Oktober 2026 (Denda Rp 25.000)."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti September 2026 (Denda Rp 25.000)."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 10,
+    "alamat": "Blok UT/19",
+    "nama_warga": "Antonius Bambang Sugiharto",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Bebas Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas Kerja Bakti",
+          "denda": 0,
+          "catatan": "Kategori unit: Bebas Kerja Bakti pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas Kerja Bakti",
+          "denda": 0,
+          "catatan": "Kategori unit: Bebas Kerja Bakti pada periode September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 11,
+    "alamat": "Blok UT/21",
+    "nama_warga": "Dwi Kurnianto",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir / Denda",
+          "hadir_count": 0,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M2",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M3",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M4",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 50000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 50.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Ada Ketidakhadiran / Denda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 50000,
+          "catatan": "Rekap closing September mencatat denda ronda Rp 50.000."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti Oktober 2026 (Denda Rp 25.000)."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti September 2026 (Denda Rp 25.000)."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 12,
+    "alamat": "Blok UT/23",
+    "nama_warga": "-",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 50000,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Tidak Wajib",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti September 2026 (Denda Rp 25.000)."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 13,
+    "alamat": "Blok UT/25",
+    "nama_warga": "-",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Tidak Wajib",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 14,
+    "alamat": "Blok E/1",
+    "nama_warga": "HANI",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Tidak Wajib",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 15,
+    "alamat": "Blok E/2",
+    "nama_warga": "-",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Tidak Wajib",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 16,
+    "alamat": "Blok E/3",
+    "nama_warga": "AMAL",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir / Denda",
+          "hadir_count": 0,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M2",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M3",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M4",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 50000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 50.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Terpenuhi (Bebas Denda)",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Kewajiban ronda bulan September terpenuhi tanpa denda."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti Oktober 2026 (Denda Rp 25.000)."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 17,
+    "alamat": "Blok E/4",
+    "nama_warga": "ANGGA",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Terpenuhi (Bebas Denda)",
+          "hadir_count": 4,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M2",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M3",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M4",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 0,
+          "catatan": "Kehadiran wajib ronda bulan Oktober terpenuhi tanpa denda."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Terpenuhi (Bebas Denda)",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Kewajiban ronda bulan September terpenuhi tanpa denda."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti Oktober 2026 (Denda Rp 25.000)."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti September 2026 (Denda Rp 25.000)."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 18,
+    "alamat": "Blok E/5",
+    "nama_warga": "Hadi Satriyo",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Terpenuhi (Bebas Denda)",
+          "hadir_count": 4,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M2",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M3",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M4",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 0,
+          "catatan": "Kehadiran wajib ronda bulan Oktober terpenuhi tanpa denda."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Terpenuhi (Bebas Denda)",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Kewajiban ronda bulan September terpenuhi tanpa denda."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 19,
+    "alamat": "Blok E/6",
+    "nama_warga": "-",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Tidak Wajib",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 20,
+    "alamat": "Blok G/1",
+    "nama_warga": "BE Santoso Nugroho",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Terpenuhi (Bebas Denda)",
+          "hadir_count": 4,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M2",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M3",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M4",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 0,
+          "catatan": "Kehadiran wajib ronda bulan Oktober terpenuhi tanpa denda."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Terpenuhi (Bebas Denda)",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Kewajiban ronda bulan September terpenuhi tanpa denda."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 21,
+    "alamat": "Blok G/2",
+    "nama_warga": "Rachmat",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Bebas Kerja Bakti",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas Kerja Bakti",
+          "denda": 0,
+          "catatan": "Kategori unit: Bebas Kerja Bakti pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas Kerja Bakti",
+          "denda": 0,
+          "catatan": "Kategori unit: Bebas Kerja Bakti pada periode September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 22,
+    "alamat": "Blok G/3",
+    "nama_warga": "Joko Sulistiono",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Tidak Wajib",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 23,
+    "alamat": "Blok G/4",
+    "nama_warga": "Muhamad Arif Kuniyawan",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir Sebagian (3/5)",
+          "hadir_count": 3,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M2",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M3",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M4",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 5000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 5.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Ada Ketidakhadiran / Denda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 10000,
+          "catatan": "Rekap closing September mencatat denda ronda Rp 10.000."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 24,
+    "alamat": "Blok G/5",
+    "nama_warga": "Luthfi Ramadhan",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Terpenuhi (Bebas Denda)",
+          "hadir_count": 4,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M2",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M3",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M4",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 0,
+          "catatan": "Kehadiran wajib ronda bulan Oktober terpenuhi tanpa denda."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Terpenuhi (Bebas Denda)",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Kewajiban ronda bulan September terpenuhi tanpa denda."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 25,
+    "alamat": "Blok G/6",
+    "nama_warga": "Deny Dwi Wasana",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir Sebagian (1/5)",
+          "hadir_count": 1,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M2",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M3",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M4",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 15000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 15.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Terpenuhi (Bebas Denda)",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Kewajiban ronda bulan September terpenuhi tanpa denda."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 26,
+    "alamat": "Blok G/7",
+    "nama_warga": "Binar Surya Fajar Putra Dewayahna",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir Sebagian (3/5)",
+          "hadir_count": 3,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M2",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M3",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M4",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 5000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 5.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Terpenuhi (Bebas Denda)",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Kewajiban ronda bulan September terpenuhi tanpa denda."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 27,
+    "alamat": "Blok G/8",
+    "nama_warga": "-",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Tidak Wajib",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 28,
+    "alamat": "Blok G/9",
+    "nama_warga": "Toto Citramurti",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Luar Kota",
+      "denda_full": 25000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir Sebagian (1/5)",
+          "hadir_count": 1,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M2",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M3",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M4",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 15000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 15.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Ada Ketidakhadiran / Denda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 15000,
+          "catatan": "Rekap closing September mencatat denda ronda Rp 15.000."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti Oktober 2026 (Denda Rp 25.000)."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti September 2026 (Denda Rp 25.000)."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 29,
+    "alamat": "Blok G/10",
+    "nama_warga": "Kusoy",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Terpenuhi (Bebas Denda)",
+          "hadir_count": 4,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M2",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M3",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M4",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 0,
+          "catatan": "Kehadiran wajib ronda bulan Oktober terpenuhi tanpa denda."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Terpenuhi (Bebas Denda)",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Kewajiban ronda bulan September terpenuhi tanpa denda."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti September 2026 (Denda Rp 25.000)."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 30,
+    "alamat": "Blok G/11",
+    "nama_warga": "-",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Tidak Wajib",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 31,
+    "alamat": "Blok G/12",
+    "nama_warga": "Muhamad Fajri Kurniawan",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Luar Kota",
+      "denda_full": 25000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir / Denda",
+          "hadir_count": 0,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M2",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M3",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M4",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 25000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 25.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Ada Ketidakhadiran / Denda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 25000,
+          "catatan": "Rekap closing September mencatat denda ronda Rp 25.000."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti Oktober 2026 (Denda Rp 25.000)."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti September 2026 (Denda Rp 25.000)."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 32,
+    "alamat": "Blok I/1",
+    "nama_warga": "ARDY",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir Sebagian (2/5)",
+          "hadir_count": 2,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M2",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M3",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M4",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 10000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 10.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Ada Ketidakhadiran / Denda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 5000,
+          "catatan": "Rekap closing September mencatat denda ronda Rp 5.000."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 33,
+    "alamat": "Blok I/2",
+    "nama_warga": "-",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Tidak Wajib",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 34,
+    "alamat": "Blok I/3",
+    "nama_warga": "Yuli Ardinurman",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir Sebagian (2/5)",
+          "hadir_count": 2,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M2",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M3",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M4",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 10000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 10.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Terpenuhi (Bebas Denda)",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Kewajiban ronda bulan September terpenuhi tanpa denda."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti Oktober 2026 (Denda Rp 25.000)."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti September 2026 (Denda Rp 25.000)."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 35,
+    "alamat": "Blok I/4",
+    "nama_warga": "Lukman Harun",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir Sebagian (2/5)",
+          "hadir_count": 2,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M2",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M3",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M4",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 10000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 10.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Terpenuhi (Bebas Denda)",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Kewajiban ronda bulan September terpenuhi tanpa denda."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti September 2026 (Denda Rp 25.000)."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 36,
+    "alamat": "Blok I/5",
+    "nama_warga": "Bayu Aji Girawan",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir / Denda",
+          "hadir_count": 0,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M2",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M3",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M4",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 50000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 50.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Ada Ketidakhadiran / Denda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 50000,
+          "catatan": "Rekap closing September mencatat denda ronda Rp 50.000."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti Oktober 2026 (Denda Rp 25.000)."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti September 2026 (Denda Rp 25.000)."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 37,
+    "alamat": "Blok I/6",
+    "nama_warga": "Dimas Danu Sohiban",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir Sebagian (3/5)",
+          "hadir_count": 3,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M2",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M3",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M4",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M5",
+              "status": "Hadir"
+            }
+          ],
+          "denda": 5000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 5.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Terpenuhi (Bebas Denda)",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Kewajiban ronda bulan September terpenuhi tanpa denda."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 38,
+    "alamat": "Blok I/7",
+    "nama_warga": "Nanang Dedi Arianto",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir Sebagian (3/5)",
+          "hadir_count": 3,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M2",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M3",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M4",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 5000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 5.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Ada Ketidakhadiran / Denda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 5000,
+          "catatan": "Rekap closing September mencatat denda ronda Rp 5.000."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti September 2026 (Denda Rp 25.000)."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 39,
+    "alamat": "Blok I/8",
+    "nama_warga": "Sofyan Ariwibowo Sidik",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Luar Kota",
+      "denda_full": 25000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir / Denda",
+          "hadir_count": 0,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M2",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M3",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M4",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 25000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 25.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Ada Ketidakhadiran / Denda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 25000,
+          "catatan": "Rekap closing September mencatat denda ronda Rp 25.000."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti Oktober 2026 (Denda Rp 25.000)."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti September 2026 (Denda Rp 25.000)."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 40,
+    "alamat": "Blok I/9",
+    "nama_warga": "-",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Tidak Wajib",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 41,
+    "alamat": "Blok I/10",
+    "nama_warga": "Muammar Agung Riyand Cha'baia",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Luar Kota",
+      "denda_full": 25000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir / Denda",
+          "hadir_count": 0,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M2",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M3",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M4",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 25000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 25.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Ada Ketidakhadiran / Denda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 25000,
+          "catatan": "Rekap closing September mencatat denda ronda Rp 25.000."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti September 2026 (Denda Rp 25.000)."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 42,
+    "alamat": "Blok I/11",
+    "nama_warga": "Ganesha Brahma Umbara",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir / Denda",
+          "hadir_count": 0,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M2",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M3",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M4",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 50000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 50.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Ada Ketidakhadiran / Denda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 50000,
+          "catatan": "Rekap closing September mencatat denda ronda Rp 50.000."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti Oktober 2026 (Denda Rp 25.000)."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti September 2026 (Denda Rp 25.000)."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 43,
+    "alamat": "Blok K/1",
+    "nama_warga": "-",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Tidak Wajib",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 44,
+    "alamat": "Blok K/2",
+    "nama_warga": "Fob Budhiyono, S.H.",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Terpenuhi (Bebas Denda)",
+          "hadir_count": 4,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M2",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M3",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M4",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 0,
+          "catatan": "Kehadiran wajib ronda bulan Oktober terpenuhi tanpa denda."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Terpenuhi (Bebas Denda)",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Kewajiban ronda bulan September terpenuhi tanpa denda."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti September 2026 (Denda Rp 25.000)."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 45,
+    "alamat": "Blok K/3",
+    "nama_warga": "Belman Sihombing",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir Sebagian (3/5)",
+          "hadir_count": 3,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M2",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M3",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M4",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 5000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 5.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Terpenuhi (Bebas Denda)",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Kewajiban ronda bulan September terpenuhi tanpa denda."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti Oktober 2026 (Denda Rp 25.000)."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 46,
+    "alamat": "Blok K/4",
+    "nama_warga": "-",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Tidak Wajib",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 47,
+    "alamat": "Blok K/5",
+    "nama_warga": "-",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Tidak Wajib",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 48,
+    "alamat": "Blok K/6",
+    "nama_warga": "-",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Tidak Wajib",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 49,
+    "alamat": "Blok K/7",
+    "nama_warga": "Anwar Sanusi",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Luar Kota",
+      "denda_full": 25000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir / Denda",
+          "hadir_count": 0,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M2",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M3",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M4",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 25000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 25.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Ada Ketidakhadiran / Denda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 25000,
+          "catatan": "Rekap closing September mencatat denda ronda Rp 25.000."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti Oktober 2026 (Denda Rp 25.000)."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti September 2026 (Denda Rp 25.000)."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 50,
+    "alamat": "Blok K/8",
+    "nama_warga": "-",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Tidak Wajib",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 51,
+    "alamat": "Blok K/9",
+    "nama_warga": "Yogi Ariyanto",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir Sebagian (3/5)",
+          "hadir_count": 3,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M2",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M3",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M4",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 5000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 5.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Terpenuhi (Bebas Denda)",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Kewajiban ronda bulan September terpenuhi tanpa denda."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 52,
+    "alamat": "Blok K/10",
+    "nama_warga": "Eva Dwijayadi",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Dalam Kota",
+      "denda_full": 50000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir Sebagian (2/5)",
+          "hadir_count": 2,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M2",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M3",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M4",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 10000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 10.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Ada Ketidakhadiran / Denda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 10000,
+          "catatan": "Rekap closing September mencatat denda ronda Rp 10.000."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti Oktober 2026 (Denda Rp 25.000)."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 53,
+    "alamat": "Blok L/1",
+    "nama_warga": "Rodif Rusyidanu Suwandi",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Luar Kota",
+      "denda_full": 25000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir / Denda",
+          "hadir_count": 0,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M2",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M3",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M4",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 25000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 25.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Ada Ketidakhadiran / Denda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 25000,
+          "catatan": "Rekap closing September mencatat denda ronda Rp 25.000."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti Oktober 2026 (Denda Rp 25.000)."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti September 2026 (Denda Rp 25.000)."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 54,
+    "alamat": "Blok L/2",
+    "nama_warga": "Deddy Judo Prayogo",
+    "ronda": {
+      "kriteria": "Wajib Ronda - Luar Kota",
+      "denda_full": 25000,
+      "denda_per_absen": 5000,
+      "target_minimal_hadir": 4,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Hadir Sebagian (1/5)",
+          "hadir_count": 1,
+          "total_sesi": 5,
+          "mingguan": [
+            {
+              "minggu": "M1",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M2",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M3",
+              "status": "Hadir"
+            },
+            {
+              "minggu": "M4",
+              "status": "Absen"
+            },
+            {
+              "minggu": "M5",
+              "status": "Absen"
+            }
+          ],
+          "denda": 15000,
+          "catatan": "Terdapat denda ketidakhadiran ronda sebesar Rp 15.000."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Ada Ketidakhadiran / Denda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 5000,
+          "catatan": "Rekap closing September mencatat denda ronda Rp 5.000."
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Wajib Kerja Bakti",
+      "denda_per_absen": 25000,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Hadir",
+          "denda": 25000,
+          "catatan": "Tidak hadir kerja bakti Oktober 2026 (Denda Rp 25.000)."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Hadir / Bebas Denda",
+          "denda": 0,
+          "catatan": "Hadir atau dibebaskan pada kegiatan kerja bakti September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 55,
+    "alamat": "Blok L/3",
+    "nama_warga": "-",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Tidak Wajib",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode September 2026."
+        }
+      ]
+    }
+  },
+  {
+    "no_unit": 56,
+    "alamat": "Blok L/4",
+    "nama_warga": "-",
+    "ronda": {
+      "kriteria": "Tidak Ronda",
+      "denda_full": 0,
+      "denda_per_absen": 0,
+      "target_minimal_hadir": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Bebas / Tidak Ronda",
+          "hadir_count": null,
+          "total_sesi": null,
+          "mingguan": [],
+          "denda": 0,
+          "catatan": "Tidak Ronda"
+        }
+      ]
+    },
+    "kerja_bakti": {
+      "kriteria": "Tidak Wajib",
+      "denda_per_absen": 0,
+      "histori": [
+        {
+          "periode_id": "periode-okt-2026",
+          "periode_nama": "Oktober 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode Oktober 2026."
+        },
+        {
+          "periode_id": "periode-sep-2026",
+          "periode_nama": "September 2026",
+          "status": "Tidak Wajib",
+          "denda": 0,
+          "catatan": "Kategori unit: Tidak Wajib pada periode September 2026."
+        }
+      ]
+    }
+  }
+]

@@ -5,12 +5,14 @@ import defaultKasPeriods from './db_kas_periods.json';
 import defaultWarga from './db_warga.json';
 import defaultSurat from './db_surat.json';
 import defaultUsers from './db_users.json';
+import defaultWargaHistori from './db_warga_histori.json';
 
 const DEFAULT_MAP: Record<string, any> = {
   'db_kas_periods.json': defaultKasPeriods,
   'db_warga.json': defaultWarga,
   'db_surat.json': defaultSurat,
   'db_users.json': defaultUsers,
+  'db_warga_histori.json': defaultWargaHistori,
 };
 
 /**

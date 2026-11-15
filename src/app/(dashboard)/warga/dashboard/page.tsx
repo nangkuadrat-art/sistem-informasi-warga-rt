@@ -1,49 +1,58 @@
 import { formatRupiah, NAMA_BULAN } from '@/lib/utils/currency';
 import { getCurrentSession } from '@/lib/auth/serverSession';
 import { getKasPeriod } from '@/lib/data/storeKas';
+import { getLembarHistoriByUnit } from '@/lib/data/storeHistoriWarga';
+import PortalWargaHistoriClient from '@/components/warga/PortalWargaHistoriClient';
 import Link from 'next/link';
 import { ShieldCheck, Hammer, Receipt, Building2, UserCheck } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
-export default async function WargaDashboardPage() {
+interface Props {
+  searchParams: Promise<{ unit?: string; tab?: string }>;
+}
+
+export default async function WargaDashboardPage({ searchParams }: Props) {
+  const { unit: unitQuery, tab: tabQuery } = await searchParams;
   const session = await getCurrentSession();
   const activePeriod = getKasPeriod('periode-okt-2026');
+
+  const isPengurus = session?.kategori === 'pengurus';
+  const requestedUnitNo = isPengurus && unitQuery ? Number(unitQuery) : session?.no_unit;
+
+  const { unitMeta, iuranHistori, allUnitsSelector } = getLembarHistoriByUnit(
+    requestedUnitNo,
+    session?.nama
+  );
 
   const saldoKasSaatIni = Number(activePeriod?.saldo_akhir || 9933500);
   const periodeBulan = activePeriod?.bulan || 10;
   const periodeTahun = activePeriod?.tahun || 2026;
 
-  // Cari tagihan riil unit yang sedang login (berdasarkan no_unit atau nama)
-  const matchedTagihan =
-    activePeriod?.tagihan?.find(
-      (t: any) =>
-        (session?.no_unit && Number(t.no_unit) === Number(session.no_unit)) ||
-        (session?.nama && t.nama_warga?.toLowerCase() === session.nama.toLowerCase())
-    ) || null;
-
-  const namaDisplay = session?.nama || matchedTagihan?.nama_warga || 'Warga RT.03';
-  const alamatDisplay =
-    (session?.alamat && session.alamat !== '-' ? session.alamat : matchedTagihan?.alamat) ||
-    'Perum BPTW Tritih Lor';
+  const latestTagihan = iuranHistori[0] || null;
+  const namaDisplay =
+    unitMeta.nama_warga && unitMeta.nama_warga !== '-'
+      ? unitMeta.nama_warga
+      : session?.nama || 'Warga RT.03';
+  const alamatDisplay = unitMeta.alamat || session?.alamat || 'Perum BPTW Tritih Lor';
   const roleDisplay = session?.role_label || 'Warga Aktif';
 
-  const iuranPokok = Number(matchedTagihan?.iuran_pokok ?? 50000);
-  const tunggakanLalu = Number(matchedTagihan?.tunggakan_bulan_lalu ?? 0);
-  const titipanLalu = Number(matchedTagihan?.titipan_bulan_lalu ?? 0);
-  const totalDenda = Number(matchedTagihan?.total_denda ?? 0);
-  const totalTagihan = Number(matchedTagihan?.total_tagihan ?? 50000);
-  const totalTerbayar = Number(matchedTagihan?.total_terbayar ?? 0);
-  const titipanDepan = Number(matchedTagihan?.titipan_depan ?? 0);
+  const iuranPokok = Number(latestTagihan?.iuran_pokok ?? 50000);
+  const tunggakanLalu = Number(latestTagihan?.tunggakan_bulan_lalu ?? 0);
+  const titipanLalu = Number(latestTagihan?.titipan_bulan_lalu ?? 0);
+  const totalDenda = Number(latestTagihan?.total_denda ?? 0);
+  const totalTagihan = Number(latestTagihan?.total_tagihan ?? 50000);
+  const totalTerbayar = Number(latestTagihan?.total_terbayar ?? 0);
+  const titipanDepan = Number(latestTagihan?.titipan_depan ?? 0);
   const statusLabel =
-    matchedTagihan?.status_label ||
+    latestTagihan?.status_label ||
     (totalTerbayar >= totalTagihan && totalTagihan > 0 ? 'LUNAS' : 'BELUM LUNAS');
-  const isLunas = statusLabel === 'LUNAS' || matchedTagihan?.status_bayar === 'lunas';
+  const isLunas = statusLabel === 'LUNAS' || latestTagihan?.status_bayar === 'lunas';
 
   return (
-    <div className="max-w-lg lg:max-w-4xl mx-auto space-y-5 pb-6">
+    <div className="max-w-lg lg:max-w-5xl mx-auto space-y-6 pb-8">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
-        <div className="lg:col-span-5 space-y-5">
+        <div className="lg:col-span-5 space-y-4">
           {/* CARD PROFIL & KAS RT TERBUKA */}
           <div className="bg-gradient-to-br from-slate-900 to-slate-800 text-white p-5 rounded-3xl shadow-lg space-y-4">
             <div className="flex items-center justify-between gap-2">
@@ -52,7 +61,9 @@ export default async function WargaDashboardPage() {
                   <Building2 className="w-5 h-5" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-[11px] text-slate-400 truncate">{alamatDisplay}</p>
+                  <p className="text-[11px] text-slate-400 truncate">
+                    Unit #{unitMeta.no_unit} • {alamatDisplay}
+                  </p>
                   <h2 className="text-sm font-bold text-white truncate">{namaDisplay}</h2>
                 </div>
               </div>
@@ -74,7 +85,7 @@ export default async function WargaDashboardPage() {
           </div>
 
           {/* QUICK ACTIONS PRESENSI */}
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-3 print:hidden">
             <Link
               href="/warga/presensi-ronda"
               className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm hover:border-blue-500 hover:shadow-md active:scale-[0.98] transition flex flex-col items-center text-center group"
@@ -105,7 +116,7 @@ export default async function WargaDashboardPage() {
             <div className="flex items-center gap-2">
               <Receipt className="w-4 h-4 text-blue-600" />
               <h3 className="text-sm sm:text-base font-bold text-slate-800">
-                Iuran {NAMA_BULAN[periodeBulan]} {periodeTahun}
+                Ringkasan Iuran {NAMA_BULAN[periodeBulan]} {periodeTahun}
               </h3>
             </div>
             <span
@@ -166,6 +177,15 @@ export default async function WargaDashboardPage() {
           </div>
         </div>
       </div>
+
+      {/* 3 LEMBAR INFORMASI HISTORI WARGA (IURAN, RONDA, KERJA BAKTI) */}
+      <PortalWargaHistoriClient
+        unitMeta={unitMeta}
+        iuranHistori={iuranHistori}
+        canSwitchUnit={isPengurus}
+        allUnitsSelector={allUnitsSelector}
+        initialTab={tabQuery}
+      />
     </div>
   );
 }
