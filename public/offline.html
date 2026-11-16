@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>SIWA — Anda Sedang Offline</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(145deg, #0b1221 0%, #172554 55%, #0f172a 100%);
+      color: #f8fafc;
+    }
+    .card {
+      width: 100%;
+      max-width: 380px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(14px);
+      border-radius: 28px;
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(2, 6, 23, 0.5);
+    }
+    .logo {
+      width: 88px;
+      height: 88px;
+      margin: 0 auto 20px;
+      display: block;
+    }
+    h1 {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    p {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #cbd5e1;
+      margin-bottom: 24px;
+    }
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 14px;
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      color: #0b1221;
+      background: linear-gradient(90deg, #38bdf8, #34d399);
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+    button:active {
+      transform: scale(0.98);
+    }
+    .sub {
+      margin-top: 16px;
+      font-size: 11px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="/icons/siwa-logo.svg" alt="Logo SIWA" class="logo" />
+    <h1>Koneksi Internet Terputus</h1>
+    <p>
+      SIWA membutuhkan koneksi internet untuk memuat data terbaru warga, kas RT, dan presensi. Periksa Wi-Fi atau data seluler Anda lalu muat ulang.
+    </p>
+    <button type="button" onclick="window.location.reload()">Coba Muat Ulang</button>
+    <p class="sub">SIWA &bull; Sistem Informasi Warga RT.03 / RW.14</p>
+  </div>
+</body>
+</html>

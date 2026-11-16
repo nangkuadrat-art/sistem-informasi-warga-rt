@@ -6,13 +6,13 @@ import { usePathname } from 'next/navigation';
 import { SessionPayload } from '@/lib/auth/session';
 import { PermissionKey } from '@/lib/data/userPermissions';
 import { logoutAction } from '@/app/login/actions';
+import SiwaLogoBadge from '@/components/ui/SiwaLogoBadge';
 import {
   Users,
   Wallet,
   CalendarCheck,
   ShieldCheck,
   Hammer,
-  Building2,
   Mail,
   UserCog,
   Menu,
@@ -25,6 +25,7 @@ import {
   LogOut,
   Receipt,
   BellRing,
+  Download,
 } from 'lucide-react';
 
 interface NavItem {
@@ -130,6 +131,7 @@ export default function ResponsiveShell({
   const pathname = usePathname();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [canInstallPwa, setCanInstallPwa] = useState(false);
 
   useEffect(() => {
     try {
@@ -138,6 +140,27 @@ export default function ResponsiveShell({
     } catch {
       // Ignore
     }
+
+    const standalone =
+      typeof window !== 'undefined' &&
+      (window.matchMedia('(display-mode: standalone)').matches ||
+        (window.navigator as Navigator & { standalone?: boolean }).standalone === true);
+    if (!standalone) {
+      const ua = window.navigator.userAgent;
+      const isIosSafari =
+        /iPhone|iPad|iPod/i.test(ua) && /Safari/i.test(ua) && !/CriOS|FxiOS|EdgiOS/i.test(ua);
+      const hasDeferred = Boolean(
+        (window as unknown as { __siwaPwaReady?: boolean }).__siwaPwaReady
+      );
+      if (isIosSafari || hasDeferred) setCanInstallPwa(true);
+    }
+
+    const onPwaReady = (e: Event) => {
+      const detail = (e as CustomEvent<{ ready?: boolean }>).detail;
+      setCanInstallPwa(Boolean(detail?.ready));
+    };
+    window.addEventListener('siwa-pwa-ready', onPwaReady);
+    return () => window.removeEventListener('siwa-pwa-ready', onPwaReady);
   }, []);
 
   useEffect(() => {
@@ -216,15 +239,13 @@ export default function ResponsiveShell({
               href={isPengurus ? mainNav[0].href : '/warga/dashboard'}
               className="flex items-center gap-3 min-w-0"
             >
-              <div className="h-10 w-10 bg-blue-600 rounded-xl flex items-center justify-center text-white font-bold shadow-md shadow-blue-500/30 shrink-0">
-                <Building2 className="w-5 h-5" />
-              </div>
+              <SiwaLogoBadge size="md" />
               {!sidebarCollapsed && (
                 <div className="min-w-0">
-                  <h1 className="font-bold text-white text-sm leading-tight truncate">
-                    Sistem Warga RT
+                  <h1 className="font-extrabold text-white text-sm leading-tight truncate tracking-tight">
+                    SIWA • RT.03
                   </h1>
-                  <p className="text-[11px] text-slate-400 truncate">RT.03 RW.14 Tritih Lor</p>
+                  <p className="text-[11px] text-slate-400 truncate">Sistem Informasi Warga</p>
                 </div>
               )}
             </Link>
@@ -558,12 +579,12 @@ export default function ResponsiveShell({
             <div>
               <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-800">
                 <div className="flex items-center gap-2.5">
-                  <div className="h-9 w-9 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-md shadow-blue-500/30">
-                    <Building2 className="w-5 h-5" />
-                  </div>
+                  <SiwaLogoBadge size="sm" />
                   <div>
-                    <h2 className="font-bold text-sm text-white leading-tight">Sistem Warga RT</h2>
-                    <p className="text-[11px] text-slate-400">RT.03 RW.14 Tritih Lor</p>
+                    <h2 className="font-extrabold text-sm text-white leading-tight tracking-tight">
+                      SIWA • RT.03
+                    </h2>
+                    <p className="text-[11px] text-slate-400">Sistem Informasi Warga</p>
                   </div>
                 </div>
                 <button
@@ -645,6 +666,19 @@ export default function ResponsiveShell({
                     : ''}
                 </p>
               </div>
+              {canInstallPwa && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    window.dispatchEvent(new Event('siwa-install-request'));
+                  }}
+                  className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 text-sky-200 border border-sky-400/30 text-xs font-bold transition"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>Pasang Aplikasi SIWA</span>
+                </button>
+              )}
               <button
                 type="button"
                 onClick={handleLogout}

@@ -1,0 +1,61 @@
+{
+  "id": "/",
+  "name": "SIWA RT.03 — Sistem Informasi Warga",
+  "short_name": "SIWA",
+  "description": "Aplikasi resmi pengelolaan data warga, iuran bulanan, kas RT, ronda, kerja bakti, dan surat RT.03 / RW.14 Perumahan BPTW Tritih Lor.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b1221",
+  "theme_color": "#0f172a",
+  "lang": "id",
+  "dir": "ltr",
+  "categories": ["utilities", "productivity", "social"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/siwa-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Portal Warga",
+      "short_name": "Portal",
+      "url": "/warga/dashboard",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Buku Kas RT",
+      "short_name": "Kas RT",
+      "url": "/admin/kas",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Presensi Ronda",
+      "short_name": "Ronda",
+      "url": "/warga/presensi-ronda",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ]
+}

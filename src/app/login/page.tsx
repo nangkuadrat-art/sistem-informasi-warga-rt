@@ -2,7 +2,8 @@ import { redirect } from 'next/navigation';
 import { getCurrentSession } from '@/lib/auth/serverSession';
 import { getDefaultHomeForSession } from '@/lib/auth/session';
 import LoginFormClient from '@/components/auth/LoginFormClient';
-import { Building2, ShieldCheck, Wallet, Users, Smartphone } from 'lucide-react';
+import SiwaLogoBadge from '@/components/ui/SiwaLogoBadge';
+import { ShieldCheck, Wallet, Users, Smartphone } from 'lucide-react';
 
 interface Props {
   searchParams: Promise<{ next?: string; denied?: string; switch?: string }>;
@@ -22,15 +23,15 @@ export default async function LoginPage({ searchParams }: Props) {
         {/* LEFT BRANDING PANEL (PC DESKTOP & COMPACT HEADER ON MOBILE) */}
         <div className="lg:col-span-6 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white p-6 sm:p-8 lg:p-10 flex flex-col justify-between gap-6">
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="h-12 w-12 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30 shrink-0">
-                <Building2 className="w-6 h-6 text-white" />
-              </div>
+            <div className="flex items-center gap-3.5">
+              <SiwaLogoBadge size="xl" className="w-14 h-14 shadow-xl shadow-blue-950/50" />
               <div>
-                <p className="text-[11px] font-bold uppercase tracking-wider text-blue-300">
-                  RT.03 / RW.14 • Perum BPTW
-                </p>
-                <h1 className="text-lg sm:text-xl font-black text-white leading-tight">
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-sky-500/20 text-sky-300 border border-sky-400/30">
+                    SIWA • RT.03 / RW.14
+                  </span>
+                </div>
+                <h1 className="text-lg sm:text-xl font-black text-white leading-tight mt-1">
                   Sistem Informasi Warga
                 </h1>
               </div>

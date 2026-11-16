@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" fill="none">
+  <defs>
+    <linearGradient id="bgGradM" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0B1221" />
+      <stop offset="52%" stop-color="#172554" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+    <radialGradient id="glowSkyM" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(420 95) rotate(135) scale(290)">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.42" />
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glowEmeraldM" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(96 425) rotate(-35) scale(250)">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="roofGradM" x1="176" y1="146" x2="336" y2="210" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7DD3FC" />
+      <stop offset="55%" stop-color="#E0F2FE" />
+      <stop offset="100%" stop-color="#34D399" />
+    </linearGradient>
+    <linearGradient id="barGradM" x1="190" y1="354" x2="322" y2="354" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#34D399" />
+    </linearGradient>
+  </defs>
+
+  <!-- Full-bleed background for Adaptive Android Maskable Safe Zone -->
+  <rect x="0" y="0" width="512" height="512" fill="url(#bgGradM)" />
+  <rect x="0" y="0" width="512" height="512" fill="url(#glowSkyM)" />
+  <rect x="0" y="0" width="512" height="512" fill="url(#glowEmeraldM)" />
+
+  <!-- Centered Safe-Zone Emblem (~64% box) -->
+  <path
+    d="M180 206 L256 146 L332 206"
+    stroke="url(#roofGradM)"
+    stroke-width="17"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <circle cx="256" cy="193" r="11" fill="#34D399" />
+  <circle cx="228" cy="203" r="6.5" fill="#7DD3FC" fill-opacity="0.88" />
+  <circle cx="284" cy="203" r="6.5" fill="#7DD3FC" fill-opacity="0.88" />
+
+  <text
+    x="256"
+    y="314"
+    text-anchor="middle"
+    fill="#FFFFFF"
+    font-family="'Segoe UI', 'Inter', 'Helvetica Neue', Arial, sans-serif"
+    font-size="98"
+    font-weight="900"
+    letter-spacing="5"
+  >SIWA</text>
+
+  <rect x="190" y="346" width="132" height="10" rx="5" fill="url(#barGradM)" />
+</svg>
