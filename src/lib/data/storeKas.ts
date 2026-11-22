@@ -214,6 +214,8 @@ export function updateTagihanUnitStore(
   const item = period.tagihan.find((t) => t.id === tagihanId);
   if (!item) return null;
 
+  const prevPaid = Number(item.total_terbayar || 0);
+
   if (input.iuran_pokok !== undefined) item.iuran_pokok = Number(input.iuran_pokok) || 0;
   if (input.denda_ronda !== undefined) item.denda_ronda = Number(input.denda_ronda) || 0;
   if (input.denda_kerja_bakti !== undefined) item.denda_kerja_bakti = Number(input.denda_kerja_bakti) || 0;
@@ -250,6 +252,37 @@ export function updateTagihanUnitStore(
     item.status_label = 'BELUM LUNAS';
   }
 
+  // Sinkronisasi mutasi ke Buku Kas Umum jika ada perubahan total_terbayar
+  const deltaPaid = Number(item.total_terbayar || 0) - prevPaid;
+  if (deltaPaid !== 0) {
+    if (!period.transaksi) period.transaksi = [];
+    const today = new Date().toISOString().split('T')[0];
+    const baseTs = Date.now();
+    if (deltaPaid > 0) {
+      item.tanggal_pembayaran = today;
+      period.transaksi.unshift({
+        id: `tx-edit-bayar-${baseTs}`,
+        tanggal_transaksi: today,
+        keterangan: `Iuran Warga (Penyesuaian Tagihan): ${item.nama_warga} (${item.alamat})`,
+        jenis: 'masuk',
+        kategori: 'iuran_warga',
+        sub_kategori: 'iuran_pokok',
+        nominal: deltaPaid,
+        rincian: { iuran_pokok: deltaPaid },
+      });
+    } else {
+      period.transaksi.unshift({
+        id: `tx-koreksi-bayar-${baseTs}`,
+        tanggal_transaksi: today,
+        keterangan: `Koreksi Pengurangan Pembayaran: ${item.nama_warga} (${item.alamat})`,
+        jenis: 'keluar',
+        kategori: 'lainnya',
+        nominal: Math.abs(deltaPaid),
+      });
+    }
+    recalculatePeriodBalances(period, data.periods);
+  }
+
   savePeriodsData(data);
   return item;
 }
@@ -272,6 +305,8 @@ export function recordBayarTagihanStore(
   const bayarBaru = prevPaid + Number(nominalBayar);
   item.total_terbayar = bayarBaru;
   item.kurang_lebih = bayarBaru - Number(item.total_tagihan || 0);
+  item.tanggal_pembayaran = new Date().toISOString().split('T')[0];
+  item.metode_pembayaran = metode;
 
   if (item.total_tagihan === 0) {
     item.status_bayar = 'kosong';
@@ -364,10 +399,34 @@ export function resetTagihanUnitStore(periodId: string, tagihanId: string): bool
   const item = period.tagihan.find((t) => t.id === tagihanId);
   if (!item) return false;
 
+  const prevPaid = Number(item.total_terbayar || 0);
   item.total_terbayar = 0;
   item.kurang_lebih = -Number(item.total_tagihan || 0);
   item.status_bayar = Number(item.total_tagihan || 0) > 0 ? 'belum_bayar' : 'kosong';
   item.status_label = Number(item.total_tagihan || 0) > 0 ? 'BELUM LUNAS' : 'KOSONG';
+
+  // Sinkronisasi pembersihan mutasi kas jika sebelumnya pernah terbayar
+  if (period.transaksi && prevPaid > 0) {
+    const ident = `${item.nama_warga} (${item.alamat})`;
+    const beforeLen = period.transaksi.length;
+    period.transaksi = period.transaksi.filter(
+      (tx) => !(tx.kategori === 'iuran_warga' || tx.kategori === 'masukan_lainnya') || !tx.keterangan?.includes(ident)
+    );
+
+    // Jika format keterangan tidak cocok sehingga tidak ada yang terhapus, buat transaksi koreksi keluar
+    if (period.transaksi.length === beforeLen) {
+      period.transaksi.unshift({
+        id: `tx-reset-koreksi-${Date.now()}`,
+        tanggal_transaksi: new Date().toISOString().split('T')[0],
+        keterangan: `Koreksi Reset Tagihan: ${item.nama_warga} (${item.alamat})`,
+        jenis: 'keluar',
+        kategori: 'lainnya',
+        nominal: prevPaid,
+      });
+    }
+
+    recalculatePeriodBalances(period, data.periods);
+  }
 
   savePeriodsData(data);
   return true;
@@ -565,6 +624,21 @@ export function applyDepositToIuranStore(
       item.keterangan,
       `Potong Deposit Bayar Tagihan Rp ${appliedToCurrent.toLocaleString('id-ID')}`
     );
+
+    // Sinkronisasi mutasi kas masuk dan perbarui saldo kas
+    if (!period.transaksi) period.transaksi = [];
+    const today = new Date().toISOString().split('T')[0];
+    period.transaksi.unshift({
+      id: `tx-dep-bayar-${Date.now()}`,
+      tanggal_transaksi: today,
+      keterangan: `Iuran Warga (Potong Titipan/Deposit): ${item.nama_warga} (${item.alamat})`,
+      jenis: 'masuk',
+      kategori: 'iuran_warga',
+      sub_kategori: 'iuran_pokok',
+      nominal: appliedToCurrent,
+      rincian: { iuran_pokok: appliedToCurrent },
+    });
+    recalculatePeriodBalances(period, data.periods);
   } else {
     // Tagihan periode berjalan sudah LUNAS -> kunci alokasi pra-bayar untuk bulan mendatang
     item.alokasi_iuran_dimuka = Number(item.alokasi_iuran_dimuka || 0) + nominal;
@@ -603,6 +677,20 @@ export function applyDepositToDonasiStore(
     item.keterangan,
     `Donasi Kas dari Deposit Rp ${nominal.toLocaleString('id-ID')}${catatan ? ` (${catatan})` : ''}`
   );
+
+  // Sinkronisasi mutasi kas donasi masuk
+  if (!period.transaksi) period.transaksi = [];
+  const today = new Date().toISOString().split('T')[0];
+  period.transaksi.unshift({
+    id: `tx-dep-donasi-${Date.now()}`,
+    tanggal_transaksi: today,
+    keterangan: `Donasi Kas RT (Potong Titipan/Deposit): ${item.nama_warga} (${item.alamat})`,
+    jenis: 'masuk',
+    kategori: 'donasi',
+    nominal: nominal,
+    rincian: { donasi: nominal },
+  });
+  recalculatePeriodBalances(period, data.periods);
 
   savePeriodsData(data);
   return { success: true };
