@@ -10,6 +10,7 @@ import {
 import { formatRupiah } from '@/lib/utils/currency';
 import ModalEditTransaksi from './ModalEditTransaksi';
 import ResponsiveViewToggle, { ResponsiveViewMode } from '@/components/ui/ResponsiveViewToggle';
+import PaginationControl from '@/components/ui/PaginationControl';
 import { deleteTransaksiKas } from '@/app/(dashboard)/admin/kas/actions';
 import {
   Search,
@@ -54,6 +55,8 @@ export default function TabelTransaksiClient({
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<ResponsiveViewMode>('auto');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
 
   const cardsClass =
     viewMode === 'auto' ? 'block md:hidden' : viewMode === 'cards' ? 'block' : 'hidden';
@@ -97,6 +100,21 @@ export default function TabelTransaksiClient({
     .filter((t) => t.jenis === 'keluar')
     .reduce((acc, t) => acc + Number(t.nominal || 0), 0);
 
+  const effectivePageSize = pageSize >= 9999 ? (filtered.length || 1) : pageSize;
+  const totalPages = Math.max(1, Math.ceil(filtered.length / effectivePageSize));
+  const validPage = Math.min(currentPage, totalPages);
+  const startIndex = (validPage - 1) * effectivePageSize;
+  const paginated = filtered.slice(startIndex, startIndex + effectivePageSize);
+
+  const handleFilterChange = (mode: FilterMode) => {
+    setFilterJenis(mode);
+    setCurrentPage(1);
+  };
+  const handleSearchChange = (term: string) => {
+    setSearchTerm(term);
+    setCurrentPage(1);
+  };
+
   const handleDelete = async (txId: string, desc: string) => {
     if (confirm(`Yakin ingin menghapus transaksi:\n"${desc}"?`)) {
       setDeletingId(txId);
@@ -111,7 +129,7 @@ export default function TabelTransaksiClient({
       <div className="p-3.5 sm:p-4 border-b border-slate-100 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
         <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar w-full lg:w-auto">
           <button
-            onClick={() => setFilterJenis('all')}
+            onClick={() => handleFilterChange('all')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap ${
               filterJenis === 'all'
                 ? 'bg-slate-900 text-white'
@@ -121,7 +139,7 @@ export default function TabelTransaksiClient({
             Semua ({transaksiList.length})
           </button>
           <button
-            onClick={() => setFilterJenis('masuk')}
+            onClick={() => handleFilterChange('masuk')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 whitespace-nowrap ${
               filterJenis === 'masuk'
                 ? 'bg-emerald-700 text-white'
@@ -131,7 +149,7 @@ export default function TabelTransaksiClient({
             <ArrowDownLeft className="w-3.5 h-3.5" /> Semua Masuk ({countByGroup.masuk})
           </button>
           <button
-            onClick={() => setFilterJenis('iuran_warga')}
+            onClick={() => handleFilterChange('iuran_warga')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap ${
               filterJenis === 'iuran_warga'
                 ? 'bg-emerald-600 text-white'
@@ -141,7 +159,7 @@ export default function TabelTransaksiClient({
             Iuran Warga ({countByGroup.iuran_warga})
           </button>
           <button
-            onClick={() => setFilterJenis('donasi')}
+            onClick={() => handleFilterChange('donasi')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap ${
               filterJenis === 'donasi'
                 ? 'bg-violet-600 text-white'
@@ -151,7 +169,7 @@ export default function TabelTransaksiClient({
             Donasi ({countByGroup.donasi})
           </button>
           <button
-            onClick={() => setFilterJenis('masukan_lainnya')}
+            onClick={() => handleFilterChange('masukan_lainnya')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap ${
               filterJenis === 'masukan_lainnya'
                 ? 'bg-amber-600 text-white'
@@ -161,7 +179,7 @@ export default function TabelTransaksiClient({
             Masukan Lainnya ({countByGroup.masukan_lainnya})
           </button>
           <button
-            onClick={() => setFilterJenis('keluar')}
+            onClick={() => handleFilterChange('keluar')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 whitespace-nowrap ${
               filterJenis === 'keluar'
                 ? 'bg-red-600 text-white'
@@ -179,7 +197,7 @@ export default function TabelTransaksiClient({
               type="text"
               placeholder="Cari uraian transaksi..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => handleSearchChange(e.target.value)}
               className="w-full pl-9 pr-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
@@ -189,9 +207,9 @@ export default function TabelTransaksiClient({
 
       {/* MOBILE / CARD VIEW */}
       <div className={`${cardsClass} p-3 sm:p-4 space-y-2.5 bg-slate-50/40`}>
-        {filtered.length > 0 ? (
+        {paginated.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
-            {filtered.map((t, idx) => {
+            {paginated.map((t, idx) => {
               const isMasuk = t.jenis === 'masuk';
               const isSaldoAwal = t.kategori === 'saldo_awal';
               const badge = getKategoriBadgeMeta(t.jenis, t.kategori);
@@ -243,7 +261,7 @@ export default function TabelTransaksiClient({
                   </div>
 
                   <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
-                    <span className="text-[11px] font-mono text-slate-400">No. #{idx + 1}</span>
+                    <span className="text-[11px] font-mono text-slate-400">No. #{startIndex + idx + 1}</span>
                     {!isSaldoAwal ? (
                       <div className="flex items-center gap-1.5">
                         <button
@@ -297,8 +315,8 @@ export default function TabelTransaksiClient({
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-100">
-            {filtered.length > 0 ? (
-              filtered.map((t, idx) => {
+            {paginated.length > 0 ? (
+              paginated.map((t, idx) => {
                 const isMasuk = t.jenis === 'masuk';
                 const isSaldoAwal = t.kategori === 'saldo_awal';
                 const badge = getKategoriBadgeMeta(t.jenis, t.kategori);
@@ -307,7 +325,7 @@ export default function TabelTransaksiClient({
                 return (
                   <tr key={t.id} className="hover:bg-slate-50/60 transition">
                     <td className="py-2.5 px-3 text-xs font-mono text-slate-400 text-center">
-                      {idx + 1}
+                      {startIndex + idx + 1}
                     </td>
 
                     <td className="py-2.5 px-3 text-xs font-medium text-slate-600 font-mono whitespace-nowrap">
@@ -388,6 +406,17 @@ export default function TabelTransaksiClient({
           </tbody>
         </table>
       </div>
+
+      {/* PAGINATION CONTROL / QUERY LIMITER */}
+      <PaginationControl
+        currentPage={validPage}
+        totalItems={filtered.length}
+        pageSize={pageSize}
+        onPageChange={setCurrentPage}
+        onPageSizeChange={setPageSize}
+        pageSizeOptions={[10, 25, 50]}
+        itemName="transaksi"
+      />
 
       {/* FOOTER SUBTOTAL BAR */}
       <div className="px-4 py-3 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">

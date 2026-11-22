@@ -6,6 +6,7 @@ import { UnitRumahRT } from '@/lib/data/masterDataGoogleSheets';
 import ModalBuatSurat from './ModalBuatSurat';
 import ModalViewSurat from './ModalViewSurat';
 import ResponsiveViewToggle, { ResponsiveViewMode } from '@/components/ui/ResponsiveViewToggle';
+import PaginationControl from '@/components/ui/PaginationControl';
 import {
   Mail,
   Search,
@@ -33,11 +34,23 @@ export default function SuratListClient({ suratList, units }: Props) {
   const [activeSurat, setActiveSurat] = useState<SuratData | null>(null);
   const [isViewOpen, setIsViewOpen] = useState(false);
   const [viewMode, setViewMode] = useState<ResponsiveViewMode>('auto');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
 
   const cardsClass =
     viewMode === 'auto' ? 'block md:hidden' : viewMode === 'cards' ? 'block' : 'hidden';
   const tableClass =
     viewMode === 'auto' ? 'hidden md:block' : viewMode === 'table' ? 'block' : 'hidden';
+
+  const handleFilterChange = (filter: string) => {
+    setSelectedFilter(filter);
+    setCurrentPage(1);
+  };
+
+  const handleSearchChange = (term: string) => {
+    setSearchTerm(term);
+    setCurrentPage(1);
+  };
 
   // Filtered Surat
   const filteredList = suratList.filter((s) => {
@@ -50,6 +63,12 @@ export default function SuratListClient({ suratList, units }: Props) {
       (s.pemohon_nama && s.pemohon_nama.toLowerCase().includes(term));
     return matchesFilter && matchesSearch;
   });
+
+  const effectivePageSize = pageSize >= 9999 ? (filteredList.length || 1) : pageSize;
+  const totalPages = Math.max(1, Math.ceil(filteredList.length / effectivePageSize));
+  const validPage = Math.min(currentPage, totalPages);
+  const startIndex = (validPage - 1) * effectivePageSize;
+  const paginatedList = filteredList.slice(startIndex, startIndex + effectivePageSize);
 
   const countAll = suratList.length;
   const countRapat = suratList.filter((s) => s.jenis === 'undangan_rapat').length;
@@ -73,7 +92,7 @@ export default function SuratListClient({ suratList, units }: Props) {
       {/* STATS KARTU 4 JENIS SURAT */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         <div
-          onClick={() => setSelectedFilter('undangan_rapat')}
+          onClick={() => handleFilterChange('undangan_rapat')}
           className={`cursor-pointer p-4 rounded-2xl border transition ${
             selectedFilter === 'undangan_rapat'
               ? 'bg-blue-50 border-blue-300 ring-2 ring-blue-400/30'
@@ -91,7 +110,7 @@ export default function SuratListClient({ suratList, units }: Props) {
         </div>
 
         <div
-          onClick={() => setSelectedFilter('undangan_kerja_bakti')}
+          onClick={() => handleFilterChange('undangan_kerja_bakti')}
           className={`cursor-pointer p-4 rounded-2xl border transition ${
             selectedFilter === 'undangan_kerja_bakti'
               ? 'bg-orange-50 border-orange-300 ring-2 ring-orange-400/30'
@@ -109,7 +128,7 @@ export default function SuratListClient({ suratList, units }: Props) {
         </div>
 
         <div
-          onClick={() => setSelectedFilter('surat_pengantar')}
+          onClick={() => handleFilterChange('surat_pengantar')}
           className={`cursor-pointer p-4 rounded-2xl border transition ${
             selectedFilter === 'surat_pengantar'
               ? 'bg-emerald-50 border-emerald-300 ring-2 ring-emerald-400/30'
@@ -127,7 +146,7 @@ export default function SuratListClient({ suratList, units }: Props) {
         </div>
 
         <div
-          onClick={() => setSelectedFilter('surat_peringatan')}
+          onClick={() => handleFilterChange('surat_peringatan')}
           className={`cursor-pointer p-4 rounded-2xl border transition ${
             selectedFilter === 'surat_peringatan'
               ? 'bg-red-50 border-red-300 ring-2 ring-red-400/30'
@@ -150,7 +169,7 @@ export default function SuratListClient({ suratList, units }: Props) {
         {/* FILTER BUTTONS */}
         <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar w-full md:w-auto">
           <button
-            onClick={() => setSelectedFilter('all')}
+            onClick={() => handleFilterChange('all')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap ${
               selectedFilter === 'all'
                 ? 'bg-slate-900 text-white'
@@ -161,7 +180,7 @@ export default function SuratListClient({ suratList, units }: Props) {
           </button>
 
           <button
-            onClick={() => setSelectedFilter('undangan_rapat')}
+            onClick={() => handleFilterChange('undangan_rapat')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap ${
               selectedFilter === 'undangan_rapat'
                 ? 'bg-blue-600 text-white'
@@ -172,7 +191,7 @@ export default function SuratListClient({ suratList, units }: Props) {
           </button>
 
           <button
-            onClick={() => setSelectedFilter('undangan_kerja_bakti')}
+            onClick={() => handleFilterChange('undangan_kerja_bakti')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap ${
               selectedFilter === 'undangan_kerja_bakti'
                 ? 'bg-orange-600 text-white'
@@ -183,7 +202,7 @@ export default function SuratListClient({ suratList, units }: Props) {
           </button>
 
           <button
-            onClick={() => setSelectedFilter('surat_pengantar')}
+            onClick={() => handleFilterChange('surat_pengantar')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap ${
               selectedFilter === 'surat_pengantar'
                 ? 'bg-emerald-600 text-white'
@@ -194,7 +213,7 @@ export default function SuratListClient({ suratList, units }: Props) {
           </button>
 
           <button
-            onClick={() => setSelectedFilter('surat_peringatan')}
+            onClick={() => handleFilterChange('surat_peringatan')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap ${
               selectedFilter === 'surat_peringatan'
                 ? 'bg-red-600 text-white'
@@ -213,7 +232,7 @@ export default function SuratListClient({ suratList, units }: Props) {
               type="text"
               placeholder="Cari nomor, perihal, atau nama..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => handleSearchChange(e.target.value)}
               className="w-full pl-9 pr-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500"
             />
           </div>
@@ -235,9 +254,9 @@ export default function SuratListClient({ suratList, units }: Props) {
 
         {/* MOBILE / CARD VIEW */}
         <div className={`${cardsClass} p-3 sm:p-4 bg-slate-50/40`}>
-          {filteredList.length > 0 ? (
+          {paginatedList.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {filteredList.map((s) => (
+              {paginatedList.map((s) => (
                 <div
                   key={`surat-card-${s.id}`}
                   className="bg-white rounded-2xl border border-slate-200/90 p-3.5 shadow-xs space-y-2.5 flex flex-col justify-between"
@@ -335,11 +354,11 @@ export default function SuratListClient({ suratList, units }: Props) {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
-              {filteredList.length > 0 ? (
-                filteredList.map((s, idx) => (
+              {paginatedList.length > 0 ? (
+                paginatedList.map((s, idx) => (
                   <tr key={s.id} className="hover:bg-slate-50/70 transition">
                     <td className="py-3 px-3 text-center font-mono text-xs text-slate-400">
-                      {idx + 1}
+                      {startIndex + idx + 1}
                     </td>
 
                     <td className="py-3 px-3">
@@ -430,6 +449,17 @@ export default function SuratListClient({ suratList, units }: Props) {
             </tbody>
           </table>
         </div>
+
+        {/* PAGINATION CONTROL / QUERY LIMITER */}
+        <PaginationControl
+          currentPage={validPage}
+          totalItems={filteredList.length}
+          pageSize={pageSize}
+          onPageChange={setCurrentPage}
+          onPageSizeChange={setPageSize}
+          pageSizeOptions={[10, 20, 50]}
+          itemName="surat"
+        />
       </div>
 
       {/* MODAL VIEW & PRINT */}

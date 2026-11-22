@@ -14,6 +14,7 @@ import {
 } from '@/app/(dashboard)/admin/users/actions';
 import ModalUserForm from './ModalUserForm';
 import ResponsiveViewToggle, { ResponsiveViewMode } from '@/components/ui/ResponsiveViewToggle';
+import PaginationControl from '@/components/ui/PaginationControl';
 import {
   Users,
   ShieldCheck,
@@ -53,11 +54,26 @@ export default function TabelUsersClient({ users, units }: Props) {
   const [visiblePasswords, setVisiblePasswords] = useState<Record<string, boolean>>({});
   const [showMatrix, setShowMatrix] = useState(false);
   const [viewMode, setViewMode] = useState<ResponsiveViewMode>('auto');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
 
   const cardsClass =
     viewMode === 'auto' ? 'block md:hidden' : viewMode === 'cards' ? 'block' : 'hidden';
   const tableClass =
     viewMode === 'auto' ? 'hidden md:block' : viewMode === 'table' ? 'block' : 'hidden';
+
+  const handleTabChange = (tab: 'semua' | 'pengurus' | 'warga' | 'non_aktif') => {
+    setActiveTab(tab);
+    setCurrentPage(1);
+  };
+  const handleSearchChange = (q: string) => {
+    setSearchQuery(q);
+    setCurrentPage(1);
+  };
+  const handleRoleFilterChange = (r: string) => {
+    setFilterRole(r);
+    setCurrentPage(1);
+  };
 
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -107,6 +123,12 @@ export default function TabelUsersClient({ users, units }: Props) {
       return true;
     });
   }, [users, activeTab, filterRole, searchQuery]);
+
+  const effectivePageSize = pageSize >= 9999 ? (filteredUsers.length || 1) : pageSize;
+  const totalPages = Math.max(1, Math.ceil(filteredUsers.length / effectivePageSize));
+  const validPage = Math.min(currentPage, totalPages);
+  const startIndex = (validPage - 1) * effectivePageSize;
+  const paginatedUsers = filteredUsers.slice(startIndex, startIndex + effectivePageSize);
 
   const togglePasswordVisibility = (id: string) => {
     setVisiblePasswords((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -321,7 +343,7 @@ export default function TabelUsersClient({ users, units }: Props) {
           <div className="flex flex-wrap items-center gap-1.5 bg-slate-100 p-1 rounded-xl">
             <button
               type="button"
-              onClick={() => setActiveTab('semua')}
+              onClick={() => handleTabChange('semua')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${
                 activeTab === 'semua'
                   ? 'bg-white text-slate-900 shadow-sm'
@@ -332,7 +354,7 @@ export default function TabelUsersClient({ users, units }: Props) {
             </button>
             <button
               type="button"
-              onClick={() => setActiveTab('pengurus')}
+              onClick={() => handleTabChange('pengurus')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${
                 activeTab === 'pengurus'
                   ? 'bg-indigo-600 text-white shadow-sm'
@@ -343,7 +365,7 @@ export default function TabelUsersClient({ users, units }: Props) {
             </button>
             <button
               type="button"
-              onClick={() => setActiveTab('warga')}
+              onClick={() => handleTabChange('warga')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${
                 activeTab === 'warga'
                   ? 'bg-emerald-600 text-white shadow-sm'
@@ -354,7 +376,7 @@ export default function TabelUsersClient({ users, units }: Props) {
             </button>
             <button
               type="button"
-              onClick={() => setActiveTab('non_aktif')}
+              onClick={() => handleTabChange('non_aktif')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${
                 activeTab === 'non_aktif'
                   ? 'bg-rose-600 text-white shadow-sm'
@@ -372,7 +394,7 @@ export default function TabelUsersClient({ users, units }: Props) {
               <input
                 type="text"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => handleSearchChange(e.target.value)}
                 placeholder="Cari nama, username, blok..."
                 className="w-full pl-9 pr-3 py-2 border border-slate-200 rounded-xl text-xs outline-none focus:ring-2 focus:ring-blue-500"
               />
@@ -380,7 +402,7 @@ export default function TabelUsersClient({ users, units }: Props) {
 
             <select
               value={filterRole}
-              onChange={(e) => setFilterRole(e.target.value)}
+              onChange={(e) => handleRoleFilterChange(e.target.value)}
               className="px-3 py-2 border border-slate-200 rounded-xl text-xs font-semibold bg-white text-slate-700 outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="all">Semua Role</option>
@@ -408,13 +430,13 @@ export default function TabelUsersClient({ users, units }: Props) {
 
         {/* MOBILE / CARD VIEW */}
         <div className={`${cardsClass} p-3 sm:p-4 bg-slate-50/40`}>
-          {filteredUsers.length === 0 ? (
+          {paginatedUsers.length === 0 ? (
             <div className="py-10 text-center text-slate-400 text-xs bg-white rounded-2xl border border-slate-200">
               Tidak ada akun user yang sesuai dengan filter pencarian.
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {filteredUsers.map((user) => {
+              {paginatedUsers.map((user) => {
                 const meta = ROLE_METADATA[user.role] || ROLE_METADATA.warga;
                 const activePermKeys = PERMISSION_DEFINITIONS.filter(
                   (def) => user.permissions?.[def.key]
@@ -572,14 +594,14 @@ export default function TabelUsersClient({ users, units }: Props) {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 text-xs">
-              {filteredUsers.length === 0 ? (
+              {paginatedUsers.length === 0 ? (
                 <tr>
                   <td colSpan={7} className="py-10 text-center text-slate-400">
                     Tidak ada akun user yang sesuai dengan filter pencarian.
                   </td>
                 </tr>
               ) : (
-                filteredUsers.map((user) => {
+                paginatedUsers.map((user) => {
                   const meta = ROLE_METADATA[user.role] || ROLE_METADATA.warga;
                   const activePermKeys = PERMISSION_DEFINITIONS.filter(
                     (def) => user.permissions?.[def.key]
@@ -739,6 +761,17 @@ export default function TabelUsersClient({ users, units }: Props) {
             </tbody>
           </table>
         </div>
+
+        {/* PAGINATION CONTROL / QUERY LIMITER */}
+        <PaginationControl
+          currentPage={validPage}
+          totalItems={filteredUsers.length}
+          pageSize={pageSize}
+          onPageChange={setCurrentPage}
+          onPageSizeChange={setPageSize}
+          pageSizeOptions={[10, 20, 50]}
+          itemName="pengguna"
+        />
       </div>
 
       {/* Modal Tambah / Edit User & Hak Akses */}

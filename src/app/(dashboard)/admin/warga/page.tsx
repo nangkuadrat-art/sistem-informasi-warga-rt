@@ -5,6 +5,7 @@ import ModalEditKeluarga from '@/components/warga/ModalEditKeluarga';
 import ModalHapusKeluarga from '@/components/warga/ModalHapusKeluarga';
 import ModalDetailKeluarga from '@/components/warga/ModalDetailKeluarga';
 import ModalResetMaster from '@/components/warga/ModalResetMaster';
+import ServerPagination from '@/components/ui/ServerPagination';
 import {
   Home,
   Search,
@@ -17,11 +18,17 @@ import {
 } from 'lucide-react';
 
 interface Props {
-  searchParams: Promise<{ q?: string; status?: string; view?: string }>;
+  searchParams: Promise<{
+    q?: string;
+    status?: string;
+    view?: string;
+    page?: string;
+    limit?: string;
+  }>;
 }
 
 export default async function WargaAdminPage({ searchParams }: Props) {
-  const { q, status, view } = await searchParams;
+  const { q, status, view, page, limit } = await searchParams;
   const currentView = view === 'grid' ? 'grid' : 'table';
 
   // Ambil data langsung dari store yang persisten
@@ -69,6 +76,16 @@ export default async function WargaAdminPage({ searchParams }: Props) {
       acc + (curr.warga?.filter((w: any) => hitungUsia(w.tanggal_lahir).usia >= 60).length || 0),
     0
   );
+
+  // Pagination & Query Limiter Logic
+  const totalFiltered = filteredUnits.length;
+  const parsedLimit = Number(limit);
+  const pageSize = parsedLimit === 9999 ? 9999 : Math.max(1, parsedLimit || 10);
+  const effectivePageSize = pageSize >= 9999 ? Math.max(1, totalFiltered) : pageSize;
+  const totalPages = Math.max(1, Math.ceil(totalFiltered / effectivePageSize));
+  const currentPage = Math.min(Math.max(1, Number(page) || 1), totalPages);
+  const startIndex = (currentPage - 1) * effectivePageSize;
+  const paginatedUnits = filteredUnits.slice(startIndex, startIndex + effectivePageSize);
 
   return (
     <div className="space-y-6">
@@ -126,6 +143,7 @@ export default async function WargaAdminPage({ searchParams }: Props) {
         <form method="GET" className="relative w-full md:w-80">
           <input type="hidden" name="view" value={currentView} />
           {status && <input type="hidden" name="status" value={status} />}
+          {pageSize !== 10 && <input type="hidden" name="limit" value={String(pageSize)} />}
           <Search className="w-4 h-4 absolute left-3.5 top-3 text-slate-400" />
           <input
             type="text"
@@ -145,6 +163,7 @@ export default async function WargaAdminPage({ searchParams }: Props) {
               href={`/admin/warga?${new URLSearchParams({
                 ...(q ? { q } : {}),
                 view: currentView,
+                ...(pageSize !== 10 ? { limit: String(pageSize) } : {}),
               }).toString()}`}
               className={`px-3 py-1.5 text-xs font-medium rounded-lg transition whitespace-nowrap ${
                 !status || status === 'semua'
@@ -159,6 +178,7 @@ export default async function WargaAdminPage({ searchParams }: Props) {
                 ...(q ? { q } : {}),
                 status: 'aktif',
                 view: currentView,
+                ...(pageSize !== 10 ? { limit: String(pageSize) } : {}),
               }).toString()}`}
               className={`px-3 py-1.5 text-xs font-medium rounded-lg transition whitespace-nowrap ${
                 status === 'aktif'
@@ -173,6 +193,7 @@ export default async function WargaAdminPage({ searchParams }: Props) {
                 ...(q ? { q } : {}),
                 status: 'kosong',
                 view: currentView,
+                ...(pageSize !== 10 ? { limit: String(pageSize) } : {}),
               }).toString()}`}
               className={`px-3 py-1.5 text-xs font-medium rounded-lg transition whitespace-nowrap ${
                 status === 'kosong'
@@ -187,6 +208,7 @@ export default async function WargaAdminPage({ searchParams }: Props) {
                 ...(q ? { q } : {}),
                 status: 'lansia',
                 view: currentView,
+                ...(pageSize !== 10 ? { limit: String(pageSize) } : {}),
               }).toString()}`}
               className={`px-3 py-1.5 text-xs font-medium rounded-lg transition whitespace-nowrap flex items-center gap-1 ${
                 status === 'lansia'
@@ -205,6 +227,7 @@ export default async function WargaAdminPage({ searchParams }: Props) {
               href={`/admin/warga?${new URLSearchParams({
                 ...(q ? { q } : {}),
                 ...(status ? { status } : {}),
+                ...(pageSize !== 10 ? { limit: String(pageSize) } : {}),
                 view: 'grid',
               }).toString()}`}
               className={`p-1.5 rounded-lg text-xs font-semibold flex items-center gap-1 transition ${
@@ -221,6 +244,7 @@ export default async function WargaAdminPage({ searchParams }: Props) {
               href={`/admin/warga?${new URLSearchParams({
                 ...(q ? { q } : {}),
                 ...(status ? { status } : {}),
+                ...(pageSize !== 10 ? { limit: String(pageSize) } : {}),
                 view: 'table',
               }).toString()}`}
               className={`p-1.5 rounded-lg text-xs font-semibold flex items-center gap-1 transition ${
@@ -240,8 +264,8 @@ export default async function WargaAdminPage({ searchParams }: Props) {
       {/* VIEW MODE 1: GRID VIEW (KARTU WARGA) */}
       {currentView === 'grid' && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {filteredUnits && filteredUnits.length > 0 ? (
-            filteredUnits.map((keluarga) => {
+          {paginatedUnits && paginatedUnits.length > 0 ? (
+            paginatedUnits.map((keluarga) => {
               const kepala =
                 keluarga.warga?.find(
                   (w: any) =>
@@ -362,8 +386,8 @@ export default async function WargaAdminPage({ searchParams }: Props) {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
-                {filteredUnits && filteredUnits.length > 0 ? (
-                  filteredUnits.map((keluarga, idx) => {
+                {paginatedUnits && paginatedUnits.length > 0 ? (
+                  paginatedUnits.map((keluarga, idx) => {
                     const kepala =
                       keluarga.warga?.find(
                         (w: any) =>
@@ -383,7 +407,7 @@ export default async function WargaAdminPage({ searchParams }: Props) {
                         }`}
                       >
                         <td className="py-3 px-4 text-xs text-slate-400 font-mono text-center">
-                          {idx + 1}
+                          {startIndex + idx + 1}
                         </td>
                         <td className="py-3 px-4">
                           <span className="font-bold text-slate-900 text-xs px-2 py-0.5 bg-slate-100 rounded">
@@ -464,6 +488,21 @@ export default async function WargaAdminPage({ searchParams }: Props) {
           </div>
         </div>
       )}
+
+      {/* SERVER PAGINATION / QUERY LIMITER */}
+      <ServerPagination
+        currentPage={currentPage}
+        totalItems={totalFiltered}
+        pageSize={pageSize}
+        baseUrl="/admin/warga"
+        queryParams={{
+          ...(q ? { q } : {}),
+          ...(status ? { status } : {}),
+          ...(currentView === 'grid' ? { view: 'grid' } : {}),
+        }}
+        itemName="unit warga"
+        pageSizeOptions={[10, 20, 50]}
+      />
     </div>
   );
 }

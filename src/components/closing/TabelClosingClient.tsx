@@ -5,6 +5,7 @@ import { formatRupiah } from '@/lib/utils/currency';
 import ModalBayarTagihan from './ModalBayarTagihan';
 import ModalEditTagihan from './ModalEditTagihan';
 import ResponsiveViewToggle, { ResponsiveViewMode } from '@/components/ui/ResponsiveViewToggle';
+import PaginationControl from '@/components/ui/PaginationControl';
 import { bayarTagihanAction, resetTagihanUnitAction } from '@/app/(dashboard)/admin/closing/actions';
 import {
   Search,
@@ -36,11 +37,23 @@ export default function TabelClosingClient({
   const [selectedTagihanEdit, setSelectedTagihanEdit] = useState<any | null>(null);
   const [actionLoadingId, setActionLoadingId] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<ResponsiveViewMode>('auto');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(15);
 
   const cardsClass =
     viewMode === 'auto' ? 'block md:hidden' : viewMode === 'cards' ? 'block' : 'hidden';
   const tableClass =
     viewMode === 'auto' ? 'hidden md:block' : viewMode === 'table' ? 'block' : 'hidden';
+
+  const handleFilterStatusChange = (status: string) => {
+    setFilterStatus(status);
+    setCurrentPage(1);
+  };
+
+  const handleSearchChange = (term: string) => {
+    setSearchTerm(term);
+    setCurrentPage(1);
+  };
 
   // Filter logic
   const filtered = (tagihanList || []).filter((t) => {
@@ -81,6 +94,12 @@ export default function TabelClosingClient({
   const grandTotalDonatur = filtered.reduce((acc, curr) => acc + Number(curr.donatur || 0), 0);
   const grandTotalTitipanDepan = filtered.reduce((acc, curr) => acc + Number(curr.titipan_depan || 0), 0);
 
+  const effectivePageSize = pageSize >= 9999 ? (filtered.length || 1) : pageSize;
+  const totalPages = Math.max(1, Math.ceil(filtered.length / effectivePageSize));
+  const validPage = Math.min(currentPage, totalPages);
+  const startIndex = (validPage - 1) * effectivePageSize;
+  const paginated = filtered.slice(startIndex, startIndex + effectivePageSize);
+
   // Quick 1-click full payment
   const handleQuickLunas = async (t: any) => {
     const sisa = Math.max(0, Number(t.total_tagihan || 0) - Number(t.total_terbayar || 0));
@@ -110,7 +129,7 @@ export default function TabelClosingClient({
         {/* PILLS */}
         <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar w-full md:w-auto">
           <button
-            onClick={() => setFilterStatus('all')}
+            onClick={() => handleFilterStatusChange('all')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap ${
               filterStatus === 'all'
                 ? 'bg-slate-900 text-white'
@@ -121,7 +140,7 @@ export default function TabelClosingClient({
           </button>
 
           <button
-            onClick={() => setFilterStatus('belum_lunas')}
+            onClick={() => handleFilterStatusChange('belum_lunas')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap ${
               filterStatus === 'belum_lunas'
                 ? 'bg-red-600 text-white'
@@ -132,7 +151,7 @@ export default function TabelClosingClient({
           </button>
 
           <button
-            onClick={() => setFilterStatus('lunas')}
+            onClick={() => handleFilterStatusChange('lunas')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap ${
               filterStatus === 'lunas'
                 ? 'bg-emerald-600 text-white'
@@ -143,7 +162,7 @@ export default function TabelClosingClient({
           </button>
 
           <button
-            onClick={() => setFilterStatus('tunggakan')}
+            onClick={() => handleFilterStatusChange('tunggakan')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap ${
               filterStatus === 'tunggakan'
                 ? 'bg-blue-600 text-white'
@@ -154,7 +173,7 @@ export default function TabelClosingClient({
           </button>
 
           <button
-            onClick={() => setFilterStatus('denda')}
+            onClick={() => handleFilterStatusChange('denda')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap ${
               filterStatus === 'denda'
                 ? 'bg-amber-600 text-white'
@@ -165,7 +184,7 @@ export default function TabelClosingClient({
           </button>
 
           <button
-            onClick={() => setFilterStatus('titipan')}
+            onClick={() => handleFilterStatusChange('titipan')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap ${
               filterStatus === 'titipan'
                 ? 'bg-indigo-600 text-white'
@@ -176,7 +195,7 @@ export default function TabelClosingClient({
           </button>
 
           <button
-            onClick={() => setFilterStatus('kosong')}
+            onClick={() => handleFilterStatusChange('kosong')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap ${
               filterStatus === 'kosong'
                 ? 'bg-slate-500 text-white'
@@ -195,7 +214,7 @@ export default function TabelClosingClient({
               type="text"
               placeholder="Cari warga / blok..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => handleSearchChange(e.target.value)}
               className="w-full pl-9 pr-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
@@ -205,10 +224,10 @@ export default function TabelClosingClient({
 
       {/* MOBILE / CARD VIEW (SIMPEL & RAMAH SENTUHAN) */}
       <div className={`${cardsClass} p-3 sm:p-4 space-y-3 bg-slate-50/40`}>
-        {filtered && filtered.length > 0 ? (
+        {paginated && paginated.length > 0 ? (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {filtered.map((t, idx) => {
+              {paginated.map((t, idx) => {
                 const isKosong = t.status_bayar === 'kosong' || t.status_label === 'KOSONG';
                 const isLunas = t.status_bayar === 'lunas' || t.status_label === 'LUNAS';
                 const tunggakanLalu = Number(t.tunggakan_bulan_lalu || 0);
@@ -475,8 +494,8 @@ export default function TabelClosingClient({
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-100">
-            {filtered && filtered.length > 0 ? (
-              filtered.map((t, idx) => {
+            {paginated && paginated.length > 0 ? (
+              paginated.map((t, idx) => {
                 const isKosong = t.status_bayar === 'kosong' || t.status_label === 'KOSONG';
                 const isLunas = t.status_bayar === 'lunas' || t.status_label === 'LUNAS';
                 const tunggakanLalu = Number(t.tunggakan_bulan_lalu || 0);
@@ -496,7 +515,7 @@ export default function TabelClosingClient({
                     }`}
                   >
                     <td className="py-2.5 px-2.5 text-xs text-slate-400 font-mono text-center">
-                      {t.no_unit || idx + 1}
+                      {t.no_unit || (startIndex + idx + 1)}
                     </td>
 
                     <td className="py-2.5 px-3">
@@ -720,6 +739,17 @@ export default function TabelClosingClient({
           )}
         </table>
       </div>
+
+      {/* PAGINATION CONTROL / QUERY LIMITER */}
+      <PaginationControl
+        currentPage={validPage}
+        totalItems={filtered.length}
+        pageSize={pageSize}
+        onPageChange={setCurrentPage}
+        onPageSizeChange={setPageSize}
+        pageSizeOptions={[10, 15, 25, 50]}
+        itemName="unit"
+      />
 
       {/* MODAL BAYAR */}
       {selectedTagihanBayar && (
