@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { submitClosingBulanan, reopenClosingBulanan } from '@/app/(dashboard)/admin/closing/actions';
 import { broadcastAllTagihanWA } from '@/app/(dashboard)/admin/closing/broadcastActions';
 import {
@@ -29,20 +30,30 @@ export default function ClosingHeaderActions({
   const [customCatatan, setCustomCatatan] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [waSending, setWaSending] = useState(false);
+  const router = useRouter();
 
   const handleClosingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    await submitClosingBulanan(periodeId, customCatatan);
+    const res = await submitClosingBulanan(periodeId, customCatatan);
     setIsLoading(false);
     setIsClosingModalOpen(false);
+    if (res.success) {
+      if (res.nextPeriodId) {
+        router.push(`/admin/closing?periode=${res.nextPeriodId}`);
+      }
+      router.refresh();
+    }
   };
 
   const handleReopenSubmit = async () => {
     setIsLoading(true);
-    await reopenClosingBulanan(periodeId);
+    const res = await reopenClosingBulanan(periodeId);
     setIsLoading(false);
     setIsReopenModalOpen(false);
+    if (res.success) {
+      router.refresh();
+    }
   };
 
   const handleBroadcastWA = async () => {

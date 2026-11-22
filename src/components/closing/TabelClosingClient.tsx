@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { formatRupiah } from '@/lib/utils/currency';
 import ModalBayarTagihan from './ModalBayarTagihan';
 import ModalEditTagihan from './ModalEditTagihan';
@@ -39,6 +40,7 @@ export default function TabelClosingClient({
   const [viewMode, setViewMode] = useState<ResponsiveViewMode>('auto');
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(15);
+  const router = useRouter();
 
   const cardsClass =
     viewMode === 'auto' ? 'block md:hidden' : viewMode === 'cards' ? 'block' : 'hidden';
@@ -111,6 +113,7 @@ export default function TabelClosingClient({
     formData.append('auto_kas', 'true');
     await bayarTagihanAction(periodeId, t.id, formData);
     setActionLoadingId(null);
+    router.refresh();
   };
 
   // Quick Reset payment
@@ -119,6 +122,7 @@ export default function TabelClosingClient({
       setActionLoadingId(t.id);
       await resetTagihanUnitAction(periodeId, t.id);
       setActionLoadingId(null);
+      router.refresh();
     }
   };
 

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { formatRupiah } from '@/lib/utils/currency';
 import { bayarTagihanAction } from '@/app/(dashboard)/admin/closing/actions';
 import { Banknote, X, Loader2, CheckCircle2 } from 'lucide-react';
@@ -26,6 +27,7 @@ export default function ModalBayarTagihan({
   const [autoKas, setAutoKas] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const router = useRouter();
 
   if (!isOpen) return null;
 
@@ -45,6 +47,7 @@ export default function ModalBayarTagihan({
 
     const res = await bayarTagihanAction(periodeId, tagihan.id, formData);
     if (res.success) {
+      router.refresh();
       onClose();
     } else {
       setErrorMsg(res.error || 'Gagal memproses pembayaran');

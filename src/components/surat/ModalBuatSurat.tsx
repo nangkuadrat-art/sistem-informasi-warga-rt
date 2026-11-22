@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { UnitRumahRT } from '@/lib/data/masterDataGoogleSheets';
 import { JenisSurat } from '@/lib/data/storeSurat';
 import { createSuratAction } from '@/app/(dashboard)/admin/surat/actions';
@@ -28,6 +29,7 @@ export default function ModalBuatSurat({ units, defaultJenis = 'undangan_rapat' 
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [jenis, setJenis] = useState<JenisSurat>(defaultJenis);
+  const router = useRouter();
 
   // Auto-filled states from resident selector
   const [selectedUnitId, setSelectedUnitId] = useState('');
@@ -108,6 +110,7 @@ export default function ModalBuatSurat({ units, defaultJenis = 'undangan_rapat' 
     formData.set('jenis', jenis);
     await createSuratAction(formData);
     setLoading(false);
+    router.refresh();
     setIsOpen(false);
   };
 

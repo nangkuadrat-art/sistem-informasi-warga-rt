@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { ShieldCheck, Hammer, Receipt, Building2, UserCheck } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 interface Props {
   searchParams: Promise<{ unit?: string; tab?: string }>;
@@ -17,7 +18,7 @@ interface Props {
 export default async function WargaDashboardPage({ searchParams }: Props) {
   const { unit: unitQuery, tab: tabQuery } = await searchParams;
   const session = await getCurrentSession();
-  const activePeriod = getKasPeriod('periode-okt-2026');
+  const activePeriod = getKasPeriod();
 
   const isPengurus = session?.kategori === 'pengurus';
   const requestedUnitNo = isPengurus && unitQuery ? Number(unitQuery) : session?.no_unit;

@@ -13,26 +13,29 @@ import {
 export async function submitClosingBulanan(periodeId: string, customCatatan?: string) {
   try {
     // 1. Jalankan closing di local store persisten
-    executeClosingStore(periodeId, customCatatan);
+    const closingRes = executeClosingStore(periodeId, customCatatan);
 
-    // 2. Supabase sync (jika tersambung)
-    try {
-      const supabase = await createClient();
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+    // 2. Supabase sync (hanya jika tersambung dengan URL aktif yang valid)
+    const sbUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    if (sbUrl && !sbUrl.includes('drpxmocsoieksbcismyk') && !sbUrl.includes('your-project')) {
+      try {
+        const supabase = await createClient();
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
 
-      await supabase.rpc('execute_closing_bulanan', {
-        p_periode_id: periodeId,
-        p_admin_id: user?.id || null,
-      });
-    } catch {
-      // Abaikan jika Supabase offline
+        await supabase.rpc('execute_closing_bulanan', {
+          p_periode_id: periodeId,
+          p_admin_id: user?.id || null,
+        });
+      } catch {
+        // Abaikan jika Supabase offline
+      }
     }
 
     revalidatePath('/admin/closing');
     revalidatePath('/admin/kas');
-    return { success: true };
+    return { success: true, nextPeriodId: closingRes.nextPeriodId };
   } catch (error: any) {
     return { success: false, error: error.message || 'Gagal melaksanakan closing bulanan' };
   }

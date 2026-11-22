@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   UserAccount,
   UserRole,
@@ -56,6 +57,7 @@ export default function TabelUsersClient({ users, units }: Props) {
   const [viewMode, setViewMode] = useState<ResponsiveViewMode>('auto');
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
+  const router = useRouter();
 
   const cardsClass =
     viewMode === 'auto' ? 'block md:hidden' : viewMode === 'cards' ? 'block' : 'hidden';
@@ -139,6 +141,7 @@ export default function TabelUsersClient({ users, units }: Props) {
     const res = await toggleUserStatusAction(user.id);
     setBusyId(null);
     if (res.success) {
+      router.refresh();
       showToast(
         'ok',
         `Status akun ${user.nama} diubah menjadi ${
@@ -157,6 +160,7 @@ export default function TabelUsersClient({ users, units }: Props) {
     setBusyId(null);
     setResettingUser(null);
     if (res.success) {
+      router.refresh();
       showToast('ok', `Password ${resettingUser.nama} berhasil direset ke "12345"`);
     } else {
       showToast('err', res.error || 'Gagal mereset password');
@@ -170,6 +174,7 @@ export default function TabelUsersClient({ users, units }: Props) {
     setBusyId(null);
     setDeletingUser(null);
     if (res.success) {
+      router.refresh();
       showToast('ok', `Akun ${deletingUser.nama} berhasil dihapus`);
     } else {
       showToast('err', res.error || 'Gagal menghapus akun');

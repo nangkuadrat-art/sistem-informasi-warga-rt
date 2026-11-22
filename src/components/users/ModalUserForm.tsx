@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   UserAccount,
   UserRole,
@@ -54,6 +55,7 @@ export default function ModalUserForm({ isOpen, onClose, editingUser, units }: P
   );
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const router = useRouter();
 
   useEffect(() => {
     if (isOpen) {
@@ -139,6 +141,7 @@ export default function ModalUserForm({ isOpen, onClose, editingUser, units }: P
       if (!res.success) {
         setError(res.error || 'Terjadi kesalahan saat menyimpan akun');
       } else {
+        router.refresh();
         onClose();
       }
     } catch (err: any) {

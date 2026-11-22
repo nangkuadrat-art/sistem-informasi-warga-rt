@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { SuratData, JenisSurat } from '@/lib/data/storeSurat';
 import { UnitRumahRT } from '@/lib/data/masterDataGoogleSheets';
 import ModalBuatSurat from './ModalBuatSurat';
@@ -36,6 +37,7 @@ export default function SuratListClient({ suratList, units }: Props) {
   const [viewMode, setViewMode] = useState<ResponsiveViewMode>('auto');
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
+  const router = useRouter();
 
   const cardsClass =
     viewMode === 'auto' ? 'block md:hidden' : viewMode === 'cards' ? 'block' : 'hidden';
@@ -84,6 +86,7 @@ export default function SuratListClient({ suratList, units }: Props) {
   const handleDelete = async (id: string, nomor: string) => {
     if (confirm(`Hapus surat ${nomor}?`)) {
       await deleteSuratAction(id);
+      router.refresh();
     }
   };
 

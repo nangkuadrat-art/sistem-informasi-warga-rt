@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { updateKeluarga, StatusRumah } from '@/app/(dashboard)/admin/warga/actions';
 import { Pencil, X, Loader2, Save, Building } from 'lucide-react';
 
@@ -21,6 +22,7 @@ export default function ModalEditKeluarga({ keluarga }: ModalEditKeluargaProps) 
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
     nama_kepala_keluarga: keluarga.nama_kepala_keluarga === '-' ? '' : keluarga.nama_kepala_keluarga,
@@ -48,6 +50,7 @@ export default function ModalEditKeluarga({ keluarga }: ModalEditKeluargaProps) 
     });
 
     if (result.success) {
+      router.refresh();
       setIsOpen(false);
     } else {
       setErrorMsg(result.error || 'Terjadi kesalahan sistem');

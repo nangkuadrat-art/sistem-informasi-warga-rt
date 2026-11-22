@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { formatRupiah } from '@/lib/utils/currency';
 import { updateTagihanWargaAction } from '@/app/(dashboard)/admin/closing/actions';
 import { Settings, X, Loader2, Save } from 'lucide-react';
@@ -20,6 +21,7 @@ export default function ModalEditTagihan({
 }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const router = useRouter();
 
   // States for live calculation
   const [iuran, setIuran] = useState<number>(Number(tagihan.iuran_pokok || 0));
@@ -56,6 +58,7 @@ export default function ModalEditTagihan({
 
     const res = await updateTagihanWargaAction(periodeId, tagihan.id, formData);
     if (res.success) {
+      router.refresh();
       onClose();
     } else {
       setErrorMsg(res.error || 'Gagal menyimpan perubahan tagihan');

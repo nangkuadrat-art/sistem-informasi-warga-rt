@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { KasTransaksiItem } from '@/lib/data/storeKas';
 import {
   classifyPemasukanGroup,
@@ -57,6 +58,7 @@ export default function TabelTransaksiClient({
   const [viewMode, setViewMode] = useState<ResponsiveViewMode>('auto');
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
+  const router = useRouter();
 
   const cardsClass =
     viewMode === 'auto' ? 'block md:hidden' : viewMode === 'cards' ? 'block' : 'hidden';
@@ -120,6 +122,7 @@ export default function TabelTransaksiClient({
       setDeletingId(txId);
       await deleteTransaksiKas(periodeId, txId);
       setDeletingId(null);
+      router.refresh();
     }
   };
 

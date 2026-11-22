@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { deleteKeluarga } from '@/app/(dashboard)/admin/warga/actions';
 import { Trash2, AlertTriangle, Loader2, X } from 'lucide-react';
 
@@ -18,6 +19,7 @@ export default function ModalHapusKeluarga({ keluarga }: ModalHapusKeluargaProps
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const router = useRouter();
 
   async function handleDelete() {
     setIsLoading(true);
@@ -25,6 +27,7 @@ export default function ModalHapusKeluarga({ keluarga }: ModalHapusKeluargaProps
 
     const result = await deleteKeluarga(keluarga.id);
     if (result.success) {
+      router.refresh();
       setIsOpen(false);
     } else {
       setErrorMsg(result.error || 'Gagal menghapus unit');

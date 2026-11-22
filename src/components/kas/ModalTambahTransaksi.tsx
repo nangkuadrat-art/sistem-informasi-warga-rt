@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { createTransaksiKas } from '@/app/(dashboard)/admin/kas/actions';
 import { PEMASUKAN_CATEGORIES, PENGELUARAN_CATEGORIES } from '@/lib/data/kasCategories';
 import { PlusCircle, X, Loader2 } from 'lucide-react';
@@ -15,6 +16,7 @@ export default function ModalTambahTransaksi({ periodeId }: Props) {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [jenis, setJenis] = useState<'masuk' | 'keluar'>('keluar');
   const [kategori, setKategori] = useState<string>('operasional');
+  const router = useRouter();
 
   const handleJenisChange = (val: 'masuk' | 'keluar') => {
     setJenis(val);
@@ -31,6 +33,7 @@ export default function ModalTambahTransaksi({ periodeId }: Props) {
 
     const res = await createTransaksiKas(formData);
     if (res.success) {
+      router.refresh();
       setIsOpen(false);
     } else {
       setErrorMsg(res.error || 'Gagal menyimpan transaksi');

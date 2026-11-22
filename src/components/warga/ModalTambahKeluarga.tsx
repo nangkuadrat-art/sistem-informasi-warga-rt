@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { createKeluarga, StatusRumah } from '@/app/(dashboard)/admin/warga/actions';
 import { UserPlus, X, Loader2, Home, User } from 'lucide-react';
 
@@ -8,6 +9,7 @@ export default function ModalTambahKeluarga() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
     blok_rumah: '',
@@ -35,6 +37,7 @@ export default function ModalTambahKeluarga() {
     });
 
     if (result.success) {
+      router.refresh();
       setIsOpen(false);
       setFormData({
         blok_rumah: '',

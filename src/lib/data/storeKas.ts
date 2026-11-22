@@ -455,13 +455,29 @@ export function executeClosingStore(periodId: string, customCatatan?: string) {
     data.periods.push(nextPeriod);
   } else {
     nextPeriod.saldo_awal = period.saldo_akhir;
+    nextPeriod.tagihan = nextTagihan;
+    nextPeriod.status = 'open';
     const initTx = nextPeriod.transaksi?.find((t) => t.kategori === 'saldo_awal');
-    if (initTx) initTx.nominal = period.saldo_akhir;
+    if (initTx) {
+      initTx.nominal = period.saldo_akhir;
+    } else {
+      nextPeriod.transaksi = [
+        {
+          id: `tx-${nextId}-1`,
+          tanggal_transaksi: `${nextYear}-${String(nextMonth).padStart(2, '0')}-01`,
+          keterangan: `Sisa Saldo Kas Bulan Sebelumnya (${period.nama})`,
+          jenis: 'masuk',
+          kategori: 'saldo_awal',
+          nominal: period.saldo_akhir,
+        },
+        ...(nextPeriod.transaksi || []).filter((t) => t.kategori !== 'saldo_awal'),
+      ];
+    }
     recalculatePeriodBalances(nextPeriod, data.periods);
   }
 
   savePeriodsData(data);
-  return { success: true };
+  return { success: true, nextPeriodId: nextId };
 }
 
 export function reopenClosingStore(periodId: string): boolean {
@@ -482,7 +498,7 @@ export function reopenClosingStore(periodId: string): boolean {
 // -------------------------------------------------------------
 
 export function getDbKas(): KasTransaksiItem[] {
-  const active = getKasPeriod('periode-okt-2026');
+  const active = getKasPeriod();
   return active?.transaksi || [];
 }
 
@@ -493,7 +509,8 @@ export function addTransaksiKasStore(input: {
   kategori: string;
   nominal: number;
 }): KasTransaksiItem {
-  return addTransaksiKasPeriod('periode-okt-2026', input);
+  const active = getKasPeriod();
+  return addTransaksiKasPeriod(active.id, input);
 }
 
 // -------------------------------------------------------------

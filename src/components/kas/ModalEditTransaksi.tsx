@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { KasTransaksiItem } from '@/lib/data/storeKas';
 import { PEMASUKAN_CATEGORIES, PENGELUARAN_CATEGORIES } from '@/lib/data/kasCategories';
 import { updateTransaksiKas } from '@/app/(dashboard)/admin/kas/actions';
@@ -18,6 +19,7 @@ export default function ModalEditTransaksi({ periodeId, transaksi, isOpen, onClo
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [jenis, setJenis] = useState<'masuk' | 'keluar'>(transaksi.jenis);
   const [kategori, setKategori] = useState<string>(transaksi.kategori);
+  const router = useRouter();
 
   useEffect(() => {
     setJenis(transaksi.jenis);
@@ -37,6 +39,7 @@ export default function ModalEditTransaksi({ periodeId, transaksi, isOpen, onClo
 
     const res = await updateTransaksiKas(formData);
     if (res.success) {
+      router.refresh();
       onClose();
     } else {
       setErrorMsg(res.error || 'Gagal memperbarui transaksi');
