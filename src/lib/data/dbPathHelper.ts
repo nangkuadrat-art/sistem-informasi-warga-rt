@@ -7,6 +7,8 @@ import defaultSurat from './db_surat.json';
 import defaultUsers from './db_users.json';
 import defaultWargaHistori from './db_warga_histori.json';
 import defaultDepositRequests from './db_deposit_requests.json';
+import defaultJadwalRonda from './db_jadwal_ronda.json';
+import defaultJadwalKerjaBakti from './db_jadwal_kerja_bakti.json';
 
 const DEFAULT_MAP: Record<string, any> = {
   'db_kas_periods.json': defaultKasPeriods,
@@ -15,6 +17,8 @@ const DEFAULT_MAP: Record<string, any> = {
   'db_users.json': defaultUsers,
   'db_warga_histori.json': defaultWargaHistori,
   'db_deposit_requests.json': defaultDepositRequests,
+  'db_jadwal_ronda.json': defaultJadwalRonda,
+  'db_jadwal_kerja_bakti.json': defaultJadwalKerjaBakti,
 };
 
 /**

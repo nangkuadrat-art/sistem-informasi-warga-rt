@@ -1,0 +1,126 @@
+[
+  {
+    "id": "ronda-2026-11-22",
+    "tanggal": "2026-11-22",
+    "jam_mulai": "22:00",
+    "jam_selesai": "04:00",
+    "catatan": "Piket ronda malam Minggu, antisipasi kendaraan tamu dan keliling pos kamling.",
+    "is_processed_denda": false,
+    "peserta_ronda": [
+      {
+        "id": "pr-22-1",
+        "jadwal_id": "ronda-2026-11-22",
+        "warga_id": "w-110",
+        "warga": {
+          "nama_lengkap": "Tito (Blok UT/1)"
+        }
+      },
+      {
+        "id": "pr-22-2",
+        "jadwal_id": "ronda-2026-11-22",
+        "warga_id": "w-111",
+        "warga": {
+          "nama_lengkap": "Hardi Supangat (Blok UT/5)"
+        }
+      },
+      {
+        "id": "pr-22-3",
+        "jadwal_id": "ronda-2026-11-22",
+        "warga_id": "w-kk-4",
+        "warga": {
+          "nama_lengkap": "INDRAWAN (Blok UT/7)"
+        }
+      },
+      {
+        "id": "pr-22-4",
+        "jadwal_id": "ronda-2026-11-22",
+        "warga_id": "w-115",
+        "warga": {
+          "nama_lengkap": "Sudarmadi (Blok UT/9)"
+        }
+      }
+    ],
+    "presensi_ronda": [
+      {
+        "id": "pres-22-1",
+        "jadwal_id": "ronda-2026-11-22",
+        "warga_id": "w-110",
+        "jarak_meter": 22,
+        "status": "hadir",
+        "waktu_presensi": "2026-11-22T22:15:00.000Z",
+        "warga": {
+          "nama_lengkap": "Tito (Blok UT/1)"
+        }
+      },
+      {
+        "id": "pres-22-2",
+        "jadwal_id": "ronda-2026-11-22",
+        "warga_id": "w-111",
+        "jarak_meter": 35,
+        "status": "hadir",
+        "waktu_presensi": "2026-11-22T22:20:00.000Z",
+        "warga": {
+          "nama_lengkap": "Hardi Supangat (Blok UT/5)"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ronda-2026-11-15",
+    "tanggal": "2026-11-15",
+    "jam_mulai": "22:00",
+    "jam_selesai": "04:00",
+    "catatan": "Patroli rutin perumahan aman terkendali, pintu portal ditutup pukul 23:00.",
+    "is_processed_denda": true,
+    "peserta_ronda": [
+      {
+        "id": "pr-15-1",
+        "jadwal_id": "ronda-2026-11-15",
+        "warga_id": "w-118",
+        "warga": {
+          "nama_lengkap": "Ndari (Blok UT/13)"
+        }
+      },
+      {
+        "id": "pr-15-2",
+        "jadwal_id": "ronda-2026-11-15",
+        "warga_id": "w-119",
+        "warga": {
+          "nama_lengkap": "Ifah (Blok UT/15)"
+        }
+      },
+      {
+        "id": "pr-15-3",
+        "jadwal_id": "ronda-2026-11-15",
+        "warga_id": "w-120",
+        "warga": {
+          "nama_lengkap": "Muhammad Faris Noveandri (Blok UT/17)"
+        }
+      }
+    ],
+    "presensi_ronda": [
+      {
+        "id": "pres-15-1",
+        "jadwal_id": "ronda-2026-11-15",
+        "warga_id": "w-118",
+        "jarak_meter": 18,
+        "status": "hadir",
+        "waktu_presensi": "2026-11-15T22:10:00.000Z",
+        "warga": {
+          "nama_lengkap": "Ndari (Blok UT/13)"
+        }
+      },
+      {
+        "id": "pres-15-2",
+        "jadwal_id": "ronda-2026-11-15",
+        "warga_id": "w-120",
+        "jarak_meter": 28,
+        "status": "hadir",
+        "waktu_presensi": "2026-11-15T22:25:00.000Z",
+        "warga": {
+          "nama_lengkap": "Muhammad Faris Noveandri (Blok UT/17)"
+        }
+      }
+    ]
+  }
+]

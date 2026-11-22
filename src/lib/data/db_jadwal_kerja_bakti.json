@@ -1,0 +1,75 @@
+[
+  {
+    "id": "kb-2026-11-15",
+    "judul": "Pembersihan Saluran Air Utama & Fogging Lingkungan RT.03",
+    "tanggal": "2026-11-15",
+    "jam_mulai": "07:00",
+    "jam_selesai": "10:00",
+    "lokasi": "Sepanjang Saluran Blok UT & Pos Ronda",
+    "qr_token": "KB-20261115-01",
+    "is_processed_denda": false,
+    "presensi_kerja_bakti": [
+      {
+        "id": "pkb-1",
+        "jadwal_id": "kb-2026-11-15",
+        "keluarga_id": "00000000-0000-0000-0000-000000000001",
+        "keluarga": {
+          "nama_kepala_keluarga": "Tito",
+          "blok_rumah": "UT",
+          "nomor_rumah": "1"
+        }
+      },
+      {
+        "id": "pkb-2",
+        "jadwal_id": "kb-2026-11-15",
+        "keluarga_id": "00000000-0000-0000-0000-000000000003",
+        "keluarga": {
+          "nama_kepala_keluarga": "Hardi Supangat",
+          "blok_rumah": "UT",
+          "nomor_rumah": "5"
+        }
+      },
+      {
+        "id": "pkb-3",
+        "jadwal_id": "kb-2026-11-15",
+        "keluarga_id": "00000000-0000-0000-0000-000000000005",
+        "keluarga": {
+          "nama_kepala_keluarga": "Sudarmadi",
+          "blok_rumah": "UT",
+          "nomor_rumah": "9"
+        }
+      },
+      {
+        "id": "pkb-4",
+        "jadwal_id": "kb-2026-11-15",
+        "keluarga_id": "00000000-0000-0000-0000-000000000034",
+        "keluarga": {
+          "nama_kepala_keluarga": "Yuli Ardinurman",
+          "blok_rumah": "I",
+          "nomor_rumah": "3"
+        }
+      },
+      {
+        "id": "pkb-5",
+        "jadwal_id": "kb-2026-11-15",
+        "keluarga_id": "00000000-0000-0000-0000-000000000038",
+        "keluarga": {
+          "nama_kepala_keluarga": "Nanang Dedi Arianto",
+          "blok_rumah": "I",
+          "nomor_rumah": "7"
+        }
+      }
+    ]
+  },
+  {
+    "id": "kb-2026-11-29",
+    "judul": "Pengecatan Marka Jalan & Perapihan Fasum Taman RT.03",
+    "tanggal": "2026-11-29",
+    "jam_mulai": "07:00",
+    "jam_selesai": "10:00",
+    "lokasi": "Taman Fasum & Lapangan Blok I",
+    "qr_token": "KB-20261129-02",
+    "is_processed_denda": false,
+    "presensi_kerja_bakti": []
+  }
+]

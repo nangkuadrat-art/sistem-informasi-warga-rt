@@ -1,21 +1,10 @@
-import { createClient } from '@/lib/supabase/server';
+import { getAllJadwalKerjaBakti } from '@/lib/data/storeKegiatan';
 import { createJadwalKerjaBakti } from './actions';
 import ModalQrViewer from '@/components/scanner/ModalQrViewer';
 import { Hammer, Plus, Calendar, MapPin } from 'lucide-react';
 
 export default async function AdminKerjaBaktiPage() {
-  let daftarKegiatan: any[] = [];
-
-  try {
-    const supabase = await createClient();
-    const { data: kb } = await supabase
-      .from('jadwal_kerja_bakti')
-      .select('*, presensi_kerja_bakti(*, keluarga(nama_kepala_keluarga, blok_rumah, nomor_rumah))')
-      .order('tanggal', { ascending: false });
-    daftarKegiatan = kb || [];
-  } catch (e) {
-    // Graceful
-  }
+  const daftarKegiatan = getAllJadwalKerjaBakti();
 
   return (
     <div className="space-y-6">

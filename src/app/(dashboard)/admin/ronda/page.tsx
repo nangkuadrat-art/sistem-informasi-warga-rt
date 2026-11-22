@@ -1,28 +1,10 @@
-import { createClient } from '@/lib/supabase/server';
+import { getAllJadwalRonda, getListWargaForRonda } from '@/lib/data/storeKegiatan';
 import { createJadwalRonda, prosesAutoDendaRonda } from './actions';
 import { Plus, CheckCircle, AlertTriangle, Users } from 'lucide-react';
 
 export default async function AdminRondaPage() {
-  let daftarJadwal: any[] = [];
-  let listWarga: any[] = [];
-
-  try {
-    const supabase = await createClient();
-    const { data: j } = await supabase
-      .from('jadwal_ronda')
-      .select('*, peserta_ronda(*, warga(nama_lengkap)), presensi_ronda(*, warga(nama_lengkap))')
-      .order('tanggal', { ascending: false });
-    daftarJadwal = j || [];
-
-    const { data: w } = await supabase
-      .from('warga')
-      .select('id, nama_lengkap, hubungan_keluarga')
-      .eq('status_warga', 'aktif')
-      .order('nama_lengkap', { ascending: true });
-    listWarga = w || [];
-  } catch (e) {
-    // Graceful
-  }
+  const daftarJadwal = getAllJadwalRonda();
+  const listWarga = getListWargaForRonda();
 
   return (
     <div className="space-y-6">
