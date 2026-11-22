@@ -22,7 +22,7 @@ interface Props {
 
 export default async function WargaAdminPage({ searchParams }: Props) {
   const { q, status, view } = await searchParams;
-  const currentView = view === 'table' ? 'table' : 'grid';
+  const currentView = view === 'grid' ? 'grid' : 'table';
 
   // Ambil data langsung dari store yang persisten
   const allUnits = getDbUnits();
@@ -124,7 +124,7 @@ export default async function WargaAdminPage({ searchParams }: Props) {
       {/* FILTER & PENCARIAN & VIEW TOGGLE */}
       <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200/80 flex flex-col md:flex-row gap-3 items-center justify-between">
         <form method="GET" className="relative w-full md:w-80">
-          {view && <input type="hidden" name="view" value={view} />}
+          <input type="hidden" name="view" value={currentView} />
           {status && <input type="hidden" name="status" value={status} />}
           <Search className="w-4 h-4 absolute left-3.5 top-3 text-slate-400" />
           <input
@@ -142,7 +142,10 @@ export default async function WargaAdminPage({ searchParams }: Props) {
               Filter:
             </span>
             <a
-              href={`/admin/warga?view=${currentView}`}
+              href={`/admin/warga?${new URLSearchParams({
+                ...(q ? { q } : {}),
+                view: currentView,
+              }).toString()}`}
               className={`px-3 py-1.5 text-xs font-medium rounded-lg transition whitespace-nowrap ${
                 !status || status === 'semua'
                   ? 'bg-blue-600 text-white shadow-sm'
@@ -152,7 +155,11 @@ export default async function WargaAdminPage({ searchParams }: Props) {
               Semua ({totalUnit})
             </a>
             <a
-              href={`/admin/warga?status=aktif&view=${currentView}`}
+              href={`/admin/warga?${new URLSearchParams({
+                ...(q ? { q } : {}),
+                status: 'aktif',
+                view: currentView,
+              }).toString()}`}
               className={`px-3 py-1.5 text-xs font-medium rounded-lg transition whitespace-nowrap ${
                 status === 'aktif'
                   ? 'bg-blue-600 text-white shadow-sm'
@@ -162,7 +169,11 @@ export default async function WargaAdminPage({ searchParams }: Props) {
               Aktif ({totalAktif})
             </a>
             <a
-              href={`/admin/warga?status=kosong&view=${currentView}`}
+              href={`/admin/warga?${new URLSearchParams({
+                ...(q ? { q } : {}),
+                status: 'kosong',
+                view: currentView,
+              }).toString()}`}
               className={`px-3 py-1.5 text-xs font-medium rounded-lg transition whitespace-nowrap ${
                 status === 'kosong'
                   ? 'bg-blue-600 text-white shadow-sm'
@@ -172,7 +183,11 @@ export default async function WargaAdminPage({ searchParams }: Props) {
               Kosong ({totalKosong})
             </a>
             <a
-              href={`/admin/warga?status=lansia&view=${currentView}`}
+              href={`/admin/warga?${new URLSearchParams({
+                ...(q ? { q } : {}),
+                status: 'lansia',
+                view: currentView,
+              }).toString()}`}
               className={`px-3 py-1.5 text-xs font-medium rounded-lg transition whitespace-nowrap flex items-center gap-1 ${
                 status === 'lansia'
                   ? 'bg-purple-600 text-white shadow-sm'
